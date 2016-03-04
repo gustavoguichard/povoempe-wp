@@ -1,0 +1,74 @@
+.mage-theme-options input[type="text"],
+.mage-theme-options textarea {
+  width: 100%;
+  max-width: 580px;
+  border: 1px solid #b9bec7;
+  padding: 8px;
+}
+
+.mage-theme-options select {
+  border: 1px solid #b9bec7;
+  height: auto;
+  padding: 4px 2px;
+}
+
+.mage-theme-options h3 {
+  color: #252525;
+  margin: 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #dbdde0;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  width: 50%;
+  cursor: pointer;
+  background-color: #f7f7f7;
+  text-transform: uppercase;
+}
+
+.mage-theme-options h3:before {
+  display: inline-block;
+  font-family: 'dashicons';
+  vertical-align: top;
+  content: "\f347";
+  margin-right: 5px;
+}
+
+.mage-theme-options h3.open:before {
+  content: "\f343";
+}
+.clear {
+  clear: both;
+  float: none;
+  display: block;
+}
+
+.mage-theme-options div {
+  margin-bottom: 10px;
+}
+  .mage-theme-options div:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+  }
+
+#parallax_link,
+#video_link {
+  clear: both;
+}
+
+.mage-theme-options label {
+  width: 150px;
+  margin: 1px;
+  padding: 0 5px;
+  line-height: 33px;
+  float: left;
+}
+
+.mage-theme-options textarea {
+  resize: none;
+}

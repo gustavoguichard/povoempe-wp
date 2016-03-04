@@ -1,0 +1,31 @@
+$default-font: 'Titillium Web', sans-serif;
+
+/* Set assets path for different color variation */
+$assetPath: 'images'; //value is name of folder
+
+/* Zen Green */
+$default-color: #5f5e5d;
+$dark-color: #2b2b2b;
+$header-color: #333;
+$footer-background: #272727;
+$menu-hover: $footer-background;
+$ul-url: $footer-background;
+$border-color: #4d4d4d;
+$white: #fff;
+$contact-background: #b2cd49;
+$form-button: #333; /*#b2cd49;*/
+$services-h2-background: $contact-background;
+$custom-header: $header-color;
+$contact-header-background: $header-color;
+$address: $dark-color;
+$address-border: $white;
+$services-h3: $contact-background;
+$contact-header-color: $white; //not using, its just here to avoid sass error
+$member-image-border: #c5d975;
+
+/* Blue Variation */
+$contact-background: #32bfb7;
+$form-button: #32bfb7;
+$services-h2-background: #53c8bf;
+//$custom-header: $form-button;
+$services-h3: $contact-background;
