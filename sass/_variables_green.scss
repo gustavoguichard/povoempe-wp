@@ -3,16 +3,23 @@ $default-font: 'Titillium Web', sans-serif;
 /* Set assets path for different color variation */
 $assetPath: 'images'; //value is name of folder
 
+$brown: #45360C;
+$brown-light: #7d6b70;
+$green: #61744E;
+$green-light: #80aa52;
+$cream: #c8c5bb;
+$cream-light: #f2efe8;
+
 /* Zen Green */
 $default-color: #5f5e5d;
 $dark-color: #2b2b2b;
 $header-color: #333;
-$footer-background: #45360C;
+$footer-background: $brown;
 $menu-hover: $footer-background;
 $ul-url: $footer-background;
 $border-color: #4d4d4d;
 $white: #f2efe8;
-$contact-background: #61744E;
+$contact-background: $green;
 $form-button: #333; /*#b2cd49;*/
 $services-h2-background: $contact-background;
 $custom-header: $header-color;
@@ -22,10 +29,3 @@ $address-border: $white;
 $services-h3: $contact-background;
 $contact-header-color: $white; //not using, its just here to avoid sass error
 $member-image-border: #c5d975;
-
-// #564108 Brown 45360C
-// #7d6b70 Light Brown
-// #67923c Dark Green 61744E
-// #80aa52 Light Green
-// #c8c5bb Dark Cream
-// #f2efe8 Light Cream
