@@ -118,14 +118,14 @@ get_header(); ?>
   <!-- Page Content Ends! -->
 
   <!-- Services -->
-  <a class="anchor" id="servicos"></a>
+  <a class="anchor" id="caracteristicas"></a>
   <div class="services bg-parallax">
 
     <h2><?php echo get_option('magethemes_zen_our_services_title'); ?></h2>
 
     <!-- Services List -->
     <div class="service">
-      <div class="container">
+      <div class="container service-container">
 
       <?php
         $services_args = array(
@@ -138,14 +138,12 @@ get_header(); ?>
 
       <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
-        <div>
+        <div class="service-item">
           <h3><i class="fa <?php the_field( 'magethemes_zen_service_icon' ); ?> fa-3x"></i><br><?php the_title(); ?></h3>
           <p><?php the_field( 'magethemes_zen_services_description' ); ?></p>
         </div>
 
-      <?php endwhile; else: ?>
-        <div>No services to display here! You will need to add some.</div>
-      <?php endif; ?>
+      <?php endwhile; endif; ?>
 
       <?php wp_reset_postdata(); // Restore original Post Data ?>
 

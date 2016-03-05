@@ -328,7 +328,6 @@ textarea {
     margin: 0 26px 5px;
 
     i {
-      padding-bottom: 28px;
       margin-bottom: 26px;
     }
   }
@@ -338,23 +337,26 @@ textarea {
 
     @extend %clear;
 
-    .container div {
-      float: left;
-      width: 288px / 960px * 100%;
-      min-height: 298px;
-      margin-right: 48px / 960px * 100%;
-      padding: 45px 26px;
+  }
 
-      @include box-sizing(border-box);
+  .service-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-      &:last-child {
-        margin-right: 0;
-      }
+  .service-item {
+    float: left;
+    margin-bottom: 1em;
+    width: 30%;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include box-sizing(border-box);
 
-      @media all and (max-width: 800px) {
-        width: 100%;
-        margin-bottom: 48px / 960px * 100%;
-      }
+    @media all and (max-width: 800px) {
+      width: 100%;
+      margin-bottom: 48px / 960px * 100%;
     }
 
     p {
@@ -362,6 +364,7 @@ textarea {
       line-height: 20px;
     }
   }
+
 } //.services ends
 
 .projects {

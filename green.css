@@ -56,19 +56,15 @@ a {
     color: #f2efe8; }
   .services h3 {
     color: #61744E; }
-    .services h3 i {
-      color: #f2efe8;
-      background: url(images/i-border.png) center bottom no-repeat; }
-  .services .service .container div {
+  .services .service-item {
+    background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid #61744E; }
-    .services .service .container div:hover {
+    .services .service-item:hover {
       background: #61744E; }
-      .services .service .container div:hover h3 {
-        color: #5f5e5d; }
-      .services .service .container div:hover p {
+      .services .service-item:hover p, .services .service-item:hover h3 {
         color: #f2efe8; }
-  .services .service p {
-    color: #9b9b9b; }
+    .services .service-item p {
+      color: #45360C; }
 
 .projects ul.button-group li a {
   color: #45360C; }

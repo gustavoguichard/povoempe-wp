@@ -90,33 +90,22 @@ a {
 
   h3 {
     color: $services-h3;
-
-    i {
-      color: $white;
-      background: url(#{$assetPath}/i-border.png) center bottom no-repeat;
-    }
   }
 
-  .service {
+  .service-item {
+    background-color: rgba(255,255,255,.8);
+    border: 1px solid $services-h3;
 
-    .container div {
-      border: 1px solid $services-h3;
+    &:hover {
+      background: $services-h3;
 
-      &:hover {
-        background: $services-h3;
-
-        h3 {
-          color: $default-color;
-        }
-
-        p {
-          color: $white;
-        }
+      p, h3 {
+        color: $white;
       }
     }
 
     p {
-      color: #9b9b9b;
+      color: $brown;
     }
   }
 } //.services ends
