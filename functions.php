@@ -280,71 +280,6 @@ if ( function_exists("register_field_group") ) {
     ),
     'menu_order' => 0,
   ));
-  register_field_group(array (
-    'id' => 'magethemes_zen_slider',
-    'title' => 'Slider',
-    'fields' => array (
-
-      array (
-        'key' => 'field_d530dc1b771637',
-        'label' => 'Subtitle',
-        'name' => 'magethemes_zen_slider_subtitle',
-        'type' => 'text',
-        'instructions' => 'optional subtitle above slider image and under main title',
-        'default_value' => '',
-        'placeholder' => '',
-        'prepend' => '',
-        'append' => '',
-        'formatting' => 'html',
-        'maxlength' => '',
-      ),
-      array (
-        'key' => 'field_r530dc1b771637',
-        'label' => 'Slider - line 2',
-        'name' => 'magethemes_zen_slider_subtitle_2',
-        'type' => 'text',
-        'instructions' => 'optional subtitle above slider image and under main subtitle',
-        'default_value' => '',
-        'placeholder' => '',
-        'prepend' => '',
-        'append' => '',
-        'formatting' => 'html',
-        'maxlength' => '',
-      ),
-    ),
-    'location' => array (
-      array (
-        array (
-          'param' => 'post_type',
-          'operator' => '==',
-          'value' => 'slider',
-          'order_no' => 0,
-          'group_no' => 0,
-        ),
-      ),
-    ),
-    'options' => array (
-      'position' => 'normal',
-      'layout' => 'no_box',
-      'hide_on_screen' => array (
-        0 => 'permalink',
-        1 => 'the_content',
-        2 => 'excerpt',
-        3 => 'custom_fields',
-        4 => 'discussion',
-        5 => 'comments',
-        6 => 'revisions',
-        7 => 'slug',
-        8 => 'author',
-        9 => 'format',
-        10 => 'featured_image',
-        11 => 'categories',
-        12 => 'tags',
-        13 => 'send-trackbacks',
-      ),
-    ),
-    'menu_order' => 0,
-  ));
   $slider=get_option('magethemes_zen_slider');
   if($slider!='video' && $slider!='parallax'){
   register_field_group(array (
@@ -564,48 +499,6 @@ if ( function_exists("register_field_group") ) {
 }
 
 // Register custom post types
-
-// Slider
-add_action( 'init', 'magethemes_zen_register_cpt_slider' );
-
-function magethemes_zen_register_cpt_slider() {
-  $labels = array(
-    'name' => 'Slider',
-    'singular_name' => 'Slide',
-    'add_new' => 'Add New',
-    'add_new_item' => 'Add New Slide',
-    'edit_item' => 'Edit Slide',
-    'new_item' => 'New Slide',
-    'view_item' => 'View Slide',
-    'search_items' => 'Search Slides',
-    'not_found' => 'No Slides found',
-    'not_found_in_trash' => 'No Slides found in Trash',
-    'parent_item_colon' => 'Parent Slide:',
-    'menu_name' => 'Slider',
-    );
-
-  $args = array(
-    'labels' => $labels,
-    'hierarchical' => true,
-    'supports' => array( 'title', 'page-attributes' ),
-    'public' => true,
-    'show_ui' => true,
-    'show_in_menu' => true,
-    'menu_position' => 5,
-    'menu_icon' => 'dashicons-slides',
-    'show_in_nav_menus' => false,
-    'publicly_queryable' => false,
-    'exclude_from_search' => true,
-    'has_archive' => false,
-    'query_var' => true,
-    'can_export' => true,
-    'rewrite' => true,
-    'capability_type' => 'post'
-    );
-
-  register_post_type( 'slider', $args );
-}
-
 // Projects/Portfolio
 add_action( 'init', 'magethemes_zen_register_cpt_portfolio' );
 
