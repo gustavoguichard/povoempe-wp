@@ -7,10 +7,12 @@ jQuery(document).ready(function( $ ) {
     event.preventDefault();
   });
 
+  function toggleGuardDescription(event) {
+    var effect = event.type === 'mouseleave' ? 'fadeOut' : 'fadeToggle'
+    $(this).find('.info')[effect]("fast", "linear");
+  }
   // Theme members
-  $('.member .image').hover(function(event) {
-    $(this).find('.info').fadeToggle("fast", "linear");
-  });
+  $('.member .image').hover(toggleGuardDescription).click(toggleGuardDescription);
 
   // Single Projects
   $('.home .single').hide(); // hide all .single projects
