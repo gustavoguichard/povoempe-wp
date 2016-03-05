@@ -58,7 +58,7 @@ a {
   }
 }
 
-.abstract, .about, .contact, .big-title {
+.abstract, .contact, .big-title {
 
   h2 {
     color: $border-color;
@@ -111,17 +111,6 @@ a {
 } //.services ends
 
 .projects {
-
-  ul.button-group li {
-
-    a {
-      color: $ul-url;
-
-      &:hover, &.active {
-        border: 2px solid $contact-background;
-      }
-    }
-  }
 
   .single {
 

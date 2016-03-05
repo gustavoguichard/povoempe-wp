@@ -245,7 +245,7 @@ textarea {
   padding: 50px 0;
 } //.container-page ends
 
-.abstract, .services, .projects, .about, .team {
+.abstract, .services, .projects, .team {
   margin-bottom: 50px;
   @extend %clear;
 }
@@ -280,7 +280,7 @@ textarea {
   }
 } //.abstract ends
 
-.abstract, .about, .contact, .big-title {
+.abstract, .contact, .big-title {
 
   h2 {
     text-align: center;
@@ -370,24 +370,6 @@ textarea {
 .projects {
   margin-bottom: 25px; //overwrite
   text-align: center;
-
-  a {
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: bold;
-  }
-
-  ul.button-group li {
-    display: inline-block;
-
-    a {
-      padding: 3px 5px;
-      border: 2px solid transparent;
-      display: block;
-
-      @include transition(all, .2s);
-    }
-  }
 
   .project {
     margin-top: 18px;
@@ -497,26 +479,6 @@ textarea {
   } //.single ends
 
 } //.projects ends
-
-.about {
-  text-align: center;
-
-  .title {
-    width: 480px / 960px * 100%;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-
-  h3 {
-    font-size: 22px;
-  }
-
-  h3, p {
-    margin-bottom: 50px;
-  }
-} //.about ends
 
 .team {
 

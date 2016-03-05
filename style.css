@@ -14,7 +14,7 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,700&subset=latin,latin-ext);
-.main .container:after, .main .blog-page:after, .slider:after, .abstract:after, .services:after, .projects:after, .about:after, .team:after, .services .service:after, .projects .project:after, .projects .single:after, .team .member .image:after, .footer .social ul:after, .blog-page .blog-posts:after, .single-post .blog-page .post .post-meta:after, .widgets:after, .widgets .zen_widget:after {
+.main .container:after, .main .blog-page:after, .slider:after, .abstract:after, .services:after, .projects:after, .team:after, .services .service:after, .projects .project:after, .projects .single:after, .team .member .image:after, .footer .social ul:after, .blog-page .blog-posts:after, .single-post .blog-page .post .post-meta:after, .widgets:after, .widgets .zen_widget:after {
   clear: both;
   content: ".";
   display: block;
@@ -428,7 +428,7 @@ textarea {
 .container-page {
   padding: 50px 0; }
 
-.abstract, .services, .projects, .about, .team {
+.abstract, .services, .projects, .team {
   margin-bottom: 50px; }
 
 .big-title {
@@ -452,25 +452,25 @@ textarea {
     .abstract {
       width: 90%; } }
 
-.abstract h2, .about h2, .contact h2, .big-title h2 {
+.abstract h2, .contact h2, .big-title h2 {
   text-align: center;
   overflow: hidden;
   font-weight: normal;
   text-transform: none; }
-  .abstract h2:before, .abstract h2:after, .about h2:before, .about h2:after, .contact h2:before, .contact h2:after, .big-title h2:before, .big-title h2:after {
+  .abstract h2:before, .abstract h2:after, .contact h2:before, .contact h2:after, .big-title h2:before, .big-title h2:after {
     content: "";
     display: inline-block;
     height: 2px;
     position: relative;
     vertical-align: middle;
     width: 50%; }
-  .abstract h2:before, .about h2:before, .contact h2:before, .big-title h2:before {
+  .abstract h2:before, .contact h2:before, .big-title h2:before {
     right: 1.25em;
     margin-left: -50%; }
-  .abstract h2:after, .about h2:after, .contact h2:after, .big-title h2:after {
+  .abstract h2:after, .contact h2:after, .big-title h2:after {
     left: 1.25em;
     margin-right: -50%; }
-.abstract h3, .about h3, .contact h3, .big-title h3 {
+.abstract h3, .contact h3, .big-title h3 {
   text-align: center;
   padding-bottom: 10px; }
 
@@ -512,20 +512,6 @@ textarea {
 .projects {
   margin-bottom: 25px;
   text-align: center; }
-  .projects a {
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: bold; }
-  .projects ul.button-group li {
-    display: inline-block; }
-    .projects ul.button-group li a {
-      padding: 3px 5px;
-      border: 2px solid transparent;
-      display: block;
-      -webkit-transition: all 0.2s ease-in-out;
-      -moz-transition: all 0.2s ease-in-out;
-      -o-transition: all 0.2s ease-in-out;
-      transition: all 0.2s ease-in-out; }
   .projects .project {
     margin-top: 18px;
     z-index: 5;
@@ -590,17 +576,6 @@ textarea {
         background: none;
         font-style: italic;
         font-size: 15px;*/ }
-
-.about {
-  text-align: center; }
-  .about .title {
-    width: 50%; }
-  .about h2 {
-    font-size: 20px; }
-  .about h3 {
-    font-size: 22px; }
-  .about h3, .about p {
-    margin-bottom: 50px; }
 
 .team h4 {
   line-height: 22px;

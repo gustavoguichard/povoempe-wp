@@ -38,14 +38,14 @@ a {
     .menu li a.active, .menu li a:hover {
       color: #45360C; }
 
-.abstract h2, .about h2, .contact h2, .big-title h2 {
+.abstract h2, .contact h2, .big-title h2 {
   color: #4d4d4d; }
-  .abstract h2:before, .abstract h2:after, .about h2:before, .about h2:after, .contact h2:before, .contact h2:after, .big-title h2:before, .big-title h2:after {
+  .abstract h2:before, .abstract h2:after, .contact h2:before, .contact h2:after, .big-title h2:before, .big-title h2:after {
     background: #4d4d4d; }
-.abstract h3, .about h3, .contact h3, .big-title h3 {
+.abstract h3, .contact h3, .big-title h3 {
   border-bottom: 2px solid #4d4d4d;
   color: #333; }
-.abstract blockquote, .about blockquote, .contact blockquote, .big-title blockquote {
+.abstract blockquote, .contact blockquote, .big-title blockquote {
   color: #7d6b70; }
 
 .services {
@@ -66,10 +66,6 @@ a {
     .services .service-item p {
       color: #45360C; }
 
-.projects ul.button-group li a {
-  color: #45360C; }
-  .projects ul.button-group li a:hover, .projects ul.button-group li a.active {
-    border: 2px solid #61744E; }
 .projects .single a {
   color: #61744E; }
 .projects .single h2 {

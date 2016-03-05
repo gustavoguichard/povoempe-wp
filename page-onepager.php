@@ -160,10 +160,10 @@ get_header(); ?>
 
       <!-- About -->
       <a class="anchor" id="guardioes"></a>
-      <div class="about">
+      <div class="abstract">
 
         <!-- Title -->
-        <div class="title">
+        <div class="big-title">
           <?php if(get_option('magethemes_zen_theme_au_subtitle')!=''){ ?><h2><?php echo get_option('magethemes_zen_theme_au_subtitle'); ?></h2><?php } ?>
           <?php if(get_option('magethemes_zen_theme_au_title')!=''){ ?><h3><?php echo get_option('magethemes_zen_theme_au_title'); ?></h3><?php } ?>
         </div>
