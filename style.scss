@@ -235,11 +235,12 @@ textarea {
 }
 
 .abstract {
-  width: 46.0417%; //442px / 960px * 100%;
-  text-align: center;
+  max-width: 680px;
+  width: 80%;
 
-  @media all and (max-width: 600px) {
-    width: 80%;
+  .title {
+    max-width: 450px;
+    margin-bottom: 3em;
   }
 
   @media all and (max-width: 320px) {
@@ -256,7 +257,10 @@ textarea {
   }
 
   blockquote {
+    font-size: 1.1em;
     font-style: italic;
+    font-weight: 600;
+    text-align: center;
   }
 } //.abstract ends
 

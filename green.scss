@@ -69,6 +69,10 @@ a {
     border-bottom: 2px solid $border-color;
     color: $custom-header;
   }
+
+  blockquote {
+    color: $brown-light;
+  }
 }
 
 .services {

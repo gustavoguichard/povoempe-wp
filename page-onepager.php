@@ -32,12 +32,14 @@ get_header(); ?>
       <div class="abstract">
 
         <!-- Title -->
+        <div class="title">
         <?php if(get_option('magethemes_zen_theme_first_subtitle')!=''){ ?><h2><?php echo get_option('magethemes_zen_theme_first_subtitle'); ?></h2><?php } ?>
         <?php if(get_option('magethemes_zen_theme_first_title')!=''){ ?><h3><?php echo get_option('magethemes_zen_theme_first_title'); ?></h3><?php } ?>
+        </div>
         <!-- Title Ends! -->
 
-        <?php if(get_option('magethemes_zen_theme_first_content')!=''){ ?><p><?php echo get_option('magethemes_zen_theme_first_content'); ?></p><?php } ?>
-        <?php if(get_option('magethemes_zen_theme_first_blockquote')!=''){ ?><blockquote><p><?php echo get_option('magethemes_zen_theme_first_blockquote'); ?></p></blockquote><?php } ?>
+        <?php if(get_option('magethemes_zen_theme_first_content')!=''){ ?><p><?php echo nl2br(get_option('magethemes_zen_theme_first_content')); ?></p><?php } ?>
+        <?php if(get_option('magethemes_zen_theme_first_blockquote')!=''){ ?><blockquote><p><?php echo nl2br(get_option('magethemes_zen_theme_first_blockquote')); ?></p></blockquote><?php } ?>
 
       </div>
       <!-- Abstract Ends! -->

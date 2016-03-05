@@ -42,6 +42,8 @@ a {
 .abstract h3, .about h3, .contact h3 {
   border-bottom: 2px solid #4d4d4d;
   color: #333; }
+.abstract blockquote, .about blockquote, .contact blockquote {
+  color: #7d6b70; }
 
 .services {
   background: #45360C url(images/pattern_bamboo1.jpg);
