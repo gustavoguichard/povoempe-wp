@@ -146,7 +146,7 @@ define( 'ACF_LITE', false );
 if ( function_exists("register_field_group") ) {
   register_field_group(array (
     'id' => 'magethemes_zen_portfolio',
-    'title' => 'Portfolio',
+    'title' => 'Estabelecimentos',
     'fields' => array (
     array (
         'key' => 'field_530dbe9bf26dfc',
@@ -207,7 +207,7 @@ if ( function_exists("register_field_group") ) {
   ));
   register_field_group(array (
     'id' => 'magethemes_zen_services',
-    'title' => 'Services',
+    'title' => 'Serviços',
     'fields' => array (
       array (
         'key' => 'field_30dbe9bf26fc',
@@ -270,14 +270,14 @@ if ( function_exists("register_field_group") ) {
   $slider=get_option('magethemes_zen_slider');
   register_field_group(array (
     'id' => 'magethemes_zen_team-member',
-    'title' => 'Team Member',
+    'title' => 'Guardião',
     'fields' => array (
       array (
         'key' => 'field_530f611e52369',
         'label' => 'Position',
         'name' => 'magethemes_zen_position',
         'type' => 'text',
-        'instructions' => 'Team member position',
+        'instructions' => 'Titulo do Guardião',
         'default_value' => '',
         'placeholder' => 'position',
         'prepend' => '',
@@ -439,18 +439,18 @@ add_action( 'init', 'magethemes_zen_register_cpt_portfolio' );
 
 function magethemes_zen_register_cpt_portfolio() {
   $labels = array(
-    'name' => 'Portfolio',
-    'singular_name' => 'Portfolio',
-    'add_new' => 'Add New',
-    'add_new_item' => 'Add New Portfolio',
-    'edit_item' => 'Edit Portfolio',
-    'new_item' => 'New Portfolio',
-    'view_item' => 'View Portfolio',
-    'search_items' => 'Search Portfolio',
-    'not_found' => 'No Portfolio found',
-    'not_found_in_trash' => 'No Portfolio found in Trash',
-    'parent_item_colon' => 'Parent Portfolio:',
-    'menu_name' => 'Portfolio',
+    'name' => 'Estabelecimentos',
+    'singular_name' => 'Estabelecimento',
+    'add_new' => 'Adicionar',
+    'add_new_item' => 'Adicionar Estabelecimento',
+    'edit_item' => 'Editar Estabelecimento',
+    'new_item' => 'Novo Estabelecimento',
+    'view_item' => 'Ver Estabelecimento',
+    'search_items' => 'Buscar Estabelecimento',
+    'not_found' => 'Nenhum Estabelecimento encontrado',
+    'not_found_in_trash' => 'Nenhum Estabelecimento encontrado na lixeira',
+    'parent_item_colon' => 'Estabelecimento Pai:',
+    'menu_name' => 'Estabelecimentos',
     );
 
   $args = array(
@@ -461,7 +461,7 @@ function magethemes_zen_register_cpt_portfolio() {
     'show_ui' => true,
     'show_in_menu' => true,
     'menu_position' => 5,
-    'menu_icon' => 'dashicons-portfolio',
+    'menu_icon' => 'dashicons-admin-multisite',
     'show_in_nav_menus' => false,
     'publicly_queryable' => false,
     'exclude_from_search' => true,
@@ -475,23 +475,23 @@ function magethemes_zen_register_cpt_portfolio() {
   register_post_type( 'portfolio', $args );
 }
 
-// Services
+// Serviços
 add_action( 'init', 'magethemes_zen_register_cpt_service' );
 
 function magethemes_zen_register_cpt_service() {
   $labels = array(
-    'name' => 'Services',
-    'singular_name' => 'Service',
+    'name' => 'Serviços',
+    'singular_name' => 'Serviço',
     'add_new' => 'Add New',
-    'add_new_item' => 'Add New Service',
-    'edit_item' => 'Edit Service',
-    'new_item' => 'New Service',
-    'view_item' => 'View Service',
-    'search_items' => 'Search Services',
-    'not_found' => 'No Services found',
-    'not_found_in_trash' => 'No Services found in Trash',
-    'parent_item_colon' => 'Parent Service:',
-    'menu_name' => 'Services',
+    'add_new_item' => 'Add New Serviço',
+    'edit_item' => 'Edit Serviço',
+    'new_item' => 'New Serviço',
+    'view_item' => 'View Serviço',
+    'search_items' => 'Search Serviços',
+    'not_found' => 'No Serviços found',
+    'not_found_in_trash' => 'No Serviços found in Trash',
+    'parent_item_colon' => 'Parent Serviço:',
+    'menu_name' => 'Serviços',
     );
 
   $args = array(
@@ -502,7 +502,7 @@ function magethemes_zen_register_cpt_service() {
     'show_ui' => true,
     'show_in_menu' => true,
     'menu_position' => 5,
-    'menu_icon' => 'dashicons-hammer',
+    'menu_icon' => 'dashicons-palmtree',
     'show_in_nav_menus' => false,
     'publicly_queryable' => false,
     'exclude_from_search' => true,
@@ -521,18 +521,18 @@ add_action( 'init', 'magethemes_zen_register_cpt_members' );
 
 function magethemes_zen_register_cpt_members() {
   $labels = array(
-    'name' => 'Members',
-    'singular_name' => 'Member',
-    'add_new' => 'Add New',
-    'add_new_item' => 'Add New Member',
-    'edit_item' => 'Edit Member',
-    'new_item' => 'New Member',
-    'view_item' => 'View Member',
-    'search_items' => 'Search Members',
-    'not_found' => 'No Members found',
-    'not_found_in_trash' => 'No Members found in Trash',
-    'parent_item_colon' => 'Parent Member:',
-    'menu_name' => 'Members',
+    'name' => 'Guardião',
+    'singular_name' => 'Guardião',
+    'add_new' => 'Adicionar',
+    'add_new_item' => 'Adicionar Guardião',
+    'edit_item' => 'Editar Guardião',
+    'new_item' => 'Novo Guardião',
+    'view_item' => 'Ver Guardião',
+    'search_items' => 'Buscar Guardiões',
+    'not_found' => 'Nenhum Guardião encontrado',
+    'not_found_in_trash' => 'Nenhum Guardião encontrado na lixeira',
+    'parent_item_colon' => 'Guardião Pai:',
+    'menu_name' => 'Guardiões',
     );
 
   $args = array(
@@ -599,7 +599,10 @@ add_action('admin_menu', 'magethemes_zen_theme_settings');
 
 function magethemes_zen_theme_settings() {
   //create new top-level menu
-  add_menu_page('Theme Options', 'Theme Options', 'administrator', __FILE__, 'magethemes_zen_theme_settings_page','dashicons-edit');
+  add_menu_page('Opções do Template', 'Opções do Template', 'administrator', __FILE__, 'magethemes_zen_theme_settings_page','dashicons-edit');
+
+  remove_menu_page( 'edit.php' );                   //Posts
+  remove_menu_page( 'edit-comments.php' );          //Comments
 
   //call register settings function
   add_action( 'admin_init', 'magethemes_zen_register_mysettings' );
@@ -709,9 +712,7 @@ function magethemes_zen_theme_settings_page() {
 ?>
 
 <div class="wrap mage-theme-options">
-<h2>Theme Options</h2>
-
-<p>Once again, thank you so much for purchasing this theme. Feel free to contact us for any support related question using email <a href="mailto:support@mage-themes.com">support@mage-themes.com</a>.<br>Feel free to browse our other premium themes at <a href="<?php echo get_option('developer_link'); ?>" target="_blank"><?php echo get_option('developer_link'); ?></a>.</p>
+<h2>Opções do template</h2>
 
 <form method="post" action="options.php" enctype="multipart/form-data">
 
@@ -723,7 +724,7 @@ function magethemes_zen_theme_settings_page() {
 <input type="file" name="magethemes_zen_theme_logo" />
 </div>
 
-<h3>Slider options</h3>
+<h3>Opções do banner</h3>
 
 <div>
   <label>Slider type</label>
@@ -739,7 +740,7 @@ function magethemes_zen_theme_settings_page() {
   <br class="clear" />
 </div>
 
-<h3>Homepage Content</h3>
+<h3>Conteúdo principal</h3>
 <div>
 <div>
   <label>Upper title</label>
@@ -763,14 +764,14 @@ function magethemes_zen_theme_settings_page() {
 
 </div>
 
-<h3>Our Services</h3>
+<h3>Nossos Serviços</h3>
 
 <div>
   <label>Title</label>
   <input type="text" name="magethemes_zen_our_services_title" value="<?php echo get_option('magethemes_zen_our_services_title'); ?>" />
 </div>
 
-<h3>About Us</h3>
+<h3>Sobre nós</h3>
 <div>
 <div>
   <label>Upper title</label>
@@ -788,7 +789,7 @@ function magethemes_zen_theme_settings_page() {
 </div>
 </div>
 
-<h3>Contact Us</h3>
+<h3>Contato</h3>
 <div>
 <div>
   <label>Subtitle</label>
@@ -805,7 +806,7 @@ function magethemes_zen_theme_settings_page() {
 </div>
 </div>
 
-<h3>Google Map</h3>
+<h3>Mapa</h3>
 <div>
 <div>
   <label>Latitude</label>
@@ -833,7 +834,7 @@ function magethemes_zen_theme_settings_page() {
 </div>
 </div>
 
-<h3>Footer</h3>
+<h3>Rodapé</h3>
 <div>
 <div>
   <label>Title</label>
