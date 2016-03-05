@@ -207,7 +207,7 @@ if ( function_exists("register_field_group") ) {
   ));
   register_field_group(array (
     'id' => 'magethemes_zen_services',
-    'title' => 'Serviços',
+    'title' => 'Características',
     'fields' => array (
       array (
         'key' => 'field_30dbe9bf26fc',
@@ -475,23 +475,22 @@ function magethemes_zen_register_cpt_portfolio() {
   register_post_type( 'portfolio', $args );
 }
 
-// Serviços
+// Características
 add_action( 'init', 'magethemes_zen_register_cpt_service' );
 
 function magethemes_zen_register_cpt_service() {
   $labels = array(
-    'name' => 'Serviços',
-    'singular_name' => 'Serviço',
-    'add_new' => 'Add New',
-    'add_new_item' => 'Add New Serviço',
-    'edit_item' => 'Edit Serviço',
-    'new_item' => 'New Serviço',
-    'view_item' => 'View Serviço',
-    'search_items' => 'Search Serviços',
-    'not_found' => 'No Serviços found',
-    'not_found_in_trash' => 'No Serviços found in Trash',
-    'parent_item_colon' => 'Parent Serviço:',
-    'menu_name' => 'Serviços',
+    'name' => 'Características',
+    'singular_name' => 'Característica',
+    'add_new' => 'Adicionar nova',
+    'add_new_item' => 'Adicionar Característica',
+    'edit_item' => 'Editar Característica',
+    'new_item' => 'Nova Característica',
+    'view_item' => 'Ver Característica',
+    'search_items' => 'Buscar Características',
+    'not_found' => 'Nenhuma Característica encontrada',
+    'not_found_in_trash' => 'Nenhuma Característica encontrada na lixeira',
+    'menu_name' => 'Características',
     );
 
   $args = array(
@@ -626,11 +625,6 @@ function magethemes_zen_register_mysettings() {
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_footer_title' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_footer_content' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_social_twitter' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_social_facebook' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_social_pinterest' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_social_instagram' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_social_dribbble' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_social_google' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_social_linkedin' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_lat' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_lng' );
@@ -677,34 +671,35 @@ else {
 
 
 //set default theme options
-add_option('magethemes_zen_theme_first_subtitle', 'We are creative agency', '', 'no' );
-add_option('magethemes_zen_theme_first_title', 'Passionate for what we do', '', 'no' );
-add_option('magethemes_zen_theme_first_content', 'ZEN is a perfect template for those who desire simple but bold and contemporary look, with attention to details and typography. It is suitable for corporate, agency, creative, or any general business. The theme is well organized and documented.', '', 'no' );
-add_option('magethemes_zen_theme_first_blockquote', 'Life is really simple, but we insist on making it complicated. - Confucius', '', 'no' );
-add_option('magethemes_zen_our_services_title', 'Our services', '', 'no' );
-add_option('magethemes_zen_theme_au_subtitle', 'Learn more about us', '', 'no' );
-add_option('magethemes_zen_theme_au_title', 'The object of your desire is not an object.', '', 'no' );
+add_option('magethemes_zen_theme_first_subtitle', 'Espaço', '', 'no' );
+add_option('magethemes_zen_theme_first_title', 'Povo em Pé', '', 'no' );
+add_option('magethemes_zen_theme_first_content', 'Este espaço honra os irmãos que habitam junto com nós, duas pernas, a Mãe Terra.
+
+Entendemos que a Mãe Terra é aquecida pelo Fogo, fertiliza-se e frutifica com a Água, movimenta-se com o Ar, e manifesta o Espírito do Éter.
+
+O Espaço Povo em Pé definiu sua missão, em um dia de Kin Dragão Cristal Vermelho, uma corte de Kins da Onda Encantada do Cachorro Branco. Kali 25. Quarta semana da Lua Cristal do Coelho, 48º Heptal do ano Lua Harmônica Vermelha.
+
+Aqui, como guardiões, promovemos encontros do Movimento Mundial pela Paz, facilitamos oficinas de alimentação natural, trabalhos corporais e aromas. Praticamos Yoga e buscamos auxiliar como educadores, em diária de vida ancestral - por um Agora Saudável.
+
+Estamos abertos aos irmãos que queiram trazer seus saberes e o frescor da Mãe Terra!', '', 'no' );
+add_option('magethemes_zen_theme_first_blockquote', 'Meu nome é o glorioso nascido do lótus. Eu catalizo luz-calor interior.
+Que todos os seres habitem a Divina Presença comigo.', '', 'no' );
+add_option('magethemes_zen_our_services_title', 'Características', '', 'no' );
+add_option('magethemes_zen_theme_au_subtitle', 'Guardiões do', '', 'no' );
+add_option('magethemes_zen_theme_au_title', 'Povo em Pé', '', 'no' );
 add_option('magethemes_zen_theme_au_content', "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", '', 'no' );
-add_option('magethemes_zen_theme_contact_subtitle', 'Feel free to contact us', '', 'no' );
-add_option('magethemes_zen_theme_contact_title', 'Hello, what can we do for you?', '', 'no' );
-add_option('magethemes_zen_theme_footer_title', 'Find Us on Social Networks', '', 'no' );
-add_option('magethemes_zen_theme_footer_content', 'Lorem ipsum dolor sit amanet, ridiculus egestas random text.', '', 'no' );
-add_option('magethemes_zen_theme_social_twitter', '#', '', 'no' );
-add_option('magethemes_zen_theme_social_facebook', '#', '', 'no' );
-add_option('magethemes_zen_theme_social_pinterest', '#', '', 'no' );
-add_option('magethemes_zen_theme_social_instagram', '#', '', 'no' );
-add_option('magethemes_zen_theme_social_dribbble', '#', '', 'no' );
-add_option('magethemes_zen_theme_social_google', '#', '', 'no' );
-add_option('magethemes_zen_theme_social_linkedin', '#', '', 'no' );
-add_option('magethemes_zen_theme_map_lat', '-37.817314', '', 'no' );
-add_option('magethemes_zen_theme_map_lng', '144.955431', '', 'no' );
-add_option('magethemes_zen_theme_map_zoom', '16', '', 'no' );
+add_option('magethemes_zen_theme_contact_subtitle', 'Entre em contato', '', 'no' );
+add_option('magethemes_zen_theme_contact_title', 'Saiba mais sobre o lugar, cursos, agenda, eventos...', '', 'no' );
+add_option('magethemes_zen_theme_footer_title', 'Avenida Beira Rio, 1135 - Belém Novo - Porto Alegre / RS', '', 'no' );
+add_option('magethemes_zen_theme_footer_content', 'Telefone: +55 51 3331-1422', '', 'no' );
+add_option('magethemes_zen_theme_map_lat', '-30.2120678', '', 'no' );
+add_option('magethemes_zen_theme_map_lng', '-51.1973606', '', 'no' );
+add_option('magethemes_zen_theme_map_zoom', '14', '', 'no' );
 add_option('magethemes_zen_theme_color', 'green', '', 'no' );
 add_option('magethemes_zen_theme_map_bw', '1', '', 'no' );
 add_option('magethemes_zen_theme_map_scrollwhell', '1', '', 'no' );
 add_option('magethemes_zen_slider', 'slider', '', 'no' );
 add_option('magethemes_zen_slider_video_id', '127496191', '', 'no' );
-add_option('magethemes_zen_developer_link', 'http://www.mage-themes.com', '', 'no' );
 add_option('magethemes_zen_theme_logo', array("magethemes_zen_theme_logo"=>get_template_directory_uri().'/images/logo.jpg', "magethemes_zen_parallax_bg"=>get_template_directory_uri().'/images/parallax.jpg'), '', 'no' );
 
 // Theme Options admin markap
@@ -764,7 +759,7 @@ function magethemes_zen_theme_settings_page() {
 
 </div>
 
-<h3>Nossos Serviços</h3>
+<h3>Nossas Características</h3>
 
 <div>
   <label>Title</label>
@@ -846,40 +841,6 @@ function magethemes_zen_theme_settings_page() {
   <input type="text" name="magethemes_zen_theme_footer_content" value="<?php echo get_option('magethemes_zen_theme_footer_content'); ?>" />
 </div>
 
-<div>
-  <label>Twitter</label>
-  <input type="text" placeholder="http://" name="magethemes_zen_theme_social_twitter" value="<?php echo get_option('magethemes_zen_theme_social_twitter'); ?>" />
-</div>
-
-<div>
-  <label>Facebook</label>
-  <input type="text" placeholder="http://" name="magethemes_zen_theme_social_facebook" value="<?php echo get_option('magethemes_zen_theme_social_facebook'); ?>" />
-</div>
-
-<div>
-  <label>Pinterest</label>
-  <input type="text" placeholder="http://" name="magethemes_zen_theme_social_pinterest" value="<?php echo get_option('magethemes_zen_theme_social_pinterest'); ?>" />
-</div>
-
-<div>
-  <label>Instagram</label>
-  <input type="text" placeholder="http://" name="magethemes_zen_theme_social_instagram" value="<?php echo get_option('magethemes_zen_theme_social_instagram'); ?>" />
-</div>
-
-<div>
-  <label>Dribbble</label>
-  <input type="text" placeholder="http://" name="magethemes_zen_theme_social_dribbble" value="<?php echo get_option('magethemes_zen_theme_social_dribbble'); ?>" />
-</div>
-
-<div>
-  <label>Google+</label>
-  <input type="text" placeholder="http://" name="magethemes_zen_theme_social_google" value="<?php echo get_option('magethemes_zen_theme_social_google'); ?>" />
-</div>
-
-<div>
-  <label>LinkedIn</label>
-  <input type="text" placeholder="http://" name="magethemes_zen_theme_social_linkedin" value="<?php echo get_option('magethemes_zen_theme_social_linkedin'); ?>" />
-</div>
 </div>
 <?php submit_button(); ?>
 
