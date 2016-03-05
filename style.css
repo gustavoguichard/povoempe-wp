@@ -764,13 +764,6 @@ textarea {
   display: block;
   height: 0px; }
 
-.projects .load-more {
-  padding: 3px 5px;
-  display: inline-block;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer; }
-
 .blog-page {
   padding: 100px 0 50px; }
   .blog-page h1, .blog-page h2, .blog-page h3, .blog-page h4, .blog-page h5 {
