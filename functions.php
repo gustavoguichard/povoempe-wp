@@ -62,10 +62,6 @@ function magethemes_zen_theme_js() {
 
   wp_enqueue_script( 'magethemes_zen_myjquery', get_template_directory_uri() . '/scripts/jquery-1.11.0.min.js', array('jquery'), '', true );
 
-  $slider = get_option('magethemes_zen_slider');
-
-  wp_enqueue_script( 'magethemes_zen_isotope', get_template_directory_uri() . '/scripts/isotope.pkgd.min.js', array('jquery'), '', true );
-
   wp_enqueue_script( 'magethemes_zen_google_map', 'https://maps.googleapis.com/maps/api/js?sensor=false' );
   wp_enqueue_script( 'magethemes_zen_theme_js', get_template_directory_uri() . '/scripts/theme.js', array('jquery'), '1.0.0', true );
 
@@ -106,21 +102,12 @@ function magethemes_zen_jScriptUtilities() {
       }
 
       var map = new google.maps.Map(document.getElementById('map_canvas'), map_options);";
-    if ($theme_color=='blue'){
-      echo "var myIcon = new google.maps.MarkerImage('".get_template_directory_uri()."/images/icon-marker-blue-2x.png', null, null, null, new google.maps.Size(34,45));";
-    } else if ($theme_color=='purple'){
-      echo "var myIcon = new google.maps.MarkerImage('".get_template_directory_uri()."/images/icon-marker-purple-2x.png', null, null, null, new google.maps.Size(34,45));";
-    } else {
-     echo "var myIcon = new google.maps.MarkerImage('".get_template_directory_uri()."/images/icon-marker-2x.png', null, null, null, new google.maps.Size(34,45));";
-    }
-
-      echo "var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        icon: myIcon
-      });
-
-      ";
+    echo "var myIcon = new google.maps.MarkerImage('".get_template_directory_uri()."/images/icon-marker-2x.png', null, null, null, new google.maps.Size(34,45));";
+    echo "var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      icon: myIcon
+    });";
 
     if ( get_option('magethemes_zen_theme_map_bw') ){
       echo "
@@ -281,58 +268,6 @@ if ( function_exists("register_field_group") ) {
     'menu_order' => 0,
   ));
   $slider=get_option('magethemes_zen_slider');
-  if($slider!='video' && $slider!='parallax'){
-  register_field_group(array (
-    'id' => 'magethemes_zen_slider_img',
-    'title' => 'Slider image',
-    'fields' => array (
-
-   array (
-        'key' => 'field_5319dcfa31133',
-        'label' => 'Image',
-        'name' => 'magethemes_zen_slider_image',
-        'type' => 'image',
-        'instructions' => '',
-        'required' => 1,
-        'save_format' => 'url',
-        'preview_size' => 'full',
-        'library' => 'all',
-      ),
-    ),
-    'location' => array (
-      array (
-        array (
-          'param' => 'post_type',
-          'operator' => '==',
-          'value' => 'slider',
-          'order_no' => 0,
-          'group_no' => 0,
-        ),
-      ),
-    ),
-    'options' => array (
-      'position' => 'normal',
-      'layout' => 'no_box',
-      'hide_on_screen' => array (
-        0 => 'permalink',
-        1 => 'the_content',
-        2 => 'excerpt',
-        3 => 'custom_fields',
-        4 => 'discussion',
-        5 => 'comments',
-        6 => 'revisions',
-        7 => 'slug',
-        8 => 'author',
-        9 => 'format',
-        10 => 'featured_image',
-        11 => 'categories',
-        12 => 'tags',
-        13 => 'send-trackbacks',
-      ),
-    ),
-    'menu_order' => 0,
-  ));
-  }
   register_field_group(array (
     'id' => 'magethemes_zen_team-member',
     'title' => 'Team Member',
@@ -702,7 +637,7 @@ function magethemes_zen_register_mysettings() {
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_bw' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_scrollwhell' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_slider' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_slider_video_link' );
+  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_slider_video_id' );
 }
 
 function magethemes_zen_validate_setting($theme_logo) { $keys = array_keys($_FILES); $i = 0; foreach ( $_FILES as $image ) {
@@ -767,9 +702,9 @@ add_option('magethemes_zen_theme_color', 'green', '', 'no' );
 add_option('magethemes_zen_theme_map_bw', '1', '', 'no' );
 add_option('magethemes_zen_theme_map_scrollwhell', '1', '', 'no' );
 add_option('magethemes_zen_slider', 'slider', '', 'no' );
-add_option('magethemes_zen_slider_video_link', 'http://youtu.be/ab0TSkLe-E0', '', 'no' );
+add_option('magethemes_zen_slider_video_id', '127496191', '', 'no' );
 add_option('magethemes_zen_developer_link', 'http://www.mage-themes.com', '', 'no' );
-add_option('magethemes_zen_theme_logo', array("magethemes_zen_theme_logo"=>get_template_directory_uri().'/images/logo.png', "magethemes_zen_parallax_bg"=>get_template_directory_uri().'/images/parallax.jpg'), '', 'no' );
+add_option('magethemes_zen_theme_logo', array("magethemes_zen_theme_logo"=>get_template_directory_uri().'/images/logo.jpg', "magethemes_zen_parallax_bg"=>get_template_directory_uri().'/images/parallax.jpg'), '', 'no' );
 
 // Theme Options admin markap
 function magethemes_zen_theme_settings_page() {
@@ -790,35 +725,17 @@ function magethemes_zen_theme_settings_page() {
 <input type="file" name="magethemes_zen_theme_logo" />
 </div>
 
-<h3>Theme Color</h3>
-
-<div>
-  <label>Color</label>
-  <select name="magethemes_zen_theme_color">
-  <option<?php if(get_option('magethemes_zen_theme_color')=='green'){ echo ' selected="selected"'; } ?> value="green">Green</option>
-  <option<?php if(get_option('magethemes_zen_theme_color')=='blue'){ echo ' selected="selected"'; } ?> value="blue">Blue</option>
-  <option<?php if(get_option('magethemes_zen_theme_color')=='purple'){ echo ' selected="selected"'; } ?> value="purple">Purple</option>
-  </select>
-</div>
-
 <h3>Slider options</h3>
 
 <div>
   <label>Slider type</label>
-  <div style="display:block; float:left; clear:right;">
-  <select id="sliderselect" name="magethemes_zen_slider">
-  <option<?php if(get_option('magethemes_zen_slider')=='slider'){ echo ' selected="selected"'; } ?> value="slider">Slider</option>
-  <option<?php if(get_option('magethemes_zen_slider')=='parallax'){ echo ' selected="selected"'; } ?> value="parallax">Parallax</option>
-  <option<?php if(get_option('magethemes_zen_slider')=='video'){ echo ' selected="selected"'; } ?> value="video">Video</option>
-  </select>
-  </div>
   <div id="parallax_link">
   Parallax background image<br/>
 <img src="<?php echo $logo['magethemes_zen_parallax_bg']; ?>" style="max-width:622px; height:auto;" alt="parallax image" /><br/>
 <input type="file" name="magethemes_zen_parallax_bg" />
   </div>
   <div id="video_link"><label>Slider video link</label>
-  <input type="text" name="magethemes_zen_slider_video_link" value="<?php echo get_option('magethemes_zen_slider_video_link'); ?>" />
+  <input type="text" name="magethemes_zen_slider_video_id" value="<?php echo get_option('magethemes_zen_slider_video_id'); ?>" />
   </div>
 
   <br class="clear" />
