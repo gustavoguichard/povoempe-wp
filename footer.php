@@ -2,7 +2,7 @@
 <?php $name_bloginfo = html_entity_decode(get_bloginfo('name')); ?>
 <!-- Footer -->
   <a class="anchor" id="social"></a>
-  <div class="footer">
+  <div class="footer bg-parallax">
     <div class="container">
 
       <?php if(!is_front_page()){ ?>

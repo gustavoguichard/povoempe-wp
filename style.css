@@ -23,7 +23,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
   line-height: 0;
   overflow: hidden; }
 
-.projects .project div img:hover, .projects .project div img.active {
+.projects .project .guard img:hover, .projects .project .guard img.active {
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
@@ -316,6 +316,10 @@ textarea {
   z-index: 10;
   padding-top: 38px;
   position: relative; }
+  .header .left-side-menu {
+    padding-right: 120px; }
+  .header .right-side-menu {
+    padding-left: 120px; }
   @media all and (max-width: 680px) {
     .header {
       padding-top: 150px; } }
@@ -333,8 +337,11 @@ textarea {
       @media all and (max-width: 680px) {
         .header h1:hover {
           top: 0; } }
-    .header h1 a {
-      display: block; }
+    .header h1 .logo-header {
+      display: block;
+      font-size: 1px;
+      margin-left: -75px;
+      width: 150px; }
 
 .menu {
   text-align: center; }
@@ -389,17 +396,21 @@ textarea {
         .menu li a {
           padding: 25px 10px; } }
 
+.bg-parallax {
+  background-position: 50% 0 !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  background-size: cover !important; }
+
 .slider {
-  background-position: 50% 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
   padding: 2em; }
   .slider .container {
     position: relative;
     width: 100%;
     max-width: none; }
   .slider .video-container {
+    border: 5px solid;
+    border-radius: 3px;
     max-width: 840px; }
   .slider .videoWrapper {
     height: 0;
@@ -420,45 +431,46 @@ textarea {
 .abstract, .services, .projects, .about, .team {
   margin-bottom: 50px; }
 
-.abstract {
-  max-width: 680px;
-  width: 80%; }
-  .abstract .title {
-    max-width: 450px;
-    margin-bottom: 3em; }
-  @media all and (max-width: 320px) {
-    .abstract {
-      width: 90%; } }
-  .abstract h2 {
+.big-title {
+  max-width: 450px;
+  margin-bottom: 3em; }
+  .big-title h2 {
     font-size: 20px; }
-  .abstract h3 {
+  .big-title h3 {
     font-size: 28px;
     margin-bottom: 15px; }
-  .abstract blockquote {
+  .big-title blockquote {
     font-size: 1.1em;
     font-style: italic;
     font-weight: 600;
     text-align: center; }
 
-.abstract h2, .about h2, .contact h2 {
+.abstract {
+  max-width: 680px;
+  width: 80%; }
+  @media all and (max-width: 320px) {
+    .abstract {
+      width: 90%; } }
+
+.abstract h2, .about h2, .contact h2, .big-title h2 {
   text-align: center;
   overflow: hidden;
   font-weight: normal;
   text-transform: none; }
-  .abstract h2:before, .abstract h2:after, .about h2:before, .about h2:after, .contact h2:before, .contact h2:after {
+  .abstract h2:before, .abstract h2:after, .about h2:before, .about h2:after, .contact h2:before, .contact h2:after, .big-title h2:before, .big-title h2:after {
     content: "";
     display: inline-block;
     height: 2px;
     position: relative;
     vertical-align: middle;
     width: 50%; }
-  .abstract h2:before, .about h2:before, .contact h2:before {
+  .abstract h2:before, .about h2:before, .contact h2:before, .big-title h2:before {
     right: 1.25em;
     margin-left: -50%; }
-  .abstract h2:after, .about h2:after, .contact h2:after {
+  .abstract h2:after, .about h2:after, .contact h2:after, .big-title h2:after {
     left: 1.25em;
     margin-right: -50%; }
-.abstract h3, .about h3, .contact h3 {
+.abstract h3, .about h3, .contact h3, .big-title h3 {
   text-align: center;
   padding-bottom: 10px; }
 
@@ -516,16 +528,17 @@ textarea {
     margin-top: 18px;
     z-index: 5;
     padding-bottom: 25px; }
-    .projects .project div {
+    .projects .project .guard {
       width: 25%;
-      float: left; }
+      display: inline-block;
+      margin: -1px; }
       @media all and (max-width: 600px) {
-        .projects .project div {
+        .projects .project .guard {
           width: 50%; } }
       @media all and (max-width: 320px) {
-        .projects .project div {
+        .projects .project .guard {
           width: 100%; } }
-      .projects .project div img {
+      .projects .project .guard img {
         width: 100%;
         height: auto;
         float: left; }

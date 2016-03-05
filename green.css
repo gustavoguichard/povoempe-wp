@@ -14,6 +14,9 @@ a {
   a:hover {
     text-decoration: none; }
 
+.slider .video-container {
+  border-color: #f2efe8; }
+
 .header, .main {
   background: #f2efe8 url(images/pattern_lightpaperfibres.jpg); }
 
@@ -35,18 +38,18 @@ a {
     .menu li a.active, .menu li a:hover {
       color: #45360C; }
 
-.abstract h2, .about h2, .contact h2 {
+.abstract h2, .about h2, .contact h2, .big-title h2 {
   color: #4d4d4d; }
-  .abstract h2:before, .abstract h2:after, .about h2:before, .about h2:after, .contact h2:before, .contact h2:after {
+  .abstract h2:before, .abstract h2:after, .about h2:before, .about h2:after, .contact h2:before, .contact h2:after, .big-title h2:before, .big-title h2:after {
     background: #4d4d4d; }
-.abstract h3, .about h3, .contact h3 {
+.abstract h3, .about h3, .contact h3, .big-title h3 {
   border-bottom: 2px solid #4d4d4d;
   color: #333; }
-.abstract blockquote, .about blockquote, .contact blockquote {
+.abstract blockquote, .about blockquote, .contact blockquote, .big-title blockquote {
   color: #7d6b70; }
 
 .services {
-  background: #45360C url(images/pattern_bamboo1.jpg);
+  background: #45360C url(images/bamboos.jpg);
   color: #f2efe8; }
   .services h2 {
     background: #61744E;
@@ -128,7 +131,7 @@ a {
       color: #f2efe8; }
 
 .footer {
-  background: #45360C url(images/pattern_bamboo1.jpg);
+  background: #45360C url(images/bamboos.jpg);
   color: #f2efe8; }
   .footer h4 {
     color: #f2efe8; }

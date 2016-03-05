@@ -12,7 +12,7 @@ get_header(); ?>
     $videoID = get_option('magethemes_zen_slider_video_id');
   ?>
   <!-- Slider -->
-  <div class="slider" style="background-image: url('<?php echo $parallaxbg['magethemes_zen_parallax_bg']; ?>');">
+  <div class="slider bg-parallax" style="background-image: url('<?php echo $parallaxbg['magethemes_zen_parallax_bg']; ?>');">
 
     <div class="container">
       <div class="video-container">
@@ -32,7 +32,7 @@ get_header(); ?>
       <div class="abstract">
 
         <!-- Title -->
-        <div class="title">
+        <div class="big-title">
         <?php if(get_option('magethemes_zen_theme_first_subtitle')!=''){ ?><h2><?php echo get_option('magethemes_zen_theme_first_subtitle'); ?></h2><?php } ?>
         <?php if(get_option('magethemes_zen_theme_first_title')!=''){ ?><h3><?php echo get_option('magethemes_zen_theme_first_title'); ?></h3><?php } ?>
         </div>
@@ -46,6 +46,13 @@ get_header(); ?>
 
       <!-- Projects -->
       <div class="projects">
+        <a class="anchor" id="estabelecimentos"></a>
+        <!-- Title -->
+        <div class="big-title">
+          <h2>Nossos</h2>
+          <h3>Estabelecimentos</h3>
+        </div>
+        <!-- Title Ends! -->
 
         <?php
           $featured_projects_args = array(
@@ -111,8 +118,8 @@ get_header(); ?>
   <!-- Page Content Ends! -->
 
   <!-- Services -->
-  <a class="anchor" id="services"></a>
-  <div class="services">
+  <a class="anchor" id="servicos"></a>
+  <div class="services bg-parallax">
 
     <h2><?php echo get_option('magethemes_zen_our_services_title'); ?></h2>
 
@@ -154,7 +161,7 @@ get_header(); ?>
     <div class="container">
 
       <!-- About -->
-      <a class="anchor" id="about"></a>
+      <a class="anchor" id="guardioes"></a>
       <div class="about">
 
         <!-- Title -->
@@ -234,7 +241,7 @@ get_header(); ?>
   <!-- Page Ends! -->
 
   <!-- Contact -->
-  <a class="anchor" id="contact"></a>
+  <a class="anchor" id="contato"></a>
   <div class="contact">
     <div class="container">
 

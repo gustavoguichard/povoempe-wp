@@ -18,7 +18,7 @@
   <!-- Header -->
   <div class="header">
 
-    <h1><a href="<?php echo $url; ?>"><img src="<?php echo $logo['magethemes_zen_theme_logo']; ?>" title="<?php echo $name_bloginfo; ?>" width="150" alt="<?php echo $name_bloginfo; ?> logo" class="logo-header" /></a></h1>
+    <h1><a href="<?php echo $url; ?>" class="logo-header"><img src="<?php echo $logo['magethemes_zen_theme_logo']; ?>" title="<?php echo $name_bloginfo; ?>" width="150" alt="<?php echo $name_bloginfo; ?> logo" /></a></h1>
 
     <!-- Menu -->
     <div class="menu">

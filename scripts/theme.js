@@ -1,13 +1,9 @@
 jQuery(document).ready(function( $ ) {
 "use strict";
 
-  $('.header h1').css('margin-left', '-'+($('.header > h1 > a').width()/2)+'px');
-  $('.header .menu .container .left-side-menu').css('padding-right', ($('.header > h1 > a').width()/2)+60+'px');
-  $('.header .menu .container .right-side-menu').css('padding-left', ($('.header > h1 > a').width()/2)+60+'px');
-
   // Menu Scroll
   $('.menu a').click(function(event) {
-    $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 2000);
+    $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700);
     event.preventDefault();
   });
 

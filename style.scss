@@ -84,6 +84,14 @@ textarea {
   padding-top: 38px;
   position: relative;
 
+  .left-side-menu {
+    padding-right: 120px;
+  }
+
+  .right-side-menu {
+    padding-left: 120px;
+  }
+
   @media all and (max-width: 680px) {
     padding-top: 150px; //height of the logo
   }
@@ -104,8 +112,11 @@ textarea {
       }
     }
 
-    a {
+    .logo-header {
       display: block;
+      font-size: 1px;
+      margin-left: -75px;
+      width: 150px;
     }
   }
 } //.header ends
@@ -191,12 +202,15 @@ textarea {
   }
 } //.menu ends
 
+.bg-parallax {
+  background-position: 50% 0 !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+
 .slider {
   @extend %clear;
-  background-position: 50% 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
   padding: 2em;
 
   .container {
@@ -206,6 +220,8 @@ textarea {
   }
 
   .video-container {
+    border: 5px solid;
+    border-radius: 3px;
     max-width: 840px;
   }
 
@@ -234,18 +250,9 @@ textarea {
   @extend %clear;
 }
 
-.abstract {
-  max-width: 680px;
-  width: 80%;
-
-  .title {
-    max-width: 450px;
-    margin-bottom: 3em;
-  }
-
-  @media all and (max-width: 320px) {
-    width: 90%;
-  }
+.big-title {
+  max-width: 450px;
+  margin-bottom: 3em;
 
   h2 {
     font-size: 20px;
@@ -262,9 +269,18 @@ textarea {
     font-weight: 600;
     text-align: center;
   }
+}
+
+.abstract {
+  max-width: 680px;
+  width: 80%;
+
+  @media all and (max-width: 320px) {
+    width: 90%;
+  }
 } //.abstract ends
 
-.abstract, .about, .contact {
+.abstract, .about, .contact, .big-title {
 
   h2 {
     text-align: center;
@@ -377,9 +393,10 @@ textarea {
 
     @extend %clear;
 
-    div {
+    .guard {
       width: 25%;
-      float: left;
+      display: inline-block;
+      margin: -1px;
 
       @media all and (max-width: 600px) {
         width: 50%;

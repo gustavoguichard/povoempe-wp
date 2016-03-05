@@ -18,6 +18,10 @@ a {
   }
 }
 
+.slider .video-container {
+  border-color: $cream-light;
+}
+
 .header, .main {
   background: $white url(#{$assetPath}/pattern_lightpaperfibres.jpg);
 }
@@ -54,7 +58,7 @@ a {
   }
 }
 
-.abstract, .about, .contact {
+.abstract, .about, .contact, .big-title {
 
   h2 {
     color: $border-color;
@@ -76,7 +80,7 @@ a {
 }
 
 .services {
-  background: $footer-background url(#{$assetPath}/pattern_bamboo1.jpg);
+  background: $footer-background url(#{$assetPath}/bamboos.jpg);
   color: $white;
 
   h2 {
@@ -246,7 +250,7 @@ a {
 } //.contact ends
 
 .footer {
-  background: $footer-background url(#{$assetPath}/pattern_bamboo1.jpg);
+  background: $footer-background url(#{$assetPath}/bamboos.jpg);
   color: $white;
 
   h4 {
