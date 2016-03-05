@@ -18,21 +18,21 @@
   <!-- Header -->
   <div class="header">
 
-    <h1><a href="<?php echo $url; ?>"><img src="<?php echo $logo['magethemes_zen_theme_logo']; ?>" title="<?php echo $name_bloginfo; ?>" alt="<?php echo $name_bloginfo; ?> logo" /></a></h1>
+    <h1><a href="<?php echo $url; ?>"><img src="<?php echo $logo['magethemes_zen_theme_logo']; ?>" title="<?php echo $name_bloginfo; ?>" width="150" alt="<?php echo $name_bloginfo; ?> logo" class="logo-header" /></a></h1>
 
     <!-- Menu -->
     <div class="menu">
       <div class="container">
 
         <?php
-        
+
           $menu_name = 'left-side-menu';
           $menu_list ='';
 
           if ( ($locations = get_nav_menu_locations()) && isset($locations[$menu_name]) ) {
 
             $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-          
+
             $menu_items = wp_get_nav_menu_items($menu->term_id);
             $menu_list = '<ul class="left-side-menu">';
             $isfrontpage = is_front_page();
@@ -49,7 +49,7 @@
 
               if ( $menu_item->menu_item_parent == "0" ) {
 
-                if ( $submenu ) { 
+                if ( $submenu ) {
                   $menu_list .= '</ul></li>';
                   $submenu = false;
 
@@ -72,8 +72,8 @@
                 }
 
               } else {
-                if ( !$submenu ) { 
-                  $submenu = true; 
+                if ( !$submenu ) {
+                  $submenu = true;
                   $menu_list .=  '<ul class="sub-menu">';
 
                 }
@@ -82,7 +82,7 @@
 
                 if (get_the_ID()==$id) {
                   $menu_list .= ' current-menu-item';
-                } 
+                }
 
                 $menu_list .= '">
                 <a href="'.$menuurl.'" class="title">'.$title.'</a>';
@@ -100,19 +100,19 @@
 
           }
 
-          echo $menu_list; 
+          echo $menu_list;
 
         ?>
 
         <?php
-        
+
           $menu_name = 'right-side-menu';
           $menu_list ='';
 
           if ( ($locations = get_nav_menu_locations()) && isset($locations[$menu_name]) ) {
 
             $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-          
+
             $menu_items = wp_get_nav_menu_items($menu->term_id);
             $menu_list = '<ul class="right-side-menu">';
             $isfrontpage = is_front_page();
@@ -129,7 +129,7 @@
 
               if ( $menu_item->menu_item_parent == "0" ) {
 
-                if ( $submenu ) { 
+                if ( $submenu ) {
                   $menu_list .= '</ul></li>';
                   $submenu = false;
 
@@ -152,8 +152,8 @@
                 }
 
               } else {
-                if ( !$submenu ) { 
-                  $submenu = true; 
+                if ( !$submenu ) {
+                  $submenu = true;
                   $menu_list .=  '<ul class="sub-menu">';
 
                 }
@@ -162,7 +162,7 @@
 
                 if (get_the_ID()==$id) {
                   $menu_list .= ' current-menu-item';
-                } 
+                }
 
                 $menu_list .= '">
                 <a href="'.$menuurl.'" class="title">'.$title.'</a>';
@@ -180,7 +180,7 @@
 
           }
 
-          echo $menu_list; 
+          echo $menu_list;
 
         ?>
 
