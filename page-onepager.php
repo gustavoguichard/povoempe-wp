@@ -7,20 +7,19 @@
 
 */
 get_header(); ?>
+  <?php $parallaxbg = get_option('magethemes_zen_theme_logo'); ?>
+  <!-- Slider -->
+  <div class="slider" style="background-image: url('<?php echo $parallaxbg['magethemes_zen_parallax_bg']; ?>');">
 
-<?php
+    <div class="container">
+      <div class="video-container">
+        <div class="videoWrapper">
+          <iframe src="https://player.vimeo.com/video/127496191?color=61744E&title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
 
-  $slider=get_option('magethemes_zen_slider');
-
-  if($slider=='parallax'){
-    get_template_part( 'content', 'slider-parallax' );
-  } else if($slider=='video'){
-    get_template_part( 'content', 'slider-video' );
-  } else {
-    get_template_part( 'content', 'slider' );
-  }
-?>
-
+  </div>
 
   <!-- Page Content -->
   <div class="container-page">
