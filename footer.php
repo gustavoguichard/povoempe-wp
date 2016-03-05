@@ -44,16 +44,6 @@
   </div>
   <!-- Footer Ends! -->
 
-  <!-- Back to Top -->
-  <div class="back">
-    <div class="container">
-
-      <a href="#top"><i class="fa fa-angle-up fa-3x"></i></a>
-
-    </div>
-  </div>
-  <!-- Back to Top Ends! -->
-
 </div>
 <?php wp_footer(); ?>
 </body>

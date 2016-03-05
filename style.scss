@@ -21,7 +21,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @import 'sass/_imagelightbox';
 
 /* Import wp.scss file */
-@import 'sass/wp';
+@import 'wp';
 
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,700&subset=latin,latin-ext);
 
@@ -128,7 +128,7 @@ textarea {
     }
 
     &.right-side-menu {
-      
+
       li {
         float: left;
       }
@@ -792,31 +792,6 @@ textarea {
     margin-bottom: 0;
   }
 } //.footer ends
-
-.back {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 99;
-
-    .container {
-      position: relative;
-    }
-
-    a {
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    @include transition(all, .2s);
-
-    &:hover {
-      bottom: -6px;
-    }
-  }
-}
 
 .anchor {
   display: block;
