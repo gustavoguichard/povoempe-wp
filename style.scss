@@ -350,6 +350,7 @@ textarea {
     width: 30%;
     padding: 40px 20px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     @include box-sizing(border-box);
@@ -483,6 +484,7 @@ textarea {
 .team {
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 
   h4 {
