@@ -15,11 +15,7 @@ jQuery(document).ready(function( $ ) {
   // Single Projects
   $('.home .single').hide(); // hide all .single projects
 
-  $('.button-group li a').click(function() {
-    $('.single h2 a').click();
-  });
-
-  $('body').on('click','.project a', function(e) {
+  $('.project a').on('click', function(e) {
 
     if ($(this).children('img').hasClass('active')) {
 
@@ -51,13 +47,5 @@ jQuery(document).ready(function( $ ) {
 
     e.preventDefault();
   });
-
-
-  var gethash = window.location.hash.slice(0,-4);
-
-  if ( gethash!='' ) {
-    window.location.hash = '';
-    setTimeout(function(){  $('html, body').animate({ scrollTop: $(gethash).offset().top }, 2000); },500);
-  }
 
 });
