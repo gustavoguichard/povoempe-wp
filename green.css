@@ -4,10 +4,10 @@
 body {
   font-family: "Titillium Web", sans-serif;
   color: #5f5e5d;
-  background: #272727 url(images/pattern_bamboo1.jpg); }
+  background: #45360C url(images/pattern_bamboo1.jpg); }
 
 h1, h2, h3, h4, h5 {
-  color: #333333; }
+  color: #333; }
 
 a {
   color: #5f5e5d; }
@@ -15,28 +15,25 @@ a {
     text-decoration: none; }
 
 .header, .main {
-  background: whitesmoke url(images/pattern_lightpaperfibres.jpg); }
+  background: #f2efe8 url(images/pattern_lightpaperfibres.jpg); }
 
+.header .logo-header {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); }
+  .header .logo-header:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); }
 @media all and (max-width: 680px) {
   .header {
     /*background: #272727; //matching color of logo*/ } }
 
 .menu {
-  background: #b2cd49; }
+  background: #61744E;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2) inset; }
   .menu .sub-menu {
-    background: #b2cd49; }
+    background: #61744E; }
   .menu li a {
-    color: white; }
+    color: #f2efe8; }
     .menu li a.active, .menu li a:hover {
-      color: #272727; }
-
-.slider .container .slides li div {
-  color: white;
-  border-bottom: 5px solid white;
-  border-top: 5px solid white; }
-.slider .container .flex-direction-nav a {
-  background-color: #b2cd49;
-  color: white; }
+      color: #45360C; }
 
 .abstract h2, .about h2, .contact h2 {
   color: #4d4d4d; }
@@ -44,64 +41,64 @@ a {
     background: #4d4d4d; }
 .abstract h3, .about h3, .contact h3 {
   border-bottom: 2px solid #4d4d4d;
-  color: #333333; }
+  color: #333; }
 
 .services {
-  background: #272727 url(images/pattern_bamboo1.jpg);
-  color: white; }
+  background: #45360C url(images/pattern_bamboo1.jpg);
+  color: #f2efe8; }
   .services h2 {
-    background: #b2cd49;
-    color: white; }
+    background: #61744E;
+    color: #f2efe8; }
   .services h3 {
-    color: #b2cd49; }
+    color: #61744E; }
     .services h3 i {
-      color: white;
+      color: #f2efe8;
       background: url(images/i-border.png) center bottom no-repeat; }
   .services .service .container div {
-    border: 1px solid #b2cd49; }
+    border: 1px solid #61744E; }
     .services .service .container div:hover {
-      background: #b2cd49; }
+      background: #61744E; }
       .services .service .container div:hover h3 {
         color: #5f5e5d; }
       .services .service .container div:hover p {
-        color: white; }
+        color: #f2efe8; }
   .services .service p {
     color: #9b9b9b; }
 
 .projects ul.button-group li a {
-  color: #272727; }
+  color: #45360C; }
   .projects ul.button-group li a:hover, .projects ul.button-group li a.active {
-    border: 2px solid #b2cd49; }
+    border: 2px solid #61744E; }
 .projects .single a {
-  color: #b2cd49; }
+  color: #61744E; }
 .projects .single h2 {
   border-bottom: 2px solid #4d4d4d;
   border-top: 2px solid #4d4d4d; }
   .projects .single h2 a {
-    color: #b2cd49; }
+    color: #61744E; }
 .projects .single li i {
-  color: #b2cd49; }
+  color: #61744E; }
 
 .team h4 span {
   color: #5f5e5d; }
 .team .member .image {
   border-bottom: 5px solid #c5d975; }
   .team .member .image p {
-    color: white; }
+    color: #f2efe8; }
 .team .member li a {
   color: #2b2b2b;
-  background: #b2cd49; }
+  background: #61744E; }
   .team .member li a:hover {
-    color: #b2cd49;
+    color: #61744E;
     background: #2b2b2b; }
 
 .contact {
-  background: #b2cd49;
-  color: #333333; }
+  background: #61744E;
+  color: #333; }
   .contact .title h2 {
-    color: #333333; }
+    color: #333; }
     .contact .title h2:after, .contact .title h2:before {
-      background: #333333; }
+      background: #333; }
   .contact .wpcf7-validation-errors {
     color: #ee2828;
     background: #fddede;
@@ -110,94 +107,96 @@ a {
     color: #ee2828; }
   .contact input.wpcf7-text, .contact textarea, .contact input.wpcf7-submit {
     font-family: "Titillium Web", sans-serif;
-    color: white; }
+    color: #f2efe8; }
   .contact input.wpcf7-text, .contact textarea {
-    background: #b2cd49;
-    border: 1px solid white; }
+    background: #61744E;
+    border: 1px solid #f2efe8; }
     .contact input.wpcf7-text::-webkit-input-placeholder, .contact textarea::-webkit-input-placeholder {
-      color: white; }
+      color: #f2efe8; }
     .contact input.wpcf7-text::-moz-placeholder, .contact textarea::-moz-placeholder {
-      color: white; }
+      color: #f2efe8; }
     .contact input.wpcf7-text:-ms-input-placeholder, .contact textarea:-ms-input-placeholder {
-      color: white; }
+      color: #f2efe8; }
   .contact input.wpcf7-submit {
-    border: 3px solid #333333;
-    background: #333333;
-    color: #b2cd49;
+    border: 3px solid #333;
+    background: #333;
+    color: #61744E;
     text-transform: uppercase; }
     .contact input.wpcf7-submit:hover {
-      color: white; }
+      color: #f2efe8; }
 
 .footer {
-  background: #272727 url(images/pattern_bamboo1.jpg);
-  color: white; }
+  background: #45360C url(images/pattern_bamboo1.jpg);
+  color: #f2efe8; }
   .footer h4 {
-    color: white; }
+    color: #f2efe8; }
   .footer .social ul {
     background: #313130; }
     .footer .social ul li a {
-      color: white; }
+      color: #f2efe8; }
       .footer .social ul li a:hover {
-        color: #b2cd49; }
+        color: #61744E; }
   .footer .copyright {
     color: #5f5e5d; }
 
 .back a {
-  background: #b2cd49;
-  color: white; }
+  background: #61744E;
+  color: #f2efe8; }
 
 .projects .load-more {
-  border: 2px solid #b2cd49; }
+  border: 2px solid #61744E; }
 
 .blog-page .pagination a, .blog-page .post .post-link {
-  border: 2px solid #b2cd49;
+  border: 2px solid #61744E;
   color: #5f5e5d; }
   .blog-page .pagination a:hover, .blog-page .post .post-link:hover {
-    border: 2px solid #b2cd49;
-    background: #b2cd49;
-    color: white; }
+    border: 2px solid #61744E;
+    background: #61744E;
+    color: #f2efe8; }
 .blog-page .thumbnail img {
-  border-bottom: 5px solid #b2cd49; }
+  border-bottom: 5px solid #61744E; }
 .blog-page .post a {
-  color: #b2cd49; }
+  color: #61744E; }
 .blog-page .post h1 a, .blog-page .post h2 a, .blog-page .post h3 a, .blog-page .post h4 a, .blog-page .post h5 a {
-  color: #333333; }
+  color: #333; }
 .blog-page .post .tags, .blog-page .post .post-meta {
-  color: #b2cd49; }
+  color: #61744E; }
 .blog-page .post li:before {
-  color: #b2cd49; }
+  color: #61744E; }
 .blog-page .post.sticky h2 {
   background: url("images/sticky-heading-green.png") top center no-repeat; }
 .blog-page .post.format-quote .the_excerpt p {
-  background: #b2cd49;
-  color: white;
+  background: #61744E;
+  color: #f2efe8;
   font-style: italic; }
   .blog-page .post.format-quote .the_excerpt p:after {
     color: #5f5e5d; }
 
 .comments-area .comments-title .fa-comment {
-  color: #b2cd49; }
+  color: #61744E; }
 .comments-area .comment-author img {
-  border-bottom: 5px solid #b2cd49; }
+  border-bottom: 5px solid #61744E; }
 .comments-area .comment-meta a {
   color: #c7c7c8; }
 .comments-area .comment-body {
   border-bottom: 1px solid #edecea; }
   .comments-area .comment-body .reply {
-    border: 2px solid #b2cd49; }
+    border: 2px solid #61744E; }
     .comments-area .comment-body .reply:hover {
-      background: #b2cd49; }
+      background: #61744E; }
       .comments-area .comment-body .reply:hover a {
-        color: white; }
+        color: #f2efe8; }
 
 .comment-respond input, .comment-respond textarea {
   font-family: "Titillium Web", sans-serif;
   border: 1px solid #333;
-  background: white; }
+  background: #f2efe8; }
 .comment-respond .form-submit input {
   background: #333;
   color: #fff; }
   .comment-respond .form-submit input:hover {
-    border: 1px solid #b2cd49;
-    background: #b2cd49;
-    color: white; }
+    border: 1px solid #61744E;
+    background: #61744E;
+    color: #f2efe8; }
+
+/*# sourceMappingURL=green.css.map */

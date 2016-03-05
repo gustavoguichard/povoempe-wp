@@ -19,10 +19,18 @@ a {
 }
 
 .header, .main {
-  background: #f5f5f5 url(#{$assetPath}/pattern_lightpaperfibres.jpg);
+  background: $white url(#{$assetPath}/pattern_lightpaperfibres.jpg);
 }
 
 .header {
+  .logo-header {
+    box-shadow: 0 2px 3px rgba(0,0,0,.2);
+
+    &:hover {
+      box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    }
+  }
+
   @media all and (max-width: 680px) {
     /*background: #272727; //matching color of logo*/
   }
@@ -30,6 +38,7 @@ a {
 
 .menu {
   background: $contact-background;
+  box-shadow: 0 2px 3px rgba(0,0,0,.2) inset;
 
   .sub-menu {
     background: $contact-background;
@@ -44,28 +53,6 @@ a {
     }
   }
 }
-
-.slider {
-
-  .container {
-    .slides {
-      li {
-        div {
-          color: $white;
-          border-bottom: 5px solid $white;
-          border-top: 5px solid $white;
-        }
-      }
-    }
-
-    .flex-direction-nav {
-      a {
-        background-color: $contact-background;
-        color: $white;
-      }
-    }
-  }
-} //.slider ends
 
 .abstract, .about, .contact {
 

@@ -393,54 +393,6 @@ textarea {
   position: relative;
   width: 100%;
   max-width: none; }
-  .slider .container .slides li {
-    padding: 176px 0;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover; }
-    @media all and (max-width: 600px) {
-      .slider .container .slides li {
-        padding: 76px 0; } }
-    .slider .container .slides li div {
-      text-align: center;
-      width: 46.0417%;
-      padding: 10px 0;
-      text-transform: uppercase;
-      font-size: 36px;
-      line-height: 40px; }
-      @media all and (max-width: 600px) {
-        .slider .container .slides li div {
-          font-size: 24px;
-          line-height: 30px;
-          width: 80%; } }
-      .slider .container .slides li div strong {
-        font-size: 42px; }
-        @media all and (max-width: 600px) {
-          .slider .container .slides li div strong {
-            font-size: 28px; } }
-  .slider .container .flex-direction-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    margin-top: -26px; }
-    .slider .container .flex-direction-nav a {
-      font-family: FontAwesome;
-      font-size: 3em;
-      text-align: center;
-      display: block;
-      position: absolute;
-      width: 50px;
-      height: 52px; }
-      .slider .container .flex-direction-nav a.flex-prev:before {
-        content: "\f104"; }
-      .slider .container .flex-direction-nav a.flex-next:before {
-        content: "\f105"; }
-      .slider .container .flex-direction-nav a:hover {
-        opacity: .9; }
-    .slider .container .flex-direction-nav .flex-prev {
-      left: 5.20833%; }
-    .slider .container .flex-direction-nav .flex-next {
-      right: 5.20833%; }
 
 .container-page {
   padding: 50px 0; }
