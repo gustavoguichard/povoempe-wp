@@ -53,7 +53,7 @@ function magethemes_zen_theme_styles() {
 
   }
 
-  wp_enqueue_style( 'magethemes_zen_font', get_template_directory_uri() . '/font-awesome-4.0.3/css/font-awesome.min.css' );
+  wp_enqueue_style( 'magethemes_zen_font', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css' );
 
 } //load the theme CSS ends!
 
