@@ -197,37 +197,10 @@ get_header(); ?>
           </div>
       </div>
       <h4><?php the_title(); ?><br><span><?php the_field( 'magethemes_zen_position' ); ?></span></h4>
-
-      <ul>
-        <?php if ( get_field( 'magethemes_zen_twitter_profile' ) ) : ?>
-          <li><a href="<?php the_field( 'magethemes_zen_twitter_profile' ); ?>">&#xf099;</a></li>
-        <?php endif; ?>
-        <?php if ( get_field( 'magethemes_zen_facebook_profile' ) ) : ?>
-          <li><a href="<?php the_field( 'magethemes_zen_facebook_profile' ); ?>">&#xf09a;</a></li>
-        <?php endif; ?>
-        <?php if ( get_field( 'magethemes_zen_pinterest_profile' ) ) : ?>
-          <li><a href="<?php the_field( 'magethemes_zen_pinterest_profile' ); ?>">&#xf0d2;</a></li>
-        <?php endif; ?>
-        <?php if ( get_field( 'magethemes_zen_instagram_profile' ) ) : ?>
-          <li><a href="<?php the_field( 'magethemes_zen_instagram_profile' ); ?>">&#xf16d;</a></li>
-        <?php endif; ?>
-        <?php if ( get_field( 'magethemes_zen_dribbble_profile' ) ) : ?>
-          <li><a href="<?php the_field( 'magethemes_zen_dribbble_profile' ); ?>">&#xf17d;</a></li>
-        <?php endif; ?>
-        <?php if ( get_field( 'magethemes_zen_google_profile' ) ) : ?>
-          <li><a href="<?php the_field( 'magethemes_zen_google_profile' ); ?>">&#xf0d5;</a></li>
-        <?php endif; ?>
-        <?php if ( get_field( 'magethemes_zen_linkedin_profile' ) ) : ?>
-          <li><a href="<?php the_field( 'magethemes_zen_linkedin_profile' ); ?>">&#xf0e1;</a></li>
-        <?php endif; ?>
-      </ul>
-
     </div>
     <!-- Member Ends! -->
 
-      <?php endwhile; else: ?>
-        <p>No team members! You will need to hire some.</p>
-      <?php endif; ?>
+      <?php endwhile; endif; ?>
 
       <?php wp_reset_postdata(); // Restore original Post Data ?>
 
@@ -238,31 +211,28 @@ get_header(); ?>
   </div>
   <!-- Page Ends! -->
 
-  <!-- Contact -->
-  <a class="anchor" id="contato"></a>
+  <!-- Contact
   <div class="contact">
     <div class="container">
 
-      <!-- Contact Form -->
       <div class="form">
 
-        <!-- Title -->
         <div class="title">
           <?php if(get_option('magethemes_zen_theme_contact_subtitle')!=''){ ?><h2><?php echo get_option('magethemes_zen_theme_contact_subtitle'); ?></h2><?php } ?>
           <?php if(get_option('magethemes_zen_theme_contact_title')!=''){ ?><h3><?php echo get_option('magethemes_zen_theme_contact_title'); ?></h3><?php } ?>
         </div>
-        <!-- Title Ends! -->
 
-        <!-- Form -->
         <?php echo do_shortcode( get_option('magethemes_zen_theme_contact_form') ) ?>
-        <!-- Form Ends! -->
 
       </div>
-      <!-- Contact Form Ends! -->
 
     </div>
   </div>
   <!-- Contact Ends! -->
+  <div class="services">
+    <a class="anchor" id="agenda"></a>
+    <h2>Agenda</h2>
+  </div>
 
   <!-- Map -->
   <div class="map">

@@ -262,13 +262,6 @@ textarea {
     font-size: 28px;
     margin-bottom: 15px;
   }
-
-  blockquote {
-    font-size: 1.1em;
-    font-style: italic;
-    font-weight: 600;
-    text-align: center;
-  }
 }
 
 .abstract {
@@ -277,6 +270,13 @@ textarea {
 
   @media all and (max-width: 320px) {
     width: 90%;
+  }
+
+  blockquote {
+    font-size: 1.1em;
+    font-style: italic;
+    font-weight: 600;
+    text-align: center;
   }
 } //.abstract ends
 

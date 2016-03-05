@@ -1,7 +1,7 @@
 <!-- with $name_bloginfo we are preventing someone to output <span>'s -->
 <?php $name_bloginfo = html_entity_decode(get_bloginfo('name')); ?>
 <!-- Footer -->
-  <a class="anchor" id="social"></a>
+  <a class="anchor" id="contato"></a>
   <div class="footer bg-parallax">
     <div class="container">
 
@@ -23,7 +23,7 @@
       <div class="social">
 
         <?php if(get_option('magethemes_zen_theme_footer_title')!=''){ ?><h4><?php echo get_option('magethemes_zen_theme_footer_title'); ?></h4><?php } ?>
-        <?php if(get_option('magethemes_zen_theme_footer_content')!=''){ ?><p><?php echo get_option('magethemes_zen_theme_footer_content'); ?></p><?php } ?>
+        <?php if(get_option('magethemes_zen_theme_footer_content')!=''){ ?><p><?php echo nl2br(get_option('magethemes_zen_theme_footer_content')); ?></p><?php } ?>
       </div>
 
     </div>

@@ -838,7 +838,7 @@ function magethemes_zen_theme_settings_page() {
 
 <div>
   <label>Content</label>
-  <input type="text" name="magethemes_zen_theme_footer_content" value="<?php echo get_option('magethemes_zen_theme_footer_content'); ?>" />
+  <textarea class="input" name="magethemes_zen_theme_footer_content"><?php echo stripcslashes(get_option('magethemes_zen_theme_footer_content')); ?></textarea>
 </div>
 
 </div>
