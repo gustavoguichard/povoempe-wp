@@ -27,7 +27,7 @@ get_header(); ?>
   <!-- Page Content -->
   <div class="container-page">
     <div class="container">
-
+      <a class="anchor" id="sobre"></a>
       <!-- Abstract -->
       <div class="abstract">
 
@@ -45,34 +45,18 @@ get_header(); ?>
       <!-- Abstract Ends! -->
 
       <!-- Projects -->
-      <a class="anchor" id="projects"></a>
       <div class="projects">
-        <!-- Projects Types, Menu -->
-        <ul class="button-group">
-          <li><a href="#" class="active" data-filter="*">all</a></li>
-          <?php $terms = get_terms("portfolio_categories");
-           if ( !empty( $terms ) && !is_wp_error( $terms ) ){
-             foreach ( $terms as $term ) {
-               echo '<li><a href="#" data-filter=".'.$term->slug . '">'.$term->name.'</a></li>';
-             }
-           }
-           ?>
-        </ul>
-        <!-- Projects Types, Menu Ends! -->
+
         <?php
-			$portfolios_to_show = get_option('magethemes_zen_theme_portfolio_nr');
-          if(isset($_GET['page'])){ $paged = $_GET['page']; } else { $paged = 1; }
           $featured_projects_args = array(
             'post_type' => 'portfolio',
             'orderby' => 'menu_order',
             'order' => 'ASC',
-            'paged' => $paged,
-            'posts_per_page' => $portfolios_to_show
+            'posts_per_page' => -1
           );
 
           $the_query = new WP_Query( $featured_projects_args );
 
-          $foundedpostost = $the_query->found_posts;
         ?>
 
         <!-- Projects List -->
@@ -80,30 +64,22 @@ get_header(); ?>
           <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
           <?php $image = wp_get_attachment_image_src(get_field('magethemes_zen_image'), 'magethemes_zen_portfolio'); ?>
 
-          <div class="<?php $pterms = wp_get_post_terms( get_the_ID(), 'portfolio_categories');
-          if ( !empty( $pterms ) && !is_wp_error( $pterms ) ) {
-             foreach ( $pterms as $pterm ) {
-               echo $pterm->slug . ' ';
-             }
-          } ?>">
-          <a href="#"><img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>"></a>
-        </div>
+          <div class="guard">
+            <a href="#">
+              <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>">
+            </a>
+          </div>
 
-          <?php endwhile; else: ?>
-          <p>No portfolio items! You will need to add some.</p>
-          <?php endif; ?>
+          <?php endwhile; endif; ?>
 
         </div>
         <!-- Projects List Ends! -->
-
-        <?php if((int)$foundedpostost > $portfolios_to_show){ ?><div id="more" class="load-more">load more</div><?php } ?>
 
         <!-- Project -->
         <?php $featured_projects_args = array(
             'post_type' => 'portfolio',
             'orderby' => 'menu_order',
             'order' => 'ASC',
-            'paged' => $paged,
             'posts_per_page' => $portfolios_to_show
           );
 

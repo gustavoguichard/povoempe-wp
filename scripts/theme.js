@@ -56,42 +56,6 @@ jQuery(document).ready(function( $ ) {
     e.preventDefault();
   });
 
-  /*
-  var menumiddle = Math.ceil($(".header div.menu div.container > ul > li").length/2);
-  */
-
-  /*
-  $(".header div.menu div.container > ul > li:eq("+menumiddle+")").addClass('right-side');
-  */
-
-  /*
-  var leftwidth = 0;
-  var rightwidth = 0;
-  */
-
-  /*
-  $(".header div.menu div.container > ul > li").each(function(index, element) {
-
-    if( index < menumiddle ) {
-      leftwidth+=$(this).width();
-    } else {
-      rightwidth+=$(this).width();
-    }
-
-    if( index == menumiddle ) {
-      $(this).addClass('right-side');
-    }
-
-  });
-  */
-
-  /*
-  if ( leftwidth > rightwidth ) {
-    $(".header div.menu div.container > ul > li:last").css('padding-right', (leftwidth-rightwidth)+'px');
-  } else {
-    $(".header div.menu div.container > ul > li:first").css('padding-left', (rightwidth-leftwidth)+'px');
-  }
-  */
 
   var gethash = window.location.hash.slice(0,-4);
 
@@ -99,47 +63,5 @@ jQuery(document).ready(function( $ ) {
     window.location.hash = '';
     setTimeout(function(){  $('html, body').animate({ scrollTop: $(gethash).offset().top }, 2000); },500);
   }
-
-  var page = 1;
-  var maxpage = parseInt( $('.project').attr('data-id').replace('founded',''));
-
-  $('#more').click(function() {
-
-    $(this).addClass('loading');
-
-    page++;
-
-    $.get(cururl+'/?page='+page, function(data) {
-      var posts = $(data).find('.project div');
-      // init
-      $('#more').removeClass('loading');
-      if ( page>=maxpage ) { $('#more').hide(); }
-      $('.project').append(posts).isotope('appended', posts);
-    });
-  });
-
-  // Projects Isotope Setup
-
-  // init
-  var $container = $('.project').isotope({
-    itemSelector: '.project div',
-    layoutMode: 'fitRows'
-  });
-
-  // bind filter button click
-  $('.button-group a').on( 'click', function(event) {
-    var filterValue = $( this ).attr('data-filter');
-    $container.isotope({ filter: filterValue });
-    event.preventDefault();
-  });
-
-  // change is-checked class on buttons
-  $('.button-group').each( function( i, buttonGroup ) {
-    var $buttonGroup = $( buttonGroup );
-      $buttonGroup.on( 'click', 'a', function() {
-      $buttonGroup.find('.active').removeClass('active');
-      $( this ).addClass('active');
-    });
-  });
 
 });

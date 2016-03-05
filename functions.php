@@ -609,7 +609,6 @@ function magethemes_zen_theme_settings() {
 function magethemes_zen_register_mysettings() {
   //register our settings
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_first_subtitle' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_portfolio_nr' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_first_title' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_first_content' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_first_blockquote' );
@@ -676,7 +675,6 @@ else {
 
 //set default theme options
 add_option('magethemes_zen_theme_first_subtitle', 'We are creative agency', '', 'no' );
-add_option('magethemes_zen_theme_portfolio_nr', '8', '', 'no' );
 add_option('magethemes_zen_theme_first_title', 'Passionate for what we do', '', 'no' );
 add_option('magethemes_zen_theme_first_content', 'ZEN is a perfect template for those who desire simple but bold and contemporary look, with attention to details and typography. It is suitable for corporate, agency, creative, or any general business. The theme is well organized and documented.', '', 'no' );
 add_option('magethemes_zen_theme_first_blockquote', 'Life is really simple, but we insist on making it complicated. - Confucius', '', 'no' );
@@ -763,16 +761,6 @@ function magethemes_zen_theme_settings_page() {
   <textarea rows="5" name="magethemes_zen_theme_first_blockquote"><?php echo get_option('magethemes_zen_theme_first_blockquote'); ?></textarea>
 </div>
 
-<div>
-  <label>Portfolio items to show?</label>
-  <select name="magethemes_zen_theme_portfolio_nr">
-    <option value="4" <?php if(get_option('magethemes_zen_theme_portfolio_nr')==4){ echo ' selected="selected"'; } ?>>4</option>
-    <option value="8" <?php if(get_option('magethemes_zen_theme_portfolio_nr')==8){ echo ' selected="selected"'; } ?>>8</option>
-    <option value="12" <?php if(get_option('magethemes_zen_theme_portfolio_nr')==12){ echo ' selected="selected"'; } ?>>12</option>
-    <option value="16" <?php if(get_option('magethemes_zen_theme_portfolio_nr')==16){ echo ' selected="selected"'; } ?>>16</option>
-    <option value="20" <?php if(get_option('magethemes_zen_theme_portfolio_nr')==20){ echo ' selected="selected"'; } ?>>20</option>
-  </select>
-</div>
 </div>
 
 <h3>Our Services</h3>
