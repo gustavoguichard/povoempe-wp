@@ -71,7 +71,7 @@ get_header(); ?>
           <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
           <?php $image = wp_get_attachment_image_src(get_field('magethemes_zen_image'), 'magethemes_zen_portfolio'); ?>
 
-          <div class="guard">
+          <div class="estabelecimento">
             <a href="#">
               <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>">
             </a>

@@ -378,7 +378,7 @@ textarea {
 
     @extend %clear;
 
-    .guard {
+    .estabelecimento {
       width: 25%;
       display: inline-block;
       margin: -1px;
@@ -481,6 +481,9 @@ textarea {
 } //.projects ends
 
 .team {
+  margin: 0;
+  display: flex;
+  justify-content: center;
 
   h4 {
     line-height: 22px;
@@ -495,7 +498,7 @@ textarea {
 
   .member {
     width: 25%;
-    float: left;
+    margin: 0 0 2em;
     text-align: center;
     overflow: hidden;
 

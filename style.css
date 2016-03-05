@@ -23,7 +23,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
   line-height: 0;
   overflow: hidden; }
 
-.projects .project .guard img:hover, .projects .project .guard img.active {
+.projects .project .estabelecimento img:hover, .projects .project .estabelecimento img.active {
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
@@ -516,17 +516,17 @@ textarea {
     margin-top: 18px;
     z-index: 5;
     padding-bottom: 25px; }
-    .projects .project .guard {
+    .projects .project .estabelecimento {
       width: 25%;
       display: inline-block;
       margin: -1px; }
       @media all and (max-width: 600px) {
-        .projects .project .guard {
+        .projects .project .estabelecimento {
           width: 50%; } }
       @media all and (max-width: 320px) {
-        .projects .project .guard {
+        .projects .project .estabelecimento {
           width: 100%; } }
-      .projects .project .guard img {
+      .projects .project .estabelecimento img {
         width: 100%;
         height: auto;
         float: left; }
@@ -577,68 +577,72 @@ textarea {
         font-style: italic;
         font-size: 15px;*/ }
 
-.team h4 {
-  line-height: 22px;
-  margin-bottom: 16px; }
-  .team h4 span {
-    font-style: italic;
-    text-transform: none;
-    font-weight: normal; }
-.team .member {
-  width: 25%;
-  float: left;
-  text-align: center;
-  overflow: hidden; }
-  @media all and (max-width: 800px) {
-    .team .member {
-      width: 50%;
-      margin-bottom: 20px; } }
-  @media all and (max-width: 320px) {
-    .team .member {
-      width: 100%;
-      margin-bottom: 20px; } }
-  .team .member .image {
-    margin-bottom: 20px;
-    position: relative; }
-    .team .member .image img {
-      float: left;
-      z-index: 5;
-      width: 100%;
-      text-align: center; }
-    .team .member .image .info {
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      background: rgba(51, 51, 51, 0.9);
-      padding: 25px;
-      position: absolute;
-      top: 0;
-      display: none;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box; }
-    .team .member .image p {
-      font-size: .8em; }
-      @media all and (max-width: 800px) {
-        .team .member .image p {
-          font-size: .7em; } }
-      @media all and (max-width: 320px) {
-        .team .member .image p {
-          font-size: 1em; } }
-  .team .member li {
-    display: inline-block;
-    margin: 0 2px; }
-    .team .member li a {
-      font-family: 'FontAwesome';
-      font-size: 14px;
-      display: block;
-      width: 14px;
-      padding: 3px;
-      text-align: center;
-      -webkit-transition: all 0.2s ease-in-out;
-      -moz-transition: all 0.2s ease-in-out;
-      -o-transition: all 0.2s ease-in-out;
-      transition: all 0.2s ease-in-out; }
+.team {
+  margin: 0;
+  display: flex;
+  justify-content: center; }
+  .team h4 {
+    line-height: 22px;
+    margin-bottom: 16px; }
+    .team h4 span {
+      font-style: italic;
+      text-transform: none;
+      font-weight: normal; }
+  .team .member {
+    width: 25%;
+    margin: 0 0 2em;
+    text-align: center;
+    overflow: hidden; }
+    @media all and (max-width: 800px) {
+      .team .member {
+        width: 50%;
+        margin-bottom: 20px; } }
+    @media all and (max-width: 320px) {
+      .team .member {
+        width: 100%;
+        margin-bottom: 20px; } }
+    .team .member .image {
+      margin-bottom: 20px;
+      position: relative; }
+      .team .member .image img {
+        float: left;
+        z-index: 5;
+        width: 100%;
+        text-align: center; }
+      .team .member .image .info {
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        background: rgba(51, 51, 51, 0.9);
+        padding: 25px;
+        position: absolute;
+        top: 0;
+        display: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box; }
+      .team .member .image p {
+        font-size: .8em; }
+        @media all and (max-width: 800px) {
+          .team .member .image p {
+            font-size: .7em; } }
+        @media all and (max-width: 320px) {
+          .team .member .image p {
+            font-size: 1em; } }
+    .team .member li {
+      display: inline-block;
+      margin: 0 2px; }
+      .team .member li a {
+        font-family: 'FontAwesome';
+        font-size: 14px;
+        display: block;
+        width: 14px;
+        padding: 3px;
+        text-align: center;
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out; }
 
 .contact {
   padding: 28px 0;
