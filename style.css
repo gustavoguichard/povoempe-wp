@@ -196,9 +196,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
   line-height: 1.5;
   margin: 9px 0;
   padding-right: 10px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-size: border-box; }
 
 .gallery-caption {
   background-color: rgba(0, 0, 0, 0.7);
@@ -214,9 +212,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
   left: 0;
   text-align: left;
   width: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-size: border-box; }
 
 .gallery-caption:before {
   content: "";
