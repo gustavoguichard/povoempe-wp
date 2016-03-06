@@ -37,22 +37,8 @@ magethemes_zen_create_widget( 'Footer widgets', 'magethemes_zen_footer_widget_id
 
 //load the theme CSS
 function magethemes_zen_theme_styles() {
-
-  $theme_color = get_option('magethemes_zen_theme_color');
-
   wp_enqueue_style( 'magethemes_zen_main', get_template_directory_uri() . '/style.css' );
-
-  if ($theme_color == 'blue') {
-    wp_enqueue_style( 'magethemes_zen_color', get_template_directory_uri() . '/blue.css' );
-
-  } else if($theme_color == 'purple') {
-    wp_enqueue_style( 'magethemes_zen_color', get_template_directory_uri() . '/purple.css' );
-
-  } else {
-    wp_enqueue_style( 'magethemes_zen_color', get_template_directory_uri() . '/green.css' );
-
-  }
-
+  wp_enqueue_style( 'magethemes_zen_color', get_template_directory_uri() . '/green.css' );
   wp_enqueue_style( 'magethemes_zen_font', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css' );
 
 } //load the theme CSS ends!
@@ -85,7 +71,6 @@ add_action('admin_init', 'magethemes_zen_admin_init');
 
 // Google maps initalize
 function magethemes_zen_jScriptUtilities() {
-  $theme_color=get_option('magethemes_zen_theme_color');
   echo "
   <!-- Google Map -->
   <script>
@@ -542,7 +527,6 @@ function magethemes_zen_register_mysettings() {
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_lat' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_lng' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_zoom' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_color' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_bw' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_scrollwhell' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_slider' );
@@ -608,7 +592,6 @@ add_option('magethemes_zen_theme_footer_content', 'Telefone: +55 51 3331-1422', 
 add_option('magethemes_zen_theme_map_lat', '-30.2120678', '', 'no' );
 add_option('magethemes_zen_theme_map_lng', '-51.1973606', '', 'no' );
 add_option('magethemes_zen_theme_map_zoom', '14', '', 'no' );
-add_option('magethemes_zen_theme_color', 'green', '', 'no' );
 add_option('magethemes_zen_theme_map_bw', '1', '', 'no' );
 add_option('magethemes_zen_theme_map_scrollwhell', '1', '', 'no' );
 add_option('magethemes_zen_slider', 'slider', '', 'no' );
