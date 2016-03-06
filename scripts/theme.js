@@ -4,50 +4,35 @@ jQuery(document).ready(function( $ ) {
   // Menu Scroll
   $('.menu a').click(function(event) {
     $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700);
-    event.preventDefault();
   });
 
+  // Theme members
   function toggleGuardDescription(event) {
     var effect = event.type === 'mouseleave' ? 'fadeOut' : 'fadeToggle'
     $(this).find('.info')[effect]("fast", "linear");
   }
-  // Theme members
   $('.member .image').hover(toggleGuardDescription).click(toggleGuardDescription);
 
   // Single Projects
-  $('.home .single').hide(); // hide all .single projects
+  function closeEstabs(event) {
+    $('.project .estab-thumb').removeClass('active');
+    $('.single.active').slideUp('2500', 'swing').removeClass('active');
+    event.preventDefault();
+  }
 
-  $('.project a').on('click', function(e) {
+  $('.project .estab-link').on('click', function(event) {
+    var $image = $('img', this)
+    var id = $(this).data('post-id')
+    var shouldOpen = !$image.hasClass('active')
+    closeEstabs(event)
 
-    if ($(this).children('img').hasClass('active')) {
-
-      $(this).children('img').removeClass('active');
-      $('.single.active').slideToggle('2500', 'swing').removeClass('active');
-
-    } else {
-
-      var item = $(this); // item me clicked on
-      $('.project a').children('img').removeClass('active');
-      item.children('img').addClass('active'); // toogle .active class on clicked item
-
-      var image = item.children('img').attr( 'src' ); // select image in item
-      $('.single.active').slideToggle('2500', 'swing').removeClass('active');
-      $('.single img[src="' + image + '"]').parents('.single').addClass('active').slideToggle( '2500', 'swing' ); // toggle .single project which have same image!
-
-      $(window).scrollTop(item.offset().top); // move to active projects details
-
+    if (shouldOpen) {
+      $image.addClass('active');
+      $('.single[data-post-id="' + id + '"]').addClass('active').slideToggle( '2500', 'swing' );
     }
-
-    e.preventDefault();
   });
 
   // Single Project close button
-  $('.single h2 a').click(function(e) {
-
-    $('.project a').children('img').removeClass('active');
-    $(this).parents('.single').slideUp('2500', 'swing').removeClass('active'); // remove .active class from matching image
-
-    e.preventDefault();
-  });
+  $('.single .close').click(closeEstabs);
 
 });

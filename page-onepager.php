@@ -72,8 +72,8 @@ get_header(); ?>
           <?php $image = wp_get_attachment_image_src(get_field('magethemes_zen_image'), 'magethemes_zen_portfolio'); ?>
 
           <div class="estabelecimento">
-            <a href="#">
-              <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>">
+            <a href="#" class="estab-link" data-post-id="<?php echo get_post_field( 'post_name', get_post() );?>">
+              <img src="<?php echo $image[0]; ?>" class="estab-thumb" alt="<?php the_title(); ?>">
             </a>
           </div>
 
@@ -95,14 +95,14 @@ get_header(); ?>
         if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post();?>
        <?php $image = wp_get_attachment_image_src(get_field('magethemes_zen_image'), 'magethemes_zen_portfolio'); ?>
 
-       <div class="single">
+       <div class="single" data-post-id="<?php echo get_post_field( 'post_name', get_post() );?>" style="display: none;">
 
           <div class="image">
             <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>">
           </div>
 
           <div class="details">
-            <h2><?php the_title(); ?><a href="#"><i class="fa fa-times"></i></a></h2>
+            <h2><?php the_title(); ?><a href="#" class="close"><i class="fa fa-times"></i></a></h2>
             <?php echo get_field( 'magethemes_zen_portfolio_description' ); ?>
           </div>
 
