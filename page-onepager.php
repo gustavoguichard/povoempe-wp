@@ -121,7 +121,7 @@ get_header(); ?>
   <a class="anchor" id="caracteristicas"></a>
   <div class="services bg-parallax">
 
-    <h2><?php echo get_option('magethemes_zen_our_services_title'); ?></h2>
+    <h2 class="green-title"><?php echo get_option('magethemes_zen_our_services_title'); ?></h2>
 
     <!-- Services List -->
     <div class="service">
@@ -232,39 +232,47 @@ get_header(); ?>
   <?php
     $string = file_get_contents(get_template_directory().'/query.json');
     $json_a = json_decode($string, true);
-    $valid_events = array_filter($json_a['events']['data'], function($event) {
-      $today = date(c);
-      $has_start = empty($event['start_time']);
-      $has_end = isset($event['end_time']);
-      $is_scheduled = ($has_end & $event['end_time'] >= $today) || ($has_start & $event['start_time'] >= $today);
-      return($is_scheduled);
-    });
+    $valid_events = array_reverse(
+      array_filter($json_a['events']['data'], function($event) {
+        $today = date(c);
+        $has_start = empty($event['start_time']);
+        $has_end = isset($event['end_time']);
+        $is_scheduled = ($has_end & $event['end_time'] >= $today) || ($has_start & $event['start_time'] >= $today);
+        return($is_scheduled);
+      })
+    );
   ?>
-  <div class="services">
+  <div class="agenda">
     <a class="anchor" id="agenda"></a>
-    <h2>Agenda</h2>
+    <h2 class="green-title">Agenda</h2>
+    <div class="abstract">
     <?php if(empty($valid_events)) : ?>
-      <h3>Sem items na agenda</h3>
+      <br/>
+      <br/>
+      <h2>Sem items na agenda</h2>
     <?php else: ?>
       <?php foreach($valid_events as $event) : ?>
         <?php
           $start_date = new DateTime($event['start_time']);
           $end_date = new DateTime($event['end_time']);
         ?>
-        <article class="agenda-item">
-          <a href="https://www.facebook.com/events/<?php echo $event['id'];?>/" class="agenda-link" target="blank">
-            <?php if(isset($event['cover']['source'])) : ?>
-              <img src="<?php echo $event['cover']['source'] ;?>" alt="Imagem do evento" class="event-image" />
+        <article class="event-item">
+          <a href="https://www.facebook.com/events/<?php echo $event['id'];?>/" class="event-link" target="blank">
+            <?php if(isset($event['cover'])) : ?>
+              <div style="background-image: url(<?php echo $event['cover']['source'] ;?>); background-position: 50% <?php echo $event['cover']['offset_y'] ;?>%;" alt="Imagem do evento" class="event-image"></div>
             <?php endif; ?>
-            <h3 class="event-name"><?php echo $event['name'];?></h3>
-            <p class="event-date">
-              <?php echo $start_date->format('d/m/Y');?>
-              <?php if($end_date > $start_date) { echo ' - '.$end_date->format('d/m/Y'); } ?>
-            </p>
+            <div class="event-details">
+              <h3 class="event-name"><?php echo $event['name'];?></h3>
+              <p class="event-date">
+                <?php echo $start_date->format('d/m/Y');?>
+                <?php if($end_date > $start_date) { echo ' - '.$end_date->format('d/m/Y'); } ?>
+              </p>
+            </div>
           </a>
         </article>
       <?php endforeach; ?>
     <?php endif; ?>
+    </div>
   </div>
 
   <!-- Map -->

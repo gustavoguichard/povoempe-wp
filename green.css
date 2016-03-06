@@ -48,12 +48,26 @@ a {
 .abstract blockquote, .contact blockquote, .big-title blockquote {
   color: #7d6b70; }
 
+.green-title {
+  background: #61744E;
+  color: #f2efe8; }
+
+.event-item:not(:last-child) {
+  border-bottom: 1px solid #80aa52; }
+.event-item .event-name {
+  color: #45360C;
+  border: none;
+  padding-bottom: 0; }
+.event-item .event-date {
+  color: #7d6b70;
+  font-weight: 600;
+  font-size: .9em; }
+.event-item .event-image {
+  border: 2px solid #80aa52; }
+
 .services {
   background: #45360C url(images/bamboos.jpg);
   color: #f2efe8; }
-  .services h2 {
-    background: #61744E;
-    color: #f2efe8; }
   .services h3 {
     color: #61744E; }
   .services .service-item {

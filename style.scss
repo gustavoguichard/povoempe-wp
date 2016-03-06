@@ -314,13 +314,14 @@ textarea {
   }
 }
 
+.green-title {
+  line-height: 76px;
+  font-size: 20px;
+  text-align: center;
+}
+
 .services {
   text-align: center;
-
-  h2 {
-    line-height: 76px;
-    font-size: 20px;
-  }
 
   h3 {
     font-size: 16px;
@@ -367,6 +368,34 @@ textarea {
   }
 
 } //.services ends
+
+.event-item {
+  margin: 1em 0;
+  padding: 10px 10px 20px;
+
+  .event-link {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .event-image {
+    display: block;
+    height: 100px;
+    min-width: 140px;
+    margin: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .event-details {
+    margin: 0 0 0 25px;
+
+    & * {
+      text-align: left;
+    }
+  }
+}
 
 .projects {
   margin-bottom: 25px; //overwrite
