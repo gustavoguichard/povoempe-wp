@@ -191,7 +191,7 @@ get_header(); ?>
     <!-- Member -->
     <div class="member">
       <div class="image">
-          <img src="<?php the_field( 'magethemes_zen_member_image' ); ?>" alt="">
+          <img src="<?php echo str_replace('.jpg', '-480x480.jpg', get_field( 'magethemes_zen_member_image')); ?>" alt="">
           <div class="info">
             <p><?php the_field( 'magethemes_zen_member_description' ); ?></p>
           </div>
