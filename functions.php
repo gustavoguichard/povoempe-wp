@@ -115,7 +115,10 @@ function magethemes_zen_jScriptUtilities() {
         {
           featureType: \"all\",
           stylers: [
-            { saturation: -100 }
+            { saturation: -80 },
+            { gamma: 0.5 },
+            { lightness: 10 },
+            { hue: 220 }
           ]
         }
       ];";
