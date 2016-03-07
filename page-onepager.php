@@ -7,6 +7,9 @@
 
 */
 get_header(); ?>
+<?php
+  require_once(get_template_directory().'/src/facebook-sdk-v5/autoload.php')
+?>
   <?php
     $parallaxbg = get_option('magethemes_zen_theme_logo');
     $videoID = get_option('magethemes_zen_slider_video_id');
