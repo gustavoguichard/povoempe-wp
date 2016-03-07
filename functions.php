@@ -522,8 +522,8 @@ function magethemes_zen_register_mysettings() {
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_contact_form' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_footer_title' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_footer_content' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_social_twitter' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_social_linkedin' );
+  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_facebook_id' );
+  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_facebook_secret' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_lat' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_lng' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_zoom' );
@@ -589,6 +589,8 @@ add_option('magethemes_zen_theme_contact_subtitle', 'Entre em contato', '', 'no'
 add_option('magethemes_zen_theme_contact_title', 'Saiba mais sobre o lugar, cursos, agenda, eventos...', '', 'no' );
 add_option('magethemes_zen_theme_footer_title', 'Avenida Beira Rio, 1135 - Belém Novo - Porto Alegre / RS', '', 'no' );
 add_option('magethemes_zen_theme_footer_content', 'Telefone: +55 51 3331-1422', '', 'no' );
+add_option('magethemes_zen_facebook_id', '', '', 'no' );
+add_option('magethemes_zen_facebook_secret', '', '', 'no' );
 add_option('magethemes_zen_theme_map_lat', '-30.2120678', '', 'no' );
 add_option('magethemes_zen_theme_map_lng', '-51.1973606', '', 'no' );
 add_option('magethemes_zen_theme_map_zoom', '14', '', 'no' );
@@ -736,7 +738,19 @@ function magethemes_zen_theme_settings_page() {
   <label>Content</label>
   <textarea class="input" name="magethemes_zen_theme_footer_content"><?php echo stripcslashes(get_option('magethemes_zen_theme_footer_content')); ?></textarea>
 </div>
+</div>
 
+<h3>Facebook App (Avançado)</h3>
+<div>
+<div>
+  <label>App ID</label>
+  <input type="text" name="magethemes_zen_facebook_id" value="<?php echo get_option('magethemes_zen_facebook_id'); ?>" />
+</div>
+
+<div>
+  <label>App Secret</label>
+  <input type="text" name="magethemes_zen_facebook_secret" value="<?php echo get_option('magethemes_zen_facebook_secret'); ?>" />
+</div>
 </div>
 <?php submit_button(); ?>
 
