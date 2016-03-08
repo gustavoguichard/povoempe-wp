@@ -1,3 +1,4 @@
 .sass-cache/
 *.css.map
 data/*.json
+.git-ftp-tmp
