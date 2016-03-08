@@ -516,9 +516,6 @@ function magethemes_zen_register_mysettings() {
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_au_subtitle' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_au_title' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_au_content' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_contact_subtitle' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_contact_title' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_contact_form' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_footer_title' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_footer_content' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_facebook_id' );
@@ -584,8 +581,6 @@ add_option('magethemes_zen_our_services_title', 'Características', '', 'no' );
 add_option('magethemes_zen_theme_au_subtitle', 'Guardiões do', '', 'no' );
 add_option('magethemes_zen_theme_au_title', 'Povo em Pé', '', 'no' );
 add_option('magethemes_zen_theme_au_content', "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", '', 'no' );
-add_option('magethemes_zen_theme_contact_subtitle', 'Entre em contato', '', 'no' );
-add_option('magethemes_zen_theme_contact_title', 'Saiba mais sobre o lugar, cursos, agenda, eventos...', '', 'no' );
 add_option('magethemes_zen_theme_footer_title', 'Avenida Beira Rio, 1135 - Belém Novo - Porto Alegre / RS', '', 'no' );
 add_option('magethemes_zen_theme_footer_content', 'Telefone: +55 51 3331-1422', '', 'no' );
 add_option('magethemes_zen_facebook_id', '', '', 'no' );
@@ -678,51 +673,6 @@ function magethemes_zen_theme_settings_page() {
 <div>
   <label>Content</label>
   <textarea rows="7" name="magethemes_zen_theme_au_content"><?php echo get_option('magethemes_zen_theme_au_content'); ?></textarea>
-</div>
-</div>
-
-<h3>Contato</h3>
-<div>
-<div>
-  <label>Subtitle</label>
-  <input type="text" name="magethemes_zen_theme_contact_subtitle" value="<?php echo get_option('magethemes_zen_theme_contact_subtitle'); ?>" />
-</div>
-
-<div>
-  <label>Title</label>
-  <input type="text" name="magethemes_zen_theme_contact_title" value="<?php echo get_option('magethemes_zen_theme_contact_title'); ?>" />
-</div>
-<div>
-  <label>Contact form</label>
-  <textarea class="input" name="magethemes_zen_theme_contact_form"><?php echo stripcslashes(get_option('magethemes_zen_theme_contact_form')); ?></textarea>
-</div>
-</div>
-
-<h3>Mapa</h3>
-<div>
-<div>
-  <label>Latitude</label>
-  <input type="text" name="magethemes_zen_theme_map_lat" value="<?php echo get_option('magethemes_zen_theme_map_lat'); ?>" />
-</div>
-
-<div>
-  <label>Longitude</label>
-  <input type="text" name="magethemes_zen_theme_map_lng" value="<?php echo get_option('magethemes_zen_theme_map_lng'); ?>" />
-</div>
-
-<div>
-  <label>Zoom</label>
-  <input type="text" name="magethemes_zen_theme_map_zoom" value="<?php echo get_option('magethemes_zen_theme_map_zoom'); ?>" />
-</div>
-
-<div>
-  <label>Map color</label>
-  <input type="checkbox" name="magethemes_zen_theme_map_bw"<?php if(get_option('magethemes_zen_theme_map_bw')){ echo ' checked="checked"'; } ?> value="1" /> Check if you want map to be black/white
-</div>
-
-<div>
-  <label>Scroll whell</label>
-  <input type="checkbox" name="magethemes_zen_theme_map_scrollwhell"<?php if(get_option('magethemes_zen_theme_map_scrollwhell')){ echo ' checked="checked"'; } ?> value="1" /> Check if you want to disable scroll whell
 </div>
 </div>
 
