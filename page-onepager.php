@@ -250,8 +250,8 @@ get_header(); ?>
     $valid_events = array_reverse(
       array_filter($json_a['events'], function($event) {
         $today = date(c);
-        $has_start = empty($event['start_time']['date']);
-        $has_end = isset($event['end_time'][date]);
+        $has_start = isset($event['start_time']['date']);
+        $has_end = isset($event['end_time']['date']);
         $is_scheduled = ($has_end & $event['end_time']['date'] >= $today) || ($has_start & $event['start_time']['date'] >= $today);
         return($is_scheduled);
       })
