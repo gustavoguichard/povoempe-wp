@@ -18,6 +18,16 @@ a {
   }
 }
 
+.button {
+  color: white;
+  background: $green-light;
+  padding: 3px 10px;
+  float: right;
+  margin: 5px;
+  text-align: center;
+  border-radius: 3px;
+}
+
 .slider .video-container {
   border-color: $cream-light;
 }

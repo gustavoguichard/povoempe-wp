@@ -261,7 +261,7 @@ get_header(); ?>
     <a class="anchor" id="agenda"></a>
     <h2 class="green-title">Agenda</h2>
     <?php if(isset($loginUrl) && !isset($_GET['agenda'])) : ?>
-      <a class="bt" href="<?=$loginUrl?>">ATUALIZAR AGENDA!</a>
+      <a class="button" href="<?=$loginUrl?>">ATUALIZAR AGENDA!</a>
     <?php elseif(isset($_GET['agenda'])) : ?>
       <span>Agenda atualizada</span>
     <?php endif; ?>

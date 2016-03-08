@@ -14,6 +14,15 @@ a {
   a:hover {
     text-decoration: none; }
 
+.button {
+  color: white;
+  background: #80aa52;
+  padding: 3px 10px;
+  float: right;
+  margin: 5px;
+  text-align: center;
+  border-radius: 3px; }
+
 .slider .video-container {
   border-color: #f2efe8; }
 
