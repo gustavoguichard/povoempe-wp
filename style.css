@@ -189,25 +189,18 @@ textarea {
   @media all and (max-width: 680px) {
     .header {
       padding-top: 150px; } }
-  .header h1 {
+  .header .logo-header {
+    background: white no-repeat center;
+    background-size: cover;
+    font-size: 0px;
+    text-indent: -999em;
+    margin-left: -75px;
     position: absolute;
     top: 0;
     left: 50%;
-    z-index: 10;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out; }
-    .header h1:hover {
-      top: -6px; }
-      @media all and (max-width: 680px) {
-        .header h1:hover {
-          top: 0; } }
-    .header h1 .logo-header {
-      display: block;
-      font-size: 1px;
-      margin-left: -75px;
-      width: 150px; }
+    height: 150px;
+    width: 150px;
+    z-index: 10; }
 
 .menu {
   text-align: center; }
@@ -269,7 +262,7 @@ textarea {
   background-size: cover !important; }
 
 .slider {
-  padding: 2em; }
+  padding: 4em 0; }
   .slider .container {
     position: relative;
     width: 100%;

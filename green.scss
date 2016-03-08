@@ -3,7 +3,6 @@
 body {
   font-family: $default-font;
   color: $default-color;
-  background: $footer-background url(#{$assetPath}/pattern_bamboo1.jpg);
 }
 
 h1, h2, h3, h4, h5 {
@@ -39,14 +38,6 @@ a {
 .header {
   .logo-header {
     box-shadow: 0 2px 3px rgba(0,0,0,.2);
-
-    &:hover {
-      box-shadow: 0 2px 6px rgba(0,0,0,.3);
-    }
-  }
-
-  @media all and (max-width: 680px) {
-    /*background: #272727; //matching color of logo*/
   }
 }
 

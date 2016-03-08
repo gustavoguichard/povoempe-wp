@@ -22,8 +22,8 @@
 
       <div class="social">
 
-        <?php if(get_option('magethemes_zen_theme_footer_title')!=''){ ?><h4><?php echo get_option('magethemes_zen_theme_footer_title'); ?></h4><?php } ?>
-        <?php if(get_option('magethemes_zen_theme_footer_content')!=''){ ?><p><?php echo nl2br(get_option('magethemes_zen_theme_footer_content')); ?></p><?php } ?>
+        <?php if(get_option('magethemes_zen_theme_footer_title')!=''){ ?><h4><?= get_option('magethemes_zen_theme_footer_title') ?></h4><?php } ?>
+        <?php if(get_option('magethemes_zen_theme_footer_content')!=''){ ?><p><?= nl2br(get_option('magethemes_zen_theme_footer_content')) ?></p><?php } ?>
       </div>
 
     </div>

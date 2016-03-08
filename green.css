@@ -3,8 +3,7 @@
 /*#b2cd49;*/
 body {
   font-family: "Titillium Web", sans-serif;
-  color: #5f5e5d;
-  background: #45360C url(images/pattern_bamboo1.jpg); }
+  color: #5f5e5d; }
 
 h1, h2, h3, h4, h5 {
   color: #333; }
@@ -31,11 +30,6 @@ a {
 
 .header .logo-header {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); }
-  .header .logo-header:hover {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); }
-@media all and (max-width: 680px) {
-  .header {
-    /*background: #272727; //matching color of logo*/ } }
 
 .menu {
   background: #61744E;

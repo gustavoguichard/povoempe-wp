@@ -20,12 +20,12 @@ get_header(); ?>
     $our_services_title = get_option('magethemes_zen_our_services_title');
   ?>
   <!-- Slider -->
-  <div class="slider bg-parallax" style="background-image: url('<?php echo $parallaxbg['magethemes_zen_parallax_bg']; ?>');">
+  <div class="slider bg-parallax" style="background-image: url('<?= $parallaxbg['magethemes_zen_parallax_bg'] ?>');">
 
     <div class="container">
       <div class="video-container">
         <div class="videoWrapper">
-          <iframe src="https://player.vimeo.com/video/<?php echo $video_id ; ?>?color=61744E&title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          <iframe src="https://player.vimeo.com/video/<?= $video_id ?>?color=61744E&title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -41,13 +41,13 @@ get_header(); ?>
 
         <!-- Title -->
         <div class="big-title">
-        <?php if($first_subtitle!=''){ ?><h2><?php echo $first_subtitle; ?></h2><?php } ?>
-        <?php if($first_title!=''){ ?><h3><?php echo $first_title; ?></h3><?php } ?>
+        <?php if($first_subtitle!=''){ ?><h2><?= $first_subtitle ?></h2><?php } ?>
+        <?php if($first_title!=''){ ?><h3><?= $first_title ?></h3><?php } ?>
         </div>
         <!-- Title Ends! -->
 
-        <?php if($first_content!=''){ ?><p><?php echo nl2br($first_content); ?></p><?php } ?>
-        <?php if($first_blockquote!=''){ ?><blockquote><p><?php echo nl2br($first_blockquote); ?></p></blockquote><?php } ?>
+        <?php if($first_content!=''){ ?><p><?= nl2br($first_content) ?></p><?php } ?>
+        <?php if($first_blockquote!=''){ ?><blockquote><p><?= nl2br($first_blockquote) ?></p></blockquote><?php } ?>
 
       </div>
       <!-- Abstract Ends! -->
@@ -75,13 +75,13 @@ get_header(); ?>
         ?>
 
         <!-- Projects List -->
-        <div class="project" data-id="<?php echo 'founded'.floor($the_query->found_posts/8); ?>">
+        <div class="project" data-id="<?= 'founded'.floor($the_query->found_posts/8) ?>">
           <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
           <?php $image = wp_get_attachment_image_src(get_field('magethemes_zen_image'), 'magethemes_zen_portfolio'); ?>
 
           <div class="estabelecimento">
-            <a href="#" class="estab-link" data-post-id="<?php echo get_post_field( 'post_name', get_post() );?>">
-              <img src="<?php echo $image[0]; ?>" class="estab-thumb" alt="<?php the_title(); ?>">
+            <a href="#" class="estab-link" data-post-id="<?= get_post_field( 'post_name', get_post() ) ?>">
+              <img src="<?= $image[0] ?>" class="estab-thumb" alt="<?php the_title(); ?>">
             </a>
           </div>
 
@@ -103,15 +103,15 @@ get_header(); ?>
         if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post();?>
        <?php $image = wp_get_attachment_image_src(get_field('magethemes_zen_image'), 'magethemes_zen_portfolio'); ?>
 
-       <div class="single" data-post-id="<?php echo get_post_field( 'post_name', get_post() );?>" style="display: none;">
+       <div class="single" data-post-id="<?= get_post_field( 'post_name', get_post() ) ?>" style="display: none;">
 
           <div class="image">
-            <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>">
+            <img src="<?= $image[0]; ?>" alt="<?php the_title() ?>">
           </div>
 
           <div class="details">
             <h2><?php the_title(); ?><a href="#" class="close"><i class="fa fa-times"></i></a></h2>
-            <?php echo get_field( 'magethemes_zen_portfolio_description' ); ?>
+            <?= get_field( 'magethemes_zen_portfolio_description' ) ?>
           </div>
 
         </div>
@@ -129,7 +129,7 @@ get_header(); ?>
   <a class="anchor" id="caracteristicas"></a>
   <div class="services bg-parallax">
 
-    <h2 class="green-title"><?php echo $our_services_title; ?></h2>
+    <h2 class="green-title"><?= $our_services_title ?></h2>
 
     <!-- Services List -->
     <div class="service">
@@ -172,12 +172,12 @@ get_header(); ?>
 
         <!-- Title -->
         <div class="big-title">
-          <?php if($au_subtitle!=''){ ?><h2><?php echo $au_subtitle; ?></h2><?php } ?>
-          <?php if($au_title!=''){ ?><h3><?php echo $au_title; ?></h3><?php } ?>
+          <?php if($au_subtitle!=''){ ?><h2><?= $au_subtitle ?></h2><?php } ?>
+          <?php if($au_title!=''){ ?><h3><?= $au_title ?></h3><?php } ?>
         </div>
         <!-- Title Ends! -->
 
-        <?php if($au_content!=''){ ?><p><?php echo $au_content; ?></p><?php } ?>
+        <?php if($au_content!=''){ ?><p><?= $au_content ?></p><?php } ?>
 
       </div>
       <!-- About Ends! -->
@@ -199,7 +199,7 @@ get_header(); ?>
     <!-- Member -->
     <div class="member">
       <div class="image">
-          <img src="<?php echo str_replace('.jpg', '-480x480.jpg', get_field( 'magethemes_zen_member_image')); ?>" alt="">
+          <img src="<?= str_replace('.jpg', '-480x480.jpg', get_field( 'magethemes_zen_member_image')) ?>" alt="">
           <div class="info">
             <p><?php the_field( 'magethemes_zen_member_description' ); ?></p>
           </div>
@@ -219,24 +219,6 @@ get_header(); ?>
   </div>
   <!-- Page Ends! -->
 
-  <!-- Contact
-  <div class="contact">
-    <div class="container">
-
-      <div class="form">
-
-        <div class="title">
-          <?php if(get_option('magethemes_zen_theme_contact_subtitle')!=''){ ?><h2><?php echo get_option('magethemes_zen_theme_contact_subtitle'); ?></h2><?php } ?>
-          <?php if(get_option('magethemes_zen_theme_contact_title')!=''){ ?><h3><?php echo get_option('magethemes_zen_theme_contact_title'); ?></h3><?php } ?>
-        </div>
-
-        <?php echo do_shortcode( get_option('magethemes_zen_theme_contact_form') ) ?>
-
-      </div>
-
-    </div>
-  </div>
-  <!-- Contact Ends! -->
   <?php
     global $fb;
     if(current_user_can( 'publish_posts' ) && !isset($_SESSION['facebook_access_token']) && isset($fb)) {
@@ -277,14 +259,14 @@ get_header(); ?>
           $end_date = new DateTime($event['end_time']['date']);
         ?>
         <article class="event-item">
-          <a href="https://www.facebook.com/events/<?php echo $event['id'];?>/" class="event-link" target="blank">
+          <a href="https://www.facebook.com/events/<?= $event['id'] ?>/" class="event-link" target="blank">
             <?php if(isset($event['cover'])) : ?>
-              <div style="background-image: url(<?php echo $event['cover']['source'] ;?>); background-position: 50% <?php echo $event['cover']['offset_y'] ;?>%;" alt="Imagem do evento" class="event-image"></div>
+              <div style="background-image: url(<?= $event['cover']['source'] ?>); background-position: 50% <?= $event['cover']['offset_y'] ?>%;" alt="Imagem do evento" class="event-image"></div>
             <?php endif; ?>
             <div class="event-details">
-              <h3 class="event-name"><?php echo $event['name'];?></h3>
+              <h3 class="event-name"><?= $event['name'] ?></h3>
               <p class="event-date">
-                <?php echo $start_date->format('d/m/Y');?>
+                <?= $start_date->format('d/m/Y') ?>
                 <?php if($end_date > $start_date) { echo ' - '.$end_date->format('d/m/Y'); } ?>
               </p>
             </div>

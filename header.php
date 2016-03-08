@@ -42,13 +42,13 @@
   <!-- Header -->
   <div class="header">
 
-    <h1><a href="<?php echo $url; ?>" class="logo-header"><img src="<?php echo $logo['magethemes_zen_theme_logo']; ?>" title="<?php echo $name_bloginfo; ?>" width="150" alt="<?php echo $name_bloginfo; ?> logo" /></a></h1>
+    <h1 class="logo-header" style="background-image: url(<?= $logo['magethemes_zen_theme_logo'] ?>)" title="<?= $name_bloginfo ?>"><?= $name_bloginfo ?></h1>
 
     <!-- Menu -->
     <div class="menu">
       <div class="container">
-        <?php echo top_side_menu('left-side-menu'); ?>
-        <?php echo top_side_menu('right-side-menu'); ?>
+        <?= top_side_menu('left-side-menu') ?>
+        <?= top_side_menu('right-side-menu') ?>
       </div>
     </div>
      <!-- Menu Ends -->

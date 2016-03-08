@@ -93,30 +93,20 @@ textarea {
     padding-top: 150px; //height of the logo
   }
 
-  h1 {
+  .logo-header {
+    background: white no-repeat center;
+    background-size: cover;
+    font-size: 0px;
+    text-indent: -999em;
+    margin-left: -75px;
     position: absolute;
     top: 0;
     left: 50%;
+    height: 150px;
+    width: 150px;
     z-index: 10;
-
-    @include transition(all, .2s);
-
-    &:hover {
-      top: -6px;
-
-      @media all and (max-width: 680px) {
-        top: 0;
-      }
-    }
-
-    .logo-header {
-      display: block;
-      font-size: 1px;
-      margin-left: -75px;
-      width: 150px;
-    }
   }
-} //.header ends
+}
 
 .menu {
   text-align: center;
@@ -208,7 +198,7 @@ textarea {
 
 .slider {
   @extend %clear;
-  padding: 2em;
+  padding: 4em 0;
 
   .container {
     position: relative;
