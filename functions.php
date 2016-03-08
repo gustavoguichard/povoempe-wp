@@ -83,7 +83,6 @@ function magethemes_zen_jScriptUtilities() {
         scrollwheel: ";
     if (get_option('magethemes_zen_theme_map_scrollwhell')) { echo "false"; } else { echo "true"; }
     echo ",
-        disableDefaultUI: true
       }
 
       var map = new google.maps.Map(document.getElementById('map_canvas'), map_options);";
