@@ -9,7 +9,7 @@
 get_header(); ?>
 <?php
 global $fb;
-if(isset($fb) && current_user_can( 'manage_options' ) && isset($_REQUEST['code'])) {
+if(isset($fb) && current_user_can( 'publish_posts' ) && isset($_REQUEST['code'])) {
   try {
     $token = $fb->getRedirectLoginHelper()->getAccessToken();
   } catch(Facebook\Exceptions\FacebookResponseException $e) {

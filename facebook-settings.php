@@ -2,7 +2,7 @@
   if(!session_id()) {
     session_start();
   }
-  if(!isset($fb) && current_user_can( 'manage_options' )) {
+  if(!isset($fb) && current_user_can( 'publish_posts' )) {
     require_once(get_template_directory().'/src/facebook-sdk-v5/autoload.php');
     global $fb, $facebook_id, $facebook_secret;
     $facebook_id = get_option('magethemes_zen_facebook_id');

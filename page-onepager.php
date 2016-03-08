@@ -239,7 +239,7 @@ get_header(); ?>
   <!-- Contact Ends! -->
   <?php
     global $fb;
-    if(current_user_can( 'manage_options' ) && !isset($_SESSION['facebook_access_token']) && isset($fb)) {
+    if(current_user_can( 'publish_posts' ) && !isset($_SESSION['facebook_access_token']) && isset($fb)) {
       $helper = $fb->getRedirectLoginHelper();
       $permissions = ['email'];
       $loginUrl = $helper->getLoginUrl(get_option("siteurl").'/login-callback/', $permissions);
