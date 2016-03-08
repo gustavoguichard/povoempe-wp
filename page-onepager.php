@@ -7,12 +7,17 @@
 
 */
 get_header(); ?>
-<?php
-  require_once(get_template_directory().'/src/facebook-sdk-v5/autoload.php')
-?>
   <?php
     $parallaxbg = get_option('magethemes_zen_theme_logo');
-    $videoID = get_option('magethemes_zen_slider_video_id');
+    $video_id = get_option('magethemes_zen_slider_video_id');
+    $au_subtitle = get_option('magethemes_zen_theme_au_subtitle');
+    $au_title = get_option('magethemes_zen_theme_au_title');
+    $au_content = get_option('magethemes_zen_theme_au_content');
+    $first_subtitle = get_option('magethemes_zen_theme_first_subtitle');
+    $first_title = get_option('magethemes_zen_theme_first_title');
+    $first_content = get_option('magethemes_zen_theme_first_content');
+    $first_blockquote = get_option('magethemes_zen_theme_first_blockquote');
+    $our_services_title = get_option('magethemes_zen_our_services_title');
   ?>
   <!-- Slider -->
   <div class="slider bg-parallax" style="background-image: url('<?php echo $parallaxbg['magethemes_zen_parallax_bg']; ?>');">
@@ -20,7 +25,7 @@ get_header(); ?>
     <div class="container">
       <div class="video-container">
         <div class="videoWrapper">
-          <iframe src="https://player.vimeo.com/video/<?php echo $videoID ; ?>?color=61744E&title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          <iframe src="https://player.vimeo.com/video/<?php echo $video_id ; ?>?color=61744E&title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -36,13 +41,13 @@ get_header(); ?>
 
         <!-- Title -->
         <div class="big-title">
-        <?php if(get_option('magethemes_zen_theme_first_subtitle')!=''){ ?><h2><?php echo get_option('magethemes_zen_theme_first_subtitle'); ?></h2><?php } ?>
-        <?php if(get_option('magethemes_zen_theme_first_title')!=''){ ?><h3><?php echo get_option('magethemes_zen_theme_first_title'); ?></h3><?php } ?>
+        <?php if($first_subtitle!=''){ ?><h2><?php echo $first_subtitle; ?></h2><?php } ?>
+        <?php if($first_title!=''){ ?><h3><?php echo $first_title; ?></h3><?php } ?>
         </div>
         <!-- Title Ends! -->
 
-        <?php if(get_option('magethemes_zen_theme_first_content')!=''){ ?><p><?php echo nl2br(get_option('magethemes_zen_theme_first_content')); ?></p><?php } ?>
-        <?php if(get_option('magethemes_zen_theme_first_blockquote')!=''){ ?><blockquote><p><?php echo nl2br(get_option('magethemes_zen_theme_first_blockquote')); ?></p></blockquote><?php } ?>
+        <?php if($first_content!=''){ ?><p><?php echo nl2br($first_content); ?></p><?php } ?>
+        <?php if($first_blockquote!=''){ ?><blockquote><p><?php echo nl2br($first_blockquote); ?></p></blockquote><?php } ?>
 
       </div>
       <!-- Abstract Ends! -->
@@ -124,7 +129,7 @@ get_header(); ?>
   <a class="anchor" id="caracteristicas"></a>
   <div class="services bg-parallax">
 
-    <h2 class="green-title"><?php echo get_option('magethemes_zen_our_services_title'); ?></h2>
+    <h2 class="green-title"><?php echo $our_services_title; ?></h2>
 
     <!-- Services List -->
     <div class="service">
@@ -167,12 +172,12 @@ get_header(); ?>
 
         <!-- Title -->
         <div class="big-title">
-          <?php if(get_option('magethemes_zen_theme_au_subtitle')!=''){ ?><h2><?php echo get_option('magethemes_zen_theme_au_subtitle'); ?></h2><?php } ?>
-          <?php if(get_option('magethemes_zen_theme_au_title')!=''){ ?><h3><?php echo get_option('magethemes_zen_theme_au_title'); ?></h3><?php } ?>
+          <?php if($au_subtitle!=''){ ?><h2><?php echo $au_subtitle; ?></h2><?php } ?>
+          <?php if($au_title!=''){ ?><h3><?php echo $au_title; ?></h3><?php } ?>
         </div>
         <!-- Title Ends! -->
 
-        <?php if(get_option('magethemes_zen_theme_au_content')!=''){ ?><p><?php echo get_option('magethemes_zen_theme_au_content'); ?></p><?php } ?>
+        <?php if($au_content!=''){ ?><p><?php echo $au_content; ?></p><?php } ?>
 
       </div>
       <!-- About Ends! -->
@@ -233,14 +238,21 @@ get_header(); ?>
   </div>
   <!-- Contact Ends! -->
   <?php
-    $string = file_get_contents(get_template_directory().'/query.json');
+    global $fb;
+    if(current_user_can( 'manage_options' ) && !isset($_SESSION['facebook_access_token']) && isset($fb)) {
+      $helper = $fb->getRedirectLoginHelper();
+      $permissions = ['email'];
+      $loginUrl = $helper->getLoginUrl(get_option("siteurl").'/login-callback/', $permissions);
+    }
+
+    $string = file_get_contents(get_template_directory().'/data/events.json');
     $json_a = json_decode($string, true);
     $valid_events = array_reverse(
-      array_filter($json_a['events']['data'], function($event) {
+      array_filter($json_a['events'], function($event) {
         $today = date(c);
-        $has_start = empty($event['start_time']);
-        $has_end = isset($event['end_time']);
-        $is_scheduled = ($has_end & $event['end_time'] >= $today) || ($has_start & $event['start_time'] >= $today);
+        $has_start = empty($event['start_time']['date']);
+        $has_end = isset($event['end_time'][date]);
+        $is_scheduled = ($has_end & $event['end_time']['date'] >= $today) || ($has_start & $event['start_time']['date'] >= $today);
         return($is_scheduled);
       })
     );
@@ -248,6 +260,11 @@ get_header(); ?>
   <div class="agenda">
     <a class="anchor" id="agenda"></a>
     <h2 class="green-title">Agenda</h2>
+    <?php if(isset($loginUrl) && !isset($_GET['agenda'])) : ?>
+      <a class="bt" href="<?=$loginUrl?>">ATUALIZAR AGENDA!</a>
+    <?php elseif(isset($_GET['agenda'])) : ?>
+      <span>Agenda atualizada</span>
+    <?php endif; ?>
     <div class="abstract">
     <?php if(empty($valid_events)) : ?>
       <br/>
@@ -256,8 +273,8 @@ get_header(); ?>
     <?php else: ?>
       <?php foreach($valid_events as $event) : ?>
         <?php
-          $start_date = new DateTime($event['start_time']);
-          $end_date = new DateTime($event['end_time']);
+          $start_date = new DateTime($event['start_time']['date']);
+          $end_date = new DateTime($event['end_time']['date']);
         ?>
         <article class="event-item">
           <a href="https://www.facebook.com/events/<?php echo $event['id'];?>/" class="event-link" target="blank">

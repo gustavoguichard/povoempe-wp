@@ -1,3 +1,6 @@
+<?php
+  require(get_template_directory().'/facebook-settings.php');
+?>
 <?php $name_bloginfo = html_entity_decode(get_bloginfo('name')); $url = home_url();  $logo = get_option('magethemes_zen_theme_logo'); ?>
 <!DOCTYPE html>
 <html <?php language_attributes() ?>>
@@ -12,7 +15,6 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-
 <?php
   function top_side_menu($menu_name) {
     $menu_list ='';
