@@ -1,7 +1,7 @@
 <?php
+require(get_template_directory().'/globals.php');
 
 if ( ! isset( $content_width ) ) $content_width = 960;
-
 /* add_theme_support( 'custom-header' ); //custom header/used for header image
 add_theme_support( 'custom-background' ); //custom backgournd/used for paralax background */
 add_theme_support( 'menus' ); //enable custom menus
@@ -481,6 +481,7 @@ function magethemes_zen_theme_settings() {
   add_menu_page('Opções do Template', 'Opções do Template', 'administrator', __FILE__, 'magethemes_zen_theme_settings_page','dashicons-edit');
 
   remove_menu_page( 'edit.php' );                   //Posts
+  remove_menu_page( 'edit.php?post_type=page' );    //Pages
   remove_menu_page( 'edit-comments.php' );          //Comments
 
   //call register settings function
@@ -489,13 +490,11 @@ function magethemes_zen_theme_settings() {
 
 
 function magethemes_zen_register_mysettings() {
-  //register our settings
+  global $menus;
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_first_subtitle' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_first_title' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_first_content' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_first_blockquote' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_logo', 'magethemes_zen_validate_setting' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_our_services_title' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_au_subtitle' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_au_title' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_au_content' );
@@ -503,50 +502,15 @@ function magethemes_zen_register_mysettings() {
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_footer_content' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_facebook_id' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_facebook_secret' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_lat' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_lng' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_zoom' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_bw' );
-  register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_theme_map_scrollwhell' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_slider' );
   register_setting( 'magethemes_zen_settings-group', 'magethemes_zen_slider_video_id' );
-}
-
-function magethemes_zen_validate_setting($theme_logo) { $keys = array_keys($_FILES); $i = 0; foreach ( $_FILES as $image ) {
-// if a files was upload
-if ($image['size']) {
-
-  // if it is an image
-  if ( preg_match('/(jpg|jpeg|png|gif)$/', $image['type']) ) {
-    $override = array('test_form' => false);
-
-    // save the file, and store an array, containing its location in $file
-    $file = wp_handle_upload( $image, $override );
-    $theme_logo[$keys[$i]] = $file['url'];
-  } else {
-
-    // Not an image.
-    $options = get_option('magethemes_zen_theme_logo');
-    $theme_logo[$keys[$i]] = $options[$logo];
-
-    // Die and let the user know that they made a mistake.
-    wp_die('No image was uploaded.');}
+  foreach ($menus as $item) {
+    register_setting('magethemes_zen_settings-group', 'magethemes_zen_menu_'.$item);
   }
-
-// Else, the user didn't upload a file.
-// Retain the image that's already on file.
-else {
-    $options = get_option('magethemes_zen_theme_logo');
-    $theme_logo[$keys[$i]] = $options[$keys[$i]];
-  }
-
-  $i++;
-
-  } return $theme_logo;
 }
-
 
 //set default theme options
+global $menus;
 add_option('magethemes_zen_theme_first_subtitle', 'Espaço', '', 'no' );
 add_option('magethemes_zen_theme_first_title', 'Povo em Pé', '', 'no' );
 add_option('magethemes_zen_theme_first_content', 'Este espaço honra os irmãos que habitam junto com nós, duas pernas, a Mãe Terra.
@@ -560,7 +524,6 @@ Aqui, como guardiões, promovemos encontros do Movimento Mundial pela Paz, facil
 Estamos abertos aos irmãos que queiram trazer seus saberes e o frescor da Mãe Terra!', '', 'no' );
 add_option('magethemes_zen_theme_first_blockquote', 'Meu nome é o glorioso nascido do lótus. Eu catalizo luz-calor interior.
 Que todos os seres habitem a Divina Presença comigo.', '', 'no' );
-add_option('magethemes_zen_our_services_title', 'Características', '', 'no' );
 add_option('magethemes_zen_theme_au_subtitle', 'Guardiões do', '', 'no' );
 add_option('magethemes_zen_theme_au_title', 'Povo em Pé', '', 'no' );
 add_option('magethemes_zen_theme_au_content', "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", '', 'no' );
@@ -568,14 +531,12 @@ add_option('magethemes_zen_theme_footer_title', 'Avenida Beira Rio, 1135 - Belé
 add_option('magethemes_zen_theme_footer_content', 'Telefone: +55 51 3331-1422', '', 'no' );
 add_option('magethemes_zen_facebook_id', '', '', 'no' );
 add_option('magethemes_zen_facebook_secret', '', '', 'no' );
-add_option('magethemes_zen_theme_map_lat', '-30.2120678', '', 'no' );
-add_option('magethemes_zen_theme_map_lng', '-51.1973606', '', 'no' );
-add_option('magethemes_zen_theme_map_zoom', '14', '', 'no' );
-add_option('magethemes_zen_theme_map_bw', '1', '', 'no' );
-add_option('magethemes_zen_theme_map_scrollwhell', '1', '', 'no' );
 add_option('magethemes_zen_slider', 'slider', '', 'no' );
 add_option('magethemes_zen_slider_video_id', '127496191', '', 'no' );
-add_option('magethemes_zen_theme_logo', array("magethemes_zen_theme_logo"=>get_template_directory_uri().'/images/logo.jpg', "magethemes_zen_parallax_bg"=>get_template_directory_uri().'/images/parallax.jpg'), '', 'no' );
+foreach ($menus as $item) {
+  add_option('magethemes_zen_menu_'.$item, '', '', 'no' );
+}
+
 
 // Theme Options admin markap
 function magethemes_zen_theme_settings_page() {
@@ -588,21 +549,18 @@ function magethemes_zen_theme_settings_page() {
 
 <?php settings_fields( 'magethemes_zen_settings-group' ); ?>
 <?php do_settings_sections( 'magethemes_zen_settings-group' ); ?>
-<h3>Theme Logo</h3>
-<?php $logo = get_option('magethemes_zen_theme_logo'); ?>
-<div><img src="<?php echo $logo['magethemes_zen_theme_logo']; ?>" alt="theme logo" style="max-width:622px; height:auto;" /><br/>
-<input type="file" name="magethemes_zen_theme_logo" />
+<h3>Menus</h3>
+<div>
+<?php global $menus; foreach ($menus as $item) : ?>
+<div>
+  <label><?= $item ?></label>
+  <input type="text" name="magethemes_zen_menu_<?= $item ?>" value="<?php echo get_option('magethemes_zen_menu_'.$item); ?>" />
+</div>
+<?php endforeach; ?>
 </div>
 
 <h3>Opções do banner</h3>
-
 <div>
-  <label>Slider type</label>
-  <div id="parallax_link">
-  Parallax background image<br/>
-<img src="<?php echo $logo['magethemes_zen_parallax_bg']; ?>" style="max-width:622px; height:auto;" alt="parallax image" /><br/>
-<input type="file" name="magethemes_zen_parallax_bg" />
-  </div>
   <div id="video_link"><label>Slider video link</label>
   <input type="text" name="magethemes_zen_slider_video_id" value="<?php echo get_option('magethemes_zen_slider_video_id'); ?>" />
   </div>

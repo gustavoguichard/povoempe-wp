@@ -182,15 +182,11 @@ textarea {
   z-index: 10;
   padding-top: 38px;
   position: relative; }
-  .header .left-side-menu {
-    padding-right: 120px; }
-  .header .right-side-menu {
-    padding-left: 120px; }
-  @media all and (max-width: 680px) {
+  @media all and (max-width: 860px) {
     .header {
       padding-top: 150px; } }
   .header .logo-header {
-    background: white no-repeat center;
+    background: white url("images/logo.jpg") no-repeat center;
     background-size: cover;
     font-size: 0px;
     text-indent: -999em;
@@ -204,35 +200,23 @@ textarea {
 
 .menu {
   text-align: center; }
-  .menu ul {
-    text-align: center;
-    width: 50%;
-    float: left;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box; }
-    .menu ul.left-side-menu li {
-      float: right; }
-    .menu ul.right-side-menu li {
+  @media all and (min-width: 860px) {
+    .menu .menu-content {
+      display: flex;
+      justify-content: space-around;
+      width: 50%;
       float: left; }
-  .menu .sub-menu {
-    display: none;
-    z-index: 100;
-    background: red;
-    position: absolute;
-    left: 0;
-    top: 65px;
-    width: 100%; }
-    .menu .sub-menu li {
-      float: left;
-      width: auto; }
-      .menu .sub-menu li a {
-        display: block;
-        padding: 15px;
-        text-align: left;
-        white-space: nowrap; }
-  .menu .right-side {
-    padding-left: 210px; }
+    .menu .left-side-menu {
+      text-align: right;
+      padding-right: 120px; }
+    .menu .right-side-menu {
+      padding-left: 120px; } }
+  .menu .menu-content {
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center; }
+    .menu .menu-content li {
+      display: inline-block; }
   .menu li {
     position: relative; }
     .menu li:hover ul {
@@ -244,11 +228,8 @@ textarea {
       text-transform: uppercase;
       padding: 25px 15px;
       display: block;
-      -webkit-transition: all 0.2s ease-in-out;
-      -moz-transition: all 0.2s ease-in-out;
-      -o-transition: all 0.2s ease-in-out;
-      transition: all 0.2s ease-in-out; }
-      @media all and (max-width: 800px) {
+      transition: all .2s; }
+      @media all and (max-width: 860px) {
         .menu li a {
           padding: 25px 5px; } }
       @media all and (max-width: 680px) {
@@ -262,7 +243,8 @@ textarea {
   background-size: cover !important; }
 
 .slider {
-  padding: 4em 0; }
+  padding: 4em 0;
+  background-image: url("images/bamboos.jpg"); }
   .slider .container {
     position: relative;
     width: 100%;

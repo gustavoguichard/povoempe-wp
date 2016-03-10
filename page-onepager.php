@@ -8,7 +8,6 @@
 */
 get_header(); ?>
   <?php
-    $parallaxbg = get_option('magethemes_zen_theme_logo');
     $video_id = get_option('magethemes_zen_slider_video_id');
     $au_subtitle = get_option('magethemes_zen_theme_au_subtitle');
     $au_title = get_option('magethemes_zen_theme_au_title');
@@ -20,7 +19,7 @@ get_header(); ?>
     $our_services_title = get_option('magethemes_zen_our_services_title');
   ?>
   <!-- Slider -->
-  <div class="slider bg-parallax" style="background-image: url('<?= $parallaxbg['magethemes_zen_parallax_bg'] ?>');">
+  <div class="slider bg-parallax">
 
     <div class="container">
       <div class="video-container">

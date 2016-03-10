@@ -81,20 +81,12 @@ textarea {
   padding-top: 38px;
   position: relative;
 
-  .left-side-menu {
-    padding-right: 120px;
-  }
-
-  .right-side-menu {
-    padding-left: 120px;
-  }
-
-  @media all and (max-width: 680px) {
+  @media all and (max-width: 860px) {
     padding-top: 150px; //height of the logo
   }
 
   .logo-header {
-    background: white no-repeat center;
+    background: white url('images/logo.jpg') no-repeat center;
     background-size: cover;
     font-size: 0px;
     text-indent: -999em;
@@ -111,55 +103,33 @@ textarea {
 .menu {
   text-align: center;
 
-  ul {
-    text-align: center;
-    width: 50%;
-    float: left;
-
-    @include box-sizing(border-box);
-
-    &.left-side-menu {
-
-      li {
-        float: right;
-      }
+  @media all and (min-width: 860px) {
+    .menu-content {
+      display: flex;
+      justify-content: space-around;
+      width: 50%;
+      float: left;
     }
 
-    &.right-side-menu {
+    .left-side-menu {
+      text-align: right;
+      padding-right: 120px;
+    }
 
-      li {
-        float: left;
-      }
+    .right-side-menu {
+      padding-left: 120px;
     }
   }
 
-  .sub-menu {
-    display: none;
-    z-index: 100;
-    background: red;
-    position: absolute;
-    left: 0;
-    top: 65px;
+  .menu-content {
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
 
-    width: 100%; //reset
-
-    //@extend %clear;
 
     li {
-      float: left;
-      width: auto;
-
-      a {
-        display: block;
-        padding: 15px;
-        text-align: left;
-        white-space: nowrap;
-      }
+      display: inline-block;
     }
-  }
-
-  .right-side {
-    padding-left: 210px;
   }
 
   li {
@@ -176,9 +146,9 @@ textarea {
       text-transform: uppercase;
       padding: 25px 15px;
       display: block;
-      @include transition(all, .2s);
+      transition: all .2s;
 
-      @media all and (max-width: 800px) {
+      @media all and (max-width: 860px) {
         padding: 25px 5px;
       }
 
@@ -199,6 +169,7 @@ textarea {
 .slider {
   @extend %clear;
   padding: 4em 0;
+  background-image: url('images/bamboos.jpg');
 
   .container {
     position: relative;

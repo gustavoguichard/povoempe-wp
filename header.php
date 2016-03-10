@@ -1,7 +1,9 @@
 <?php
   require(get_template_directory().'/facebook-settings.php');
+  require(get_template_directory().'/globals.php');
+  $name_bloginfo = html_entity_decode(get_bloginfo('name'));
+  $url = home_url();
 ?>
-<?php $name_bloginfo = html_entity_decode(get_bloginfo('name')); $url = home_url();  $logo = get_option('magethemes_zen_theme_logo'); ?>
 <!DOCTYPE html>
 <html <?php language_attributes() ?>>
 <head>
@@ -10,31 +12,20 @@
 <meta name="Keywords" content="">
 <meta name="Description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 <?php
-  function top_side_menu($menu_name) {
-    $menu_list ='';
-    if ( ($locations = get_nav_menu_locations()) && isset($locations[$menu_name]) ) {
-      $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-      $menu_items = wp_get_nav_menu_items($menu->term_id);
-      $menu_list = '<ul class="'.$menu_name.'">';
-
-      foreach ( (array) $menu_items as $menu_item ) {
-        $title = $menu_item->title;
-        $id = get_post_meta( $menu_item->ID, '_menu_item_object_id', true );
-        $menuurl = $menu_item->url;
-        $menu_list .= '<li class="item">
-                        <a href="'.$menuurl.'" class="title">'.$title.'</a>
-                      </li>';
-      }
-      $menu_list .= '</ul>';
-    }
-    return($menu_list);
+function top_side_menu($menu_list) {
+  foreach ($menu_list as $item) {
+    $menu_name = get_option('magethemes_zen_menu_'.$item);
+    ?>
+    <li class="item">
+      <a href="#<?= sanitize_title($menu_name) ?>" class="title"><?= $menu_name ?></a>
+    </li>
+  <?php
   }
+};
 ?>
 
 <div class="main">
@@ -42,13 +33,18 @@
   <!-- Header -->
   <div class="header">
 
-    <h1 class="logo-header" style="background-image: url(<?= $logo['magethemes_zen_theme_logo'] ?>)" title="<?= $name_bloginfo ?>"><?= $name_bloginfo ?></h1>
+    <h1 class="logo-header" title="<?= $name_bloginfo ?>"><?= $name_bloginfo ?></h1>
 
     <!-- Menu -->
     <div class="menu">
       <div class="container">
-        <?= top_side_menu('left-side-menu') ?>
-        <?= top_side_menu('right-side-menu') ?>
+        <?php global $menu_left, $menu_right; ?>
+        <ul class="menu-content left-side-menu">
+          <?= top_side_menu($menu_left) ?>
+        </ul>
+        <ul class="menu-content right-side-menu">
+          <?= top_side_menu($menu_right) ?>
+        </ul>
       </div>
     </div>
      <!-- Menu Ends -->
