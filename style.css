@@ -206,11 +206,12 @@ textarea {
       justify-content: space-around;
       width: 50%;
       float: left; }
-    .menu .left-side-menu {
-      text-align: right;
-      padding-right: 120px; }
-    .menu .right-side-menu {
-      padding-left: 120px; } }
+      .menu .menu-content.left-side-menu {
+        text-align: right;
+        padding-right: 120px; }
+      .menu .menu-content.right-side-menu {
+        text-align: left;
+        padding-left: 120px; } }
   .menu .menu-content {
     box-sizing: border-box;
     display: inline-block;
