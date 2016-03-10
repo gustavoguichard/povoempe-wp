@@ -8,6 +8,12 @@
 */
 get_header(); ?>
   <?php
+    global $menus;
+    $menu_names = [];
+    foreach ($menus as $item) {
+      $name = get_option('magethemes_zen_menu_'.$item);
+      array_push($menu_names, $name);
+    }
     $video_id = get_option('magethemes_zen_slider_video_id');
     $au_subtitle = get_option('magethemes_zen_theme_au_subtitle');
     $au_title = get_option('magethemes_zen_theme_au_title');
@@ -16,7 +22,6 @@ get_header(); ?>
     $first_title = get_option('magethemes_zen_theme_first_title');
     $first_content = get_option('magethemes_zen_theme_first_content');
     $first_blockquote = get_option('magethemes_zen_theme_first_blockquote');
-    $our_services_title = get_option('magethemes_zen_our_services_title');
   ?>
   <!-- Slider -->
   <div class="slider bg-parallax">
@@ -34,7 +39,7 @@ get_header(); ?>
   <!-- Page Content -->
   <div class="container-page">
     <div class="container">
-      <a class="anchor" id="sobre"></a>
+      <a class="anchor" id="<?= sanitize_title($menu_names[0]) ?>"></a>
       <!-- Abstract -->
       <div class="abstract">
 
@@ -53,11 +58,11 @@ get_header(); ?>
 
       <!-- Projects -->
       <div class="projects">
-        <a class="anchor" id="estabelecimentos"></a>
+        <a class="anchor" id="<?= sanitize_title($menu_names[1]) ?>"></a>
         <!-- Title -->
         <div class="big-title">
-          <h2>Nossos</h2>
-          <h3>Estabelecimentos</h3>
+          <h2>Nossas</h2>
+          <h3><?= $menu_names[1] ?></h3>
         </div>
         <!-- Title Ends! -->
 
@@ -125,10 +130,10 @@ get_header(); ?>
   <!-- Page Content Ends! -->
 
   <!-- Services -->
-  <a class="anchor" id="caracteristicas"></a>
+  <a class="anchor" id="<?= sanitize_title($menu_names[3]) ?>"></a>
   <div class="services bg-parallax">
 
-    <h2 class="green-title"><?= $our_services_title ?></h2>
+    <h2 class="green-title"><?= $menu_names[3] ?></h2>
 
     <!-- Services List -->
     <div class="service">
@@ -166,7 +171,7 @@ get_header(); ?>
     <div class="container">
 
       <!-- About -->
-      <a class="anchor" id="guardioes"></a>
+      <a class="anchor" id="<?= sanitize_title($menu_names[4]) ?>"></a>
       <div class="abstract">
 
         <!-- Title -->
@@ -239,8 +244,8 @@ get_header(); ?>
     );
   ?>
   <div class="agenda">
-    <a class="anchor" id="agenda"></a>
-    <h2 class="green-title">Agenda</h2>
+    <a class="anchor" id="<?= sanitize_title($menu_names[2]) ?>"></a>
+    <h2 class="green-title"><?= $menu_names[2] ?></h2>
     <?php if(isset($loginUrl) && !isset($_GET['agenda'])) : ?>
       <a class="button" href="<?=$loginUrl?>">ATUALIZAR AGENDA!</a>
     <?php elseif(isset($_GET['agenda'])) : ?>
@@ -277,7 +282,7 @@ get_header(); ?>
   </div>
 
   <!-- Map -->
-  <div class="map">
+  <div class="map" id="<?= sanitize_title($menu_names[5]) ?>">
     <div id="map_canvas"></div>
   </div>
   <!-- Map Ends! -->

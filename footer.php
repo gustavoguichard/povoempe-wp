@@ -1,7 +1,7 @@
 <!-- with $name_bloginfo we are preventing someone to output <span>'s -->
 <?php $name_bloginfo = html_entity_decode(get_bloginfo('name')); ?>
 <!-- Footer -->
-  <a class="anchor" id="contato"></a>
+  <a class="anchor"></a>
   <div class="footer bg-parallax">
     <div class="container">
 
