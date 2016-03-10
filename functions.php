@@ -75,26 +75,21 @@ function magethemes_zen_jScriptUtilities() {
   <!-- Google Map -->
   <script>
     function initialize() {
-      var myLatlng = new google.maps.LatLng(".get_option('magethemes_zen_theme_map_lat').", ".get_option('magethemes_zen_theme_map_lng').");
+      var myLatlng = new google.maps.LatLng(-30.2120678, -51.1973606);
       var map_options = {
-        zoom: ".get_option('magethemes_zen_theme_map_zoom').",
+        zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         center: myLatlng,
-        scrollwheel: ";
-    if (get_option('magethemes_zen_theme_map_scrollwhell')) { echo "false"; } else { echo "true"; }
-    echo ",
+        scrollwheel: false,
       }
 
-      var map = new google.maps.Map(document.getElementById('map_canvas'), map_options);";
-    echo "var myIcon = new google.maps.MarkerImage('".get_template_directory_uri()."/images/icon-marker-2x.png', null, null, null, new google.maps.Size(34,45));";
-    echo "var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      icon: myIcon
-    });";
-
-    if ( get_option('magethemes_zen_theme_map_bw') ){
-      echo "
+      var map = new google.maps.Map(document.getElementById('map_canvas'), map_options);
+      var myIcon = new google.maps.MarkerImage('".get_template_directory_uri()."/images/icon-marker-2x.png', null, null, null, new google.maps.Size(34,45));
+      var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        icon: myIcon
+      });
       var styles = [
         {
           featureType: \"all\",
@@ -105,24 +100,12 @@ function magethemes_zen_jScriptUtilities() {
             { hue: 220 }
           ]
         }
-      ];";
-
-    echo "
+      ];
       map.setOptions({styles: styles});
-      /* Ends here! */";
-
-	}
-	echo "}
-
+      /* Ends here! */
+    }
     google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
-  <!-- Google Map Ends! -->
-
-  <!-- home url for isotope -->
-  <script>
-  var cururl = '".home_url()."';
   </script>";
-
 }
 
 add_action('wp_head', 'magethemes_zen_jScriptUtilities');
@@ -630,48 +613,41 @@ function magethemes_zen_theme_settings_page() {
 <h3>Conteúdo principal</h3>
 <div>
 <div>
-  <label>Upper title</label>
+  <label>Titulo superior</label>
   <input type="text" name="magethemes_zen_theme_first_subtitle" value="<?php echo get_option('magethemes_zen_theme_first_subtitle'); ?>" />
 </div>
 
 <div>
-  <label>Title</label>
+  <label>Titulo</label>
   <input type="text" name="magethemes_zen_theme_first_title" value="<?php echo get_option('magethemes_zen_theme_first_title'); ?>" />
 </div>
 
 <div>
-  <label>Content</label>
+  <label>Conteudo</label>
   <textarea rows="5" name="magethemes_zen_theme_first_content"><?php echo get_option('magethemes_zen_theme_first_content'); ?></textarea>
 </div>
 
 <div>
-  <label>Blockquote</label>
+  <label>Citação</label>
   <textarea rows="5" name="magethemes_zen_theme_first_blockquote"><?php echo get_option('magethemes_zen_theme_first_blockquote'); ?></textarea>
 </div>
 
 </div>
 
-<h3>Nossas Características</h3>
-
-<div>
-  <label>Title</label>
-  <input type="text" name="magethemes_zen_our_services_title" value="<?php echo get_option('magethemes_zen_our_services_title'); ?>" />
-</div>
-
 <h3>Sobre nós</h3>
 <div>
 <div>
-  <label>Upper title</label>
+  <label>Titulo superior</label>
   <input type="text" name="magethemes_zen_theme_au_subtitle" value="<?php echo get_option('magethemes_zen_theme_au_subtitle'); ?>" />
 </div>
 
 <div>
-  <label>Title</label>
+  <label>Titulo</label>
   <input type="text" name="magethemes_zen_theme_au_title" value="<?php echo get_option('magethemes_zen_theme_au_title'); ?>" />
 </div>
 
 <div>
-  <label>Content</label>
+  <label>Conteudo</label>
   <textarea rows="7" name="magethemes_zen_theme_au_content"><?php echo get_option('magethemes_zen_theme_au_content'); ?></textarea>
 </div>
 </div>
@@ -679,12 +655,12 @@ function magethemes_zen_theme_settings_page() {
 <h3>Rodapé</h3>
 <div>
 <div>
-  <label>Title</label>
-  <input type="text" name="magethemes_zen_theme_footer_title" value="<?php echo get_option('magethemes_zen_theme_footer_title'); ?>" />
+  <label>Titulo</label>
+  <input type="text" name="magethemes_zen_theme_footer_Titulo" value="<?php echo get_option('magethemes_zen_theme_footer_title'); ?>" />
 </div>
 
 <div>
-  <label>Content</label>
+  <label>Conteudo</label>
   <textarea class="input" name="magethemes_zen_theme_footer_content"><?php echo stripcslashes(get_option('magethemes_zen_theme_footer_content')); ?></textarea>
 </div>
 </div>
