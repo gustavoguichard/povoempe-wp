@@ -263,7 +263,7 @@ get_header(); ?>
           $end_date = new DateTime($event['end_time']['date']);
         ?>
         <article class="event-item">
-          <a href="https://www.facebook.com/events/<?= $event['id'] ?>/" class="event-link" target="blank">
+          <a href="#" class="event-link">
             <?php if(isset($event['cover'])) : ?>
               <div style="background-image: url(<?= $event['cover']['source'] ?>); background-position: 50% <?= $event['cover']['offset_y'] ?>%;" alt="Imagem do evento" class="event-image"></div>
             <?php endif; ?>
@@ -272,9 +272,17 @@ get_header(); ?>
               <p class="event-date">
                 <?= $start_date->format('d/m/Y') ?>
                 <?php if($end_date > $start_date) { echo ' - '.$end_date->format('d/m/Y'); } ?>
+                <br />
+                <span class="see-more">Click para ver mais...</span>
               </p>
             </div>
           </a>
+          <div class="event-description">
+            <p><?php echo nl2br($event['description']) ;?></p>
+            <p style="text-align: right;">
+              <a href="https://www.facebook.com/events/<?= $event['id'] ?>/" class="facebook-bt" target="blank">Ver no facebook</a>
+            </p>
+          </div>
         </article>
       <?php endforeach; ?>
     <?php endif; ?>

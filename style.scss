@@ -353,6 +353,27 @@ textarea {
       text-align: left;
     }
   }
+
+  &.expanded .see-more {
+    display: none;
+  }
+
+  .event-description {
+    display: none;
+
+    p {
+      margin: 20px 10px;
+      font-size: 17px;
+    }
+  }
+
+  .facebook-bt {
+    background: #3A5790;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin: 10px 0;
+  }
 }
 
 .projects {

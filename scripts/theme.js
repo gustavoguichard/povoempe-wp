@@ -35,4 +35,10 @@ jQuery(document).ready(function( $ ) {
   // Single Project close button
   $('.single .close').click(closeEstabs);
 
+  $('.event-link', '.event-item').on('click', function(event) {
+    $(this).closest('.event-item').toggleClass('expanded')
+      .find('.event-description').slideToggle();
+    event.preventDefault();
+  })
+
 });
