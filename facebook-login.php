@@ -21,7 +21,7 @@ if(isset($fb) && current_user_can( 'publish_posts' ) && isset($_REQUEST['code'])
   }
 
   if (isset($token)) {
-    $response = $fb->get('EspacoPovoEmPe?fields=events{start_time,end_time,name,id,cover{id,source,offset_y},description}', $token);
+    $response = $fb->get('povoempepoa?fields=events{start_time,end_time,name,id,cover{id,source,offset_y},description}', $token);
     $graphNode = $response->getGraphNode();
     $fileUrl = get_template_directory().'/data/events.json';
     $myfile = fopen($fileUrl, 'w') or die("Unable to open file!");
