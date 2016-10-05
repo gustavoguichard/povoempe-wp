@@ -8,7 +8,7 @@
 */
 get_header(); ?>
   <?php
-    global $menus;
+    global $menus, $fb;
     $menu_names = [];
     foreach ($menus as $item) {
       $name = get_option('magethemes_zen_menu_'.$item);
@@ -22,8 +22,31 @@ get_header(); ?>
     $first_title = get_option('magethemes_zen_theme_first_title');
     $first_content = get_option('magethemes_zen_theme_first_content');
     $first_blockquote = get_option('magethemes_zen_theme_first_blockquote');
+
+    if(current_user_can( 'publish_posts' ) && !isset($_SESSION['facebook_access_token']) && isset($fb)) {
+      $helper = $fb->getRedirectLoginHelper();
+      $permissions = ['email'];
+      $loginUrl = $helper->getLoginUrl(get_option("siteurl").'/login-callback/', $permissions);
+    }
+
+    $string = file_get_contents(get_template_directory().'/data/events.json');
+    $json_a = json_decode($string, true);
+    $valid_events = array_reverse(
+      array_filter($json_a['events'], function($event) {
+        $today = date(c);
+        $has_start = isset($event['start_time']['date']);
+        $has_end = isset($event['end_time']['date']);
+        $is_scheduled = ($has_end & $event['end_time']['date'] >= $today) || ($has_start & $event['start_time']['date'] >= $today);
+        return($is_scheduled);
+      })
+    );
   ?>
   <!-- Slider -->
+  <?php if(isset($loginUrl) && !isset($_GET['facebook_data'])) : ?>
+    <a class="button" href="<?=$loginUrl?>">ATUALIZAR DADOS DO FACEBOOK!</a>
+  <?php elseif(isset($_GET['facebook_data'])) : ?>
+    <span>Dados do facebook atualizados</span>
+  <?php endif; ?>
   <div class="slider bg-parallax">
 
     <div class="container">
@@ -129,13 +152,12 @@ get_header(); ?>
   </div>
   <!-- Page Content Ends! -->
 
-  <!-- Services -->
+  <!-- Services
   <a class="anchor" id="<?= sanitize_title($menu_names[3]) ?>"></a>
   <div class="services bg-parallax">
 
     <h2 class="green-title"><?= $menu_names[3] ?></h2>
 
-    <!-- Services List -->
     <div class="service">
       <div class="container service-container">
 
@@ -161,10 +183,9 @@ get_header(); ?>
 
       </div>
     </div>
-    <!-- Services List Ends! -->
 
   </div>
-  <!-- Services Ends! -->
+  Services Ends! -->
 
   <!-- Page Content -->
   <div class="page">
@@ -223,34 +244,9 @@ get_header(); ?>
   </div>
   <!-- Page Ends! -->
 
-  <?php
-    global $fb;
-    if(current_user_can( 'publish_posts' ) && !isset($_SESSION['facebook_access_token']) && isset($fb)) {
-      $helper = $fb->getRedirectLoginHelper();
-      $permissions = ['email'];
-      $loginUrl = $helper->getLoginUrl(get_option("siteurl").'/login-callback/', $permissions);
-    }
-
-    $string = file_get_contents(get_template_directory().'/data/events.json');
-    $json_a = json_decode($string, true);
-    $valid_events = array_reverse(
-      array_filter($json_a['events'], function($event) {
-        $today = date(c);
-        $has_start = isset($event['start_time']['date']);
-        $has_end = isset($event['end_time']['date']);
-        $is_scheduled = ($has_end & $event['end_time']['date'] >= $today) || ($has_start & $event['start_time']['date'] >= $today);
-        return($is_scheduled);
-      })
-    );
-  ?>
   <div class="agenda">
     <a class="anchor" id="<?= sanitize_title($menu_names[2]) ?>"></a>
     <h2 class="green-title"><?= $menu_names[2] ?></h2>
-    <?php if(isset($loginUrl) && !isset($_GET['agenda'])) : ?>
-      <a class="button" href="<?=$loginUrl?>">ATUALIZAR AGENDA!</a>
-    <?php elseif(isset($_GET['agenda'])) : ?>
-      <span>Agenda atualizada</span>
-    <?php endif; ?>
     <div class="abstract">
     <?php if(empty($valid_events)) : ?>
       <br/>
