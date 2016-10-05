@@ -42,13 +42,8 @@ if(isset($fb) && current_user_can( 'publish_posts' ) && isset($_REQUEST['code'])
 
 /*
 
-  location == "Espaço Povo Em Pé - Belem Novo"
   name = Nome do album
   photos->data = [{name, images = [{height, source, width}], id}]
-  source /p320x320/ para média
-  source /p480x480/ (ou 600 ou 720) para Aberta
-  source /p130x130/ para thumb
-  cover_photo = {created_time,name,id} ID deve ser o mesmo do array
 }
 */
 ?>
