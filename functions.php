@@ -40,6 +40,8 @@ function magethemes_zen_theme_styles() {
   wp_enqueue_style( 'magethemes_zen_main', get_template_directory_uri() . '/style.css' );
   wp_enqueue_style( 'magethemes_zen_color', get_template_directory_uri() . '/green.css' );
   wp_enqueue_style( 'magethemes_zen_font', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css' );
+  wp_enqueue_style( 'magethemes_css_fancybox', get_template_directory_uri() . '/scripts/fancyBox/source/jquery.fancybox.css');
+  wp_enqueue_style( 'magethemes_css_fancybox_thumbs', get_template_directory_uri() . '/scripts/fancyBox/source/helpers/jquery.fancybox-thumbs.css' );
 
 } //load the theme CSS ends!
 
@@ -49,7 +51,9 @@ function magethemes_zen_theme_js() {
   wp_enqueue_script( 'magethemes_zen_myjquery', get_template_directory_uri() . '/scripts/jquery-1.11.0.min.js', array('jquery'), '', true );
 
   wp_enqueue_script( 'magethemes_zen_google_map', 'https://maps.googleapis.com/maps/api/js' );
-  wp_enqueue_script( 'magethemes_zen_theme_js', get_template_directory_uri() . '/scripts/theme.js', array('jquery'), '1.0.0', true );
+  wp_enqueue_script( 'magethemes_zen_fancybox', get_template_directory_uri() . '/scripts/fancyBox/source/jquery.fancybox.pack.js', array('jquery'), '2.1.15', true );
+  wp_enqueue_script( 'magethemes_zen_fancybox_thumbs', get_template_directory_uri() . '/scripts/fancyBox/source/helpers/jquery.fancybox-thumbs.js', array('jquery', 'magethemes_zen_fancybox'), '1.0.7', true );
+  wp_enqueue_script( 'magethemes_zen_theme_js', get_template_directory_uri() . '/scripts/theme.js', array('jquery', 'magethemes_zen_fancybox', 'magethemes_zen_fancybox_thumbs'), '1.0.0', true );
 
 } //load the theme JS ends!
 
