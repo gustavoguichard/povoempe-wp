@@ -13,32 +13,40 @@ jQuery(document).ready(function( $ ) {
   }
   $('.member .image').hover(toggleGuardDescription).click(toggleGuardDescription);
 
-  // Single Projects
-  function closeEstabs(event) {
-    $('.project .estab-thumb').removeClass('active');
-    $('.single.active').slideUp('2500', 'swing').removeClass('active');
-    event.preventDefault();
-  }
-
-  $('.project .estab-link').on('click', function(event) {
-    var $image = $('img', this)
-    var id = $(this).data('post-id')
-    var shouldOpen = !$image.hasClass('active')
-    closeEstabs(event)
-
-    if (shouldOpen) {
-      $image.addClass('active');
-      $('.single[data-post-id="' + id + '"]').addClass('active').slideToggle( '2500', 'swing' );
-    }
-  });
-
-  // Single Project close button
-  $('.single .close').click(closeEstabs);
-
   $('.event-link', '.event-item').on('click', function(event) {
     $(this).closest('.event-item').toggleClass('expanded')
       .find('.event-description').slideToggle();
     event.preventDefault();
   })
+
+  $('.album-cover').click(function(event) {
+    var string = $(event.currentTarget).data('photos');
+    var photos_string = string.split('{-}');
+    var data = photos_string.map(function(photo) {
+      var photo_data = photo.split('{;}');
+      return {
+        title: photo_data[0],
+        href: photo_data[1],
+        thumbnail: photo_data[2],
+      };
+    });
+    $.fancybox.open(data, {
+      padding : 2,
+      helpers : {
+        title : {
+          type: 'outside'
+        },
+        thumbs  : {
+          width : 50,
+          height  : 50,
+          source: function(image) {
+            return image.thumbnail;
+          },
+          position: 'bottom',
+        }
+      }
+    });
+    return false;
+  });
 
 });

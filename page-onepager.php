@@ -28,18 +28,6 @@ get_header(); ?>
       $permissions = ['email'];
       $loginUrl = $helper->getLoginUrl(get_option("siteurl").'/login-callback/', $permissions);
     }
-
-    $string = file_get_contents(get_template_directory().'/data/events.json');
-    $json_a = json_decode($string, true);
-    $valid_events = array_reverse(
-      array_filter($json_a['events'], function($event) {
-        $today = date(c);
-        $has_start = isset($event['start_time']['date']);
-        $has_end = isset($event['end_time']['date']);
-        $is_scheduled = ($has_end & $event['end_time']['date'] >= $today) || ($has_start & $event['start_time']['date'] >= $today);
-        return($is_scheduled);
-      })
-    );
   ?>
   <!-- Slider -->
   <?php if(isset($loginUrl) && !isset($_GET['facebook_data'])) : ?>
@@ -80,39 +68,64 @@ get_header(); ?>
       <!-- Abstract Ends! -->
 
       <!-- Projects -->
+      <?php
+        $string = file_get_contents(get_template_directory().'/data/albums.json');
+        $json_a = json_decode($string, true);
+        $valid_albums = array_reverse(
+          array_filter($json_a['albums'], function($album) {
+            $location = isset($album['location']);
+            return($location == "Espaço Povo Em Pé - Belem Novo");
+          })
+        );
+      ?>
       <div class="projects">
         <a class="anchor" id="<?= sanitize_title($menu_names[1]) ?>"></a>
         <!-- Title -->
         <div class="big-title">
-          <h2>Nossas</h2>
+          <h2>Nossos</h2>
           <h3><?= $menu_names[1] ?></h3>
         </div>
         <!-- Title Ends! -->
 
-        <?php
-          $featured_projects_args = array(
-            'post_type' => 'portfolio',
-            'orderby' => 'menu_order',
-            'order' => 'ASC',
-            'posts_per_page' => -1
-          );
-
-          $the_query = new WP_Query( $featured_projects_args );
-
-        ?>
-
         <!-- Projects List -->
-        <div class="project" data-id="<?= 'founded'.floor($the_query->found_posts/8) ?>">
-          <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-          <?php $image = wp_get_attachment_image_src(get_field('magethemes_zen_image'), 'magethemes_zen_portfolio'); ?>
+        <div class="project">
+          <?php
+            $size_medium = 320;
+            $size_big = 480;
+            $size_thumb = 130;
+
+            function get_image_by_size($photo, $size) {
+              $valid_image = array_filter($photo['images'], function($image) use (&$size) {
+                $regex = '/p'.$size.'x'.$size.'/';
+                return(preg_match($regex, $image['source']));
+              });
+              return(array_values($valid_image)[0]);
+            }
+
+            if ( !empty($valid_albums) ) {
+              foreach($valid_albums as $album) {
+                $cover_id = $album['cover_photo']['id'];
+                $album_name = $album['name'];
+                $index = array_search($cover_id, array_column($album['photos'], 'id'));
+                $cover = get_image_by_size($album['photos'][$index], $size_medium);
+                $album_json = array();
+                foreach ($album['photos'] as $photo) {
+                  $big_image = get_image_by_size($photo, $size_big);
+                  $small_image = get_image_by_size($photo, $size_thumb);
+                  array_push($album_json, $photo['name'].'{;}'.$big_image['source'].'{;}'.$small_image['source']);
+                }
+          ?>
 
           <div class="estabelecimento">
-            <a href="#" class="estab-link" data-post-id="<?= get_post_field( 'post_name', get_post() ) ?>">
-              <img src="<?= $image[0] ?>" class="estab-thumb" alt="<?php the_title(); ?>">
+            <a href="#" class="album-cover" data-photos="<?=join('{-}', $album_json)?>" style="background-image: url(<?= $cover['source'] ?>);">
+              <span class="album-title"><?= $album_name ?></span>
             </a>
           </div>
 
-          <?php endwhile; endif; ?>
+          <?php
+              }
+            };
+          ?>
 
         </div>
         <!-- Projects List Ends! -->
@@ -244,6 +257,19 @@ get_header(); ?>
   </div>
   <!-- Page Ends! -->
 
+  <?php
+    $string = file_get_contents(get_template_directory().'/data/events.json');
+    $json_a = json_decode($string, true);
+    $valid_events = array_reverse(
+      array_filter($json_a['events'], function($event) {
+        $today = date(c);
+        $has_start = isset($event['start_time']['date']);
+        $has_end = isset($event['end_time']['date']);
+        $is_scheduled = ($has_end & $event['end_time']['date'] >= $today) || ($has_start & $event['start_time']['date'] >= $today);
+        return($is_scheduled);
+      })
+    );
+  ?>
   <div class="agenda">
     <a class="anchor" id="<?= sanitize_title($menu_names[2]) ?>"></a>
     <h2 class="green-title"><?= $menu_names[2] ?></h2>

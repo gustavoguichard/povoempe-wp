@@ -9,9 +9,6 @@ add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'post-thumbnails'); //add support for thumbnails
 add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' )); //add support for post formats / audio, video, ...
 
-//thumbnails dimensions
-add_image_size('magethemes_zen_portfolio', 480, 480, true);
-
 //registering navigation menu
 register_nav_menu( 'left-side-menu', 'Left Side Menu' );
 register_nav_menu( 'right-side-menu', 'Right Side Menu' );
@@ -118,67 +115,6 @@ add_action('wp_head', 'magethemes_zen_jScriptUtilities');
 define( 'ACF_LITE', false );
 
 if ( function_exists("register_field_group") ) {
-  register_field_group(array (
-    'id' => 'magethemes_zen_portfolio',
-    'title' => 'Estabelecimentos',
-    'fields' => array (
-    array (
-        'key' => 'field_530dbe9bf26dfc',
-        'label' => 'Description',
-        'name' => 'magethemes_zen_portfolio_description',
-        'type' => 'wysiwyg',
-        'instructions' => '',
-        'required' => 1,
-        'default_value' => '',
-        'toolbar' => 'full',
-        'media_upload' => 'yes',
-      ),
-      array (
-        'key' => 'field_530f30310a165',
-        'label' => 'Image',
-        'name' => 'magethemes_zen_image',
-        'type' => 'image',
-        'instructions' => 'Required minimum size of the image is 480px by 480px',
-        'required' => 1,
-        'save_format' => 'id',
-        'preview_size' => 'full',
-        'library' => 'all',
-      ),
-
-    ),
-    'location' => array (
-      array (
-        array (
-          'param' => 'post_type',
-          'operator' => '==',
-          'value' => 'portfolio',
-          'order_no' => 0,
-          'group_no' => 0,
-        ),
-      ),
-    ),
-    'options' => array (
-      'position' => 'normal',
-      'layout' => 'no_box',
-      'hide_on_screen' => array (
-        0 => 'permalink',
-        1 => 'the_content',
-        2 => 'excerpt',
-        3 => 'custom_fields',
-        4 => 'discussion',
-        5 => 'comments',
-        6 => 'revisions',
-        7 => 'slug',
-        8 => 'author',
-        9 => 'format',
-        10 => 'featured_image',
-        11 => 'categories',
-        12 => 'tags',
-        13 => 'send-trackbacks',
-      ),
-    ),
-    'menu_order' => 0,
-  ));
   register_field_group(array (
     'id' => 'magethemes_zen_services',
     'title' => 'Características',
@@ -318,46 +254,6 @@ if ( function_exists("register_field_group") ) {
 }
 
 // Register custom post types
-// Projects/Portfolio
-add_action( 'init', 'magethemes_zen_register_cpt_portfolio' );
-
-function magethemes_zen_register_cpt_portfolio() {
-  $labels = array(
-    'name' => 'Estabelecimentos',
-    'singular_name' => 'Estabelecimento',
-    'add_new' => 'Adicionar',
-    'add_new_item' => 'Adicionar Estabelecimento',
-    'edit_item' => 'Editar Estabelecimento',
-    'new_item' => 'Novo Estabelecimento',
-    'view_item' => 'Ver Estabelecimento',
-    'search_items' => 'Buscar Estabelecimento',
-    'not_found' => 'Nenhum Estabelecimento encontrado',
-    'not_found_in_trash' => 'Nenhum Estabelecimento encontrado na lixeira',
-    'parent_item_colon' => 'Estabelecimento Pai:',
-    'menu_name' => 'Estabelecimentos',
-    );
-
-  $args = array(
-    'labels' => $labels,
-    'hierarchical' => true,
-    'supports' => array( 'title', 'editor', 'page-attributes' ),
-    'public' => true,
-    'show_ui' => true,
-    'show_in_menu' => true,
-    'menu_position' => 5,
-    'menu_icon' => 'dashicons-admin-multisite',
-    'show_in_nav_menus' => false,
-    'publicly_queryable' => false,
-    'exclude_from_search' => true,
-    'has_archive' => false,
-    'query_var' => true,
-    'can_export' => true,
-    'rewrite' => true,
-    'capability_type' => 'page'
-    );
-
-  register_post_type( 'portfolio', $args );
-}
 
 // Características
 add_action( 'init', 'magethemes_zen_register_cpt_service' );
@@ -439,42 +335,6 @@ function magethemes_zen_register_cpt_members() {
     );
 
   register_post_type( 'member', $args );
-}
-
-//custom categories for portfolio
-add_action( 'init', 'magethemes_zen_register_taxonomy_portfolio_categories' );
-
-function magethemes_zen_register_taxonomy_portfolio_categories() {
-  $labels = array(
-    'name' => 'Portfolio Categories',
-    'singular_name' => 'Portfolio Category',
-    'search_items' => 'Search Portfolio Categories',
-    'popular_items' => 'Popular Portfolio Categories',
-    'all_items' => 'All Portfolio Categories',
-    'parent_item' => 'Parent Portfolio Category',
-    'parent_item_colon' => 'Parent Portfolio Category:',
-    'edit_item' => 'Edit Portfolio Category',
-    'update_item' => 'Update Portfolio Category',
-    'add_new_item' => 'Add New Portfolio Category',
-    'new_item_name' => 'New Portfolio Category',
-    'separate_items_with_commas' => 'Separate portfolio categories with commas',
-    'add_or_remove_items' => 'Add or remove portfolio categories',
-    'choose_from_most_used' => 'Choose from the most used portfolio categories',
-    'menu_name' => 'Portfolio Categories',
-    );
-
-  $args = array(
-    'labels' => $labels,
-    'public' => true,
-    'show_in_nav_menus' => false,
-    'show_ui' => true,
-    'show_tagcloud' => false,
-    'hierarchical' => false,
-    'rewrite' => true,
-    'query_var' => true
-    );
-
-  register_taxonomy( 'portfolio_categories', array('portfolio'), $args );
 }
 
 // create custom plugin settings menu
