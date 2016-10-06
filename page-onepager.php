@@ -73,8 +73,8 @@ get_header(); ?>
         $json_a = json_decode($string, true);
         $valid_albums = array_reverse(
           array_filter($json_a['albums'], function($album) {
-            $location = isset($album['location']);
-            return($location == "Espaço Povo Em Pé - Belem Novo");
+            $location = isset($album['place']['id']);
+            return($location == 230299930354986);
           })
         );
       ?>
