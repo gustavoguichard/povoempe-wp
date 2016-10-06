@@ -33,17 +33,14 @@ function top_side_menu($menu_list) {
   <!-- Header -->
   <div class="header">
 
-    <h1 class="logo-header" title="<?= $name_bloginfo ?>"><?= $name_bloginfo ?></h1>
 
     <!-- Menu -->
     <div class="menu">
       <div class="container">
-        <?php global $menu_left, $menu_right; ?>
-        <ul class="menu-content left-side-menu">
-          <?= top_side_menu($menu_left) ?>
-        </ul>
-        <ul class="menu-content right-side-menu">
-          <?= top_side_menu($menu_right) ?>
+        <h1 class="logo-header" title="<?= $name_bloginfo ?>"><?= $name_bloginfo ?></h1>
+        <?php global $menus; ?>
+        <ul class="menu-content">
+          <?= top_side_menu($menus) ?>
         </ul>
       </div>
     </div>
