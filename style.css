@@ -399,7 +399,7 @@ textarea {
   .event-item .event-description {
     display: none; }
     .event-item .event-description p {
-      margin: 20px 10px;
+      margin: 20px 0;
       font-size: 17px; }
   .event-item .facebook-bt {
     background: #3A5790;
