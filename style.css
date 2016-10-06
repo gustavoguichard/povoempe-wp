@@ -214,16 +214,17 @@ textarea {
   transition: all .3s;
   width: 240px; }
   .album-cover:hover {
-    opacity: .8; }
+    box-shadow: 0 0 0 4px #fff, 0 2px 3px 5px rgba(0, 0, 0, 0.3);
+    transform: scale(1.06);
+    z-index: 5; }
     .album-cover:hover .album-title {
-      margin-bottom: 0; }
+      margin-bottom: -100px; }
   .album-cover .album-title {
     background: rgba(0, 0, 0, 0.6);
     bottom: 0;
     color: white;
     display: block;
     left: 0;
-    margin-bottom: -100px;
     padding: 5px;
     position: absolute;
     right: 0;

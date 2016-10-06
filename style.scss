@@ -120,10 +120,12 @@ textarea {
   width: 240px;
 
   &:hover {
-    opacity: .8;
+    box-shadow: 0 0 0 4px #fff, 0 2px 3px 5px rgba(black, .3);
+    transform: scale(1.06);
+    z-index: 5;
 
     .album-title {
-      margin-bottom: 0;
+      margin-bottom: -100px;
     }
   }
 
@@ -133,7 +135,6 @@ textarea {
     color: white;
     display: block;
     left: 0;
-    margin-bottom: -100px;
     padding: 5px;
     position: absolute;
     right: 0;
