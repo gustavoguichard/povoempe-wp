@@ -23,15 +23,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
   line-height: 0;
   overflow: hidden; }
 
-.projects .project .estabelecimento img:hover, .projects .project .estabelecimento img.active {
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  filter: gray;
-  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale");
-  filter: grayscale(100%); }
-
 /* Import wp.scss file */
 .alignleft {
   float: left; }
@@ -207,14 +198,14 @@ textarea {
 
 .album-cover {
   background-size: cover;
-  display: block;
+  display: inline-block;
   height: 240px;
   overflow: hidden;
   position: relative;
   transition: all .3s;
   width: 240px; }
   .album-cover:hover {
-    box-shadow: 0 0 0 4px #fff, 0 2px 3px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0 2px #fff, 0 2px 3px 3px rgba(0, 0, 0, 0.3);
     transform: scale(1.06);
     z-index: 5; }
     .album-cover:hover .album-title {
@@ -417,19 +408,7 @@ textarea {
     z-index: 5;
     padding-bottom: 25px; }
     .projects .project .estabelecimento {
-      width: 25%;
-      display: inline-block;
-      margin: -1px; }
-      @media all and (max-width: 600px) {
-        .projects .project .estabelecimento {
-          width: 50%; } }
-      @media all and (max-width: 320px) {
-        .projects .project .estabelecimento {
-          width: 100%; } }
-      .projects .project .estabelecimento img {
-        width: 100%;
-        height: auto;
-        float: left; }
+      display: inline-block; }
   .projects .single {
     text-align: left;
     margin-top: 40px; }

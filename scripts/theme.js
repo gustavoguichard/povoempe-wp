@@ -31,14 +31,14 @@ jQuery(document).ready(function( $ ) {
       };
     });
     $.fancybox.open(data, {
-      padding : 2,
-      helpers : {
-        title : {
+      padding: 2,
+      helpers: {
+        title: {
           type: 'outside'
         },
-        thumbs  : {
-          width : 50,
-          height  : 50,
+        thumbs: {
+          width: 70,
+          height: 70,
           source: function(image) {
             return image.thumbnail;
           },
