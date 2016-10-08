@@ -31,11 +31,8 @@ if(isset($fb) && current_user_can( 'publish_posts' ) && isset($_REQUEST['code'])
 
   if (isset($token)) {
     $pageUrl = 'povoempepoa';
-    $eventsResponse = $fb->get($pageUrl.'?fields=events{start_time,end_time,name,id,cover{id,source,offset_y},description}', $token);
-    write_data_to_file($eventsResponse->getGraphNode(), 'events');
-
-    $albumsResponse = $fb->get($pageUrl.'?fields=albums{photos{name,images},name,place,cover_photo}', $token);
-    write_data_to_file($albumsResponse->getGraphNode(), 'albums');
+    $response = $fb->get($pageUrl.'?fields=albums{photos{name,images},name,place,cover_photo},events{start_time,end_time,name,id,cover{id,source,offset_y},description}', $token);
+    write_data_to_file($response->getGraphNode(), 'facebook');
     echo '<meta http-equiv="refresh" content="0;url='.get_option("siteurl").'?facebook_data=updated">';
   }
 }

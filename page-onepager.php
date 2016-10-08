@@ -28,6 +28,9 @@ get_header(); ?>
       $permissions = ['email'];
       $loginUrl = $helper->getLoginUrl(get_option("siteurl").'/login-callback/', $permissions);
     }
+
+    $string = file_get_contents(get_template_directory().'/data/facebook.json');
+    $facebook_json = json_decode($string, true);
   ?>
   <!-- Slider -->
   <?php if(isset($loginUrl) && !isset($_GET['facebook_data'])) : ?>
@@ -69,10 +72,8 @@ get_header(); ?>
 
       <!-- Projects -->
       <?php
-        $string = file_get_contents(get_template_directory().'/data/albums.json');
-        $json_a = json_decode($string, true);
         $valid_albums = array_reverse(
-          array_filter($json_a['albums'], function($album) {
+          array_filter($facebook_json['albums'], function($album) {
             $location = isset($album['place']['id']);
             return($location == 230299930354986);
           })
@@ -258,10 +259,8 @@ get_header(); ?>
   <!-- Page Ends! -->
 
   <?php
-    $string = file_get_contents(get_template_directory().'/data/events.json');
-    $json_a = json_decode($string, true);
     $valid_events = array_reverse(
-      array_filter($json_a['events'], function($event) {
+      array_filter($facebook_json['events'], function($event) {
         $today = date(c);
         $has_start = isset($event['start_time']['date']);
         $has_end = isset($event['end_time']['date']);
