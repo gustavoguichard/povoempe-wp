@@ -85,7 +85,12 @@ get_header(); ?>
   ?>
   <div class="agenda">
     <a class="anchor" id="<?= sanitize_title($menu_names[2]) ?>"></a>
-    <h2 class="green-title"><?= $menu_names[2] ?></h2>
+    <!-- Title -->
+    <div class="big-title">
+      <h2>Agenda de</h2>
+      <h3>Eventos</h3>
+    </div>
+    <!-- Title Ends! -->
     <div class="abstract">
     <?php if(empty($valid_events)) : ?>
       <br/>
