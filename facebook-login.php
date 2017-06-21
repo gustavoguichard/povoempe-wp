@@ -6,8 +6,9 @@
  Template Name: Facebook Login
 
 */
-get_header(); ?>
-<?php
+
+require_once(get_template_directory().'/facebook-settings.php');;
+
 global $fb;
 
 function write_data_to_file( $data, $filename ) {
@@ -20,6 +21,7 @@ function write_data_to_file( $data, $filename ) {
 
 if(isset($fb) && current_user_can( 'publish_posts' ) && isset($_REQUEST['code'])) {
   try {
+    print_r(session_id());
     $token = $fb->getRedirectLoginHelper()->getAccessToken();
   } catch(Facebook\Exceptions\FacebookResponseException $e) {
     echo 'Graph returned an error: ' . $e->getMessage();

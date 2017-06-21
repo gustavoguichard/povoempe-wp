@@ -6,7 +6,8 @@
  Template Name: Homepage
 
 */
-get_header(); ?>
+get_header();
+?>
   <?php
     global $menus, $fb;
     $menu_names = [];
@@ -26,14 +27,14 @@ get_header(); ?>
     if(current_user_can( 'publish_posts' ) && !isset($_SESSION['facebook_access_token']) && isset($fb)) {
       $helper = $fb->getRedirectLoginHelper();
       $permissions = ['email'];
-      $loginUrl = $helper->getLoginUrl(get_option("siteurl").'/login-callback/', $permissions);
+      $loginUrl = isset($_GET['facebook_data']) ? null : $helper->getLoginUrl(get_option("siteurl").'/login-callback/', $permissions);
     }
 
     $string = file_get_contents(get_template_directory().'/data/facebook.json');
     $facebook_json = json_decode($string, true);
   ?>
   <!-- Slider -->
-  <?php if(isset($loginUrl) && !isset($_GET['facebook_data'])) : ?>
+  <?php if(isset($loginUrl)) : ?>
     <a class="button" href="<?=$loginUrl?>">ATUALIZAR DADOS DO FACEBOOK!</a>
   <?php elseif(isset($_GET['facebook_data'])) : ?>
     <span>Dados do facebook atualizados</span>
