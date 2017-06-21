@@ -21,7 +21,7 @@ function write_data_to_file( $data, $filename ) {
 
 if(isset($fb) && current_user_can( 'publish_posts' ) && isset($_REQUEST['code'])) {
   try {
-    print_r(session_id());
+    echo('Atualizando arquivos...');
     $token = $fb->getRedirectLoginHelper()->getAccessToken();
   } catch(Facebook\Exceptions\FacebookResponseException $e) {
     echo 'Graph returned an error: ' . $e->getMessage();
