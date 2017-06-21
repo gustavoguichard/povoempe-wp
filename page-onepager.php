@@ -70,6 +70,58 @@ get_header(); ?>
       </div>
       <!-- Abstract Ends! -->
 
+  <?php
+    $valid_events = array_reverse(
+      array_filter($facebook_json['events'], function($event) {
+        $today = date(c);
+        $has_start = isset($event['start_time']['date']);
+        $has_end = isset($event['end_time']['date']);
+        $is_scheduled = ($has_end & $event['end_time']['date'] >= $today) || ($has_start & $event['start_time']['date'] >= $today);
+        return($is_scheduled);
+      })
+    );
+  ?>
+  <div class="agenda">
+    <a class="anchor" id="<?= sanitize_title($menu_names[2]) ?>"></a>
+    <h2 class="green-title"><?= $menu_names[2] ?></h2>
+    <div class="abstract">
+    <?php if(empty($valid_events)) : ?>
+      <br/>
+      <br/>
+      <h2>Sem items na agenda</h2>
+    <?php else: ?>
+      <?php foreach($valid_events as $event) : ?>
+        <?php
+          $start_date = new DateTime($event['start_time']['date']);
+          $end_date = new DateTime($event['end_time']['date']);
+        ?>
+        <article class="event-item">
+          <a href="#" class="event-link">
+            <?php if(isset($event['cover'])) : ?>
+              <div style="background-image: url(<?= $event['cover']['source'] ?>); background-position: 50% <?= $event['cover']['offset_y'] ?>%;" alt="Imagem do evento" class="event-image"></div>
+            <?php endif; ?>
+            <div class="event-details">
+              <h3 class="event-name"><?= $event['name'] ?></h3>
+              <p class="event-date">
+                <?= $start_date->format('d/m/Y') ?>
+                <?php if($end_date > $start_date) { echo ' - '.$end_date->format('d/m/Y'); } ?>
+                <br />
+                <span class="see-more">Click para ver mais...</span>
+              </p>
+            </div>
+          </a>
+          <div class="event-description">
+            <p><?php echo nl2br($event['description']) ;?></p>
+            <p style="text-align: right;">
+              <a href="https://www.facebook.com/events/<?= $event['id'] ?>/" class="facebook-bt" target="blank">Ver no facebook</a>
+            </p>
+          </div>
+        </article>
+      <?php endforeach; ?>
+    <?php endif; ?>
+    </div>
+  </div>
+
       <!-- Projects -->
       <?php
         $valid_albums = array_reverse(
@@ -166,41 +218,6 @@ get_header(); ?>
   </div>
   <!-- Page Content Ends! -->
 
-  <!-- Services
-  <a class="anchor" id="<?= sanitize_title($menu_names[3]) ?>"></a>
-  <div class="services bg-parallax">
-
-    <h2 class="green-title"><?= $menu_names[3] ?></h2>
-
-    <div class="service">
-      <div class="container service-container">
-
-      <?php
-        $services_args = array(
-          'post_type' => 'service',
-          'orderby' => 'menu_order',
-          'order' => 'ASC'
-        );
-        $the_query = new WP_Query( $services_args );
-      ?>
-
-      <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-
-        <div class="service-item">
-          <h3><i class="fa <?php the_field( 'magethemes_zen_service_icon' ); ?> fa-3x"></i><br><?php the_title(); ?></h3>
-          <p><?php the_field( 'magethemes_zen_services_description' ); ?></p>
-        </div>
-
-      <?php endwhile; endif; ?>
-
-      <?php wp_reset_postdata(); // Restore original Post Data ?>
-
-      </div>
-    </div>
-
-  </div>
-  Services Ends! -->
-
   <!-- Page Content -->
   <div class="page">
     <div class="container">
@@ -257,58 +274,6 @@ get_header(); ?>
     </div>
   </div>
   <!-- Page Ends! -->
-
-  <?php
-    $valid_events = array_reverse(
-      array_filter($facebook_json['events'], function($event) {
-        $today = date(c);
-        $has_start = isset($event['start_time']['date']);
-        $has_end = isset($event['end_time']['date']);
-        $is_scheduled = ($has_end & $event['end_time']['date'] >= $today) || ($has_start & $event['start_time']['date'] >= $today);
-        return($is_scheduled);
-      })
-    );
-  ?>
-  <div class="agenda">
-    <a class="anchor" id="<?= sanitize_title($menu_names[2]) ?>"></a>
-    <h2 class="green-title"><?= $menu_names[2] ?></h2>
-    <div class="abstract">
-    <?php if(empty($valid_events)) : ?>
-      <br/>
-      <br/>
-      <h2>Sem items na agenda</h2>
-    <?php else: ?>
-      <?php foreach($valid_events as $event) : ?>
-        <?php
-          $start_date = new DateTime($event['start_time']['date']);
-          $end_date = new DateTime($event['end_time']['date']);
-        ?>
-        <article class="event-item">
-          <a href="#" class="event-link">
-            <?php if(isset($event['cover'])) : ?>
-              <div style="background-image: url(<?= $event['cover']['source'] ?>); background-position: 50% <?= $event['cover']['offset_y'] ?>%;" alt="Imagem do evento" class="event-image"></div>
-            <?php endif; ?>
-            <div class="event-details">
-              <h3 class="event-name"><?= $event['name'] ?></h3>
-              <p class="event-date">
-                <?= $start_date->format('d/m/Y') ?>
-                <?php if($end_date > $start_date) { echo ' - '.$end_date->format('d/m/Y'); } ?>
-                <br />
-                <span class="see-more">Click para ver mais...</span>
-              </p>
-            </div>
-          </a>
-          <div class="event-description">
-            <p><?php echo nl2br($event['description']) ;?></p>
-            <p style="text-align: right;">
-              <a href="https://www.facebook.com/events/<?= $event['id'] ?>/" class="facebook-bt" target="blank">Ver no facebook</a>
-            </p>
-          </div>
-        </article>
-      <?php endforeach; ?>
-    <?php endif; ?>
-    </div>
-  </div>
 
   <!-- Map -->
   <div class="map" id="<?= sanitize_title($menu_names[5]) ?>">
