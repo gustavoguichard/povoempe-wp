@@ -68,6 +68,8 @@ get_header(); ?>
         <?php if($first_blockquote!=''){ ?><blockquote><p><?= nl2br($first_blockquote) ?></p></blockquote><?php } ?>
 
       </div>
+    </div>
+  </div>
       <!-- Abstract Ends! -->
 
   <?php
@@ -122,6 +124,8 @@ get_header(); ?>
     </div>
   </div>
 
+  <div class="container-page">
+    <div class="container">
       <!-- Projects -->
       <?php
         $valid_albums = array_reverse(
