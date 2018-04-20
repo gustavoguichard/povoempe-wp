@@ -92,8 +92,8 @@ get_header();
       <h3>Eventos</h3>
     </div>
     <!-- Title Ends! -->
-    <div class="abstract">
-    <?php if(empty($valid_events)) : ?>
+    <div class="abstract" style="text-align: center;">
+    <!-- <?php if(empty($valid_events)) : ?>
       <br/>
       <br/>
       <h2>Sem items na agenda</h2>
@@ -126,7 +126,11 @@ get_header();
           </div>
         </article>
       <?php endforeach; ?>
-    <?php endif; ?>
+    <?php endif; ?> -->
+    <p>Nossa agenda integrada está temporariamente indisponível devido à mudanças recentes nas políticas do Facebook.</p>
+    <p style="margin-top: 1em;">
+      <a class="button" style="float: none;" href="https://www.facebook.com/pg/povoempepoa/events/?ref=page_internal" target="blank">Confira nossa agenda aqui</a>
+    </p>
     </div>
   </div>
 
