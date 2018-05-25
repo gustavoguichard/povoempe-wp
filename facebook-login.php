@@ -24,8 +24,8 @@ if(isset($fb) && current_user_can( 'publish_posts' ) && isset($_REQUEST['code'])
     echo('Atualizando arquivos...');
     $helper = $fb->getRedirectLoginHelper();
     $_SESSION['FBRLH_state'] = $_GET['state'];
-    echo('GOT HERE');
     $token = $helper->getAccessToken();
+    echo('GOT HERE');
   } catch(Facebook\Exceptions\FacebookResponseException $e) {
     echo 'Graph returned an error: ' . $e->getMessage();
     exit;
