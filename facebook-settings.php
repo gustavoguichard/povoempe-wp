@@ -11,7 +11,7 @@ require_once(get_template_directory().'/src/facebook-sdk-v5/autoload.php');
     $fb = new Facebook\Facebook([
       'app_id' => $facebook_id,
       'app_secret' => $facebook_secret,
-      'default_graph_version' => 'v2.5',
+      'default_graph_version' => 'v2.6',
     ]);
   }
 ?>
