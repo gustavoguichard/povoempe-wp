@@ -34,7 +34,7 @@ if(isset($fb) && current_user_can( 'publish_posts' ) && isset($_REQUEST['code'])
   }
 
   if (isset($token)) {
-    $pageUrl = 'povoempepoa';
+    $pageUrl = '/povoempepoa';
     $response = $fb->get($pageUrl.'?fields=albums{photos{name,images},name,place,cover_photo},events{start_time,end_time,name,id,cover{id,source,offset_y},description}', $token);
     echo('GOT HERE');
     write_data_to_file($response->getGraphNode(), 'facebook');
