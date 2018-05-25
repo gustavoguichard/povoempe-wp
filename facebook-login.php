@@ -25,7 +25,6 @@ if(isset($fb) && current_user_can( 'publish_posts' ) && isset($_REQUEST['code'])
     $helper = $fb->getRedirectLoginHelper();
     $_SESSION['FBRLH_state'] = $_GET['state'];
     $token = $helper->getAccessToken();
-    echo('GOT HERE');
   } catch(Facebook\Exceptions\FacebookResponseException $e) {
     echo 'Graph returned an error: ' . $e->getMessage();
     exit;
@@ -35,6 +34,7 @@ if(isset($fb) && current_user_can( 'publish_posts' ) && isset($_REQUEST['code'])
   }
 
   if (isset($token)) {
+    echo('GOT HERE');
     $pageUrl = 'povoempepoa';
     $response = $fb->get($pageUrl.'?fields=albums{photos{name,images},name,place,cover_photo},events{start_time,end_time,name,id,cover{id,source,offset_y},description}', $token);
     write_data_to_file($response->getGraphNode(), 'facebook');
