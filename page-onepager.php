@@ -9,7 +9,7 @@
 get_header();
 ?>
   <?php
-    global $menus, $fb;
+    global $menus;
     $menu_names = [];
     foreach ($menus as $item) {
       $name = get_option('magethemes_zen_menu_'.$item);
@@ -24,21 +24,8 @@ get_header();
     $first_content = get_option('magethemes_zen_theme_first_content');
     $first_blockquote = get_option('magethemes_zen_theme_first_blockquote');
 
-    if(current_user_can( 'publish_posts' ) && !isset($_SESSION['facebook_access_token']) && isset($fb)) {
-      $helper = $fb->getRedirectLoginHelper();
-      $permissions = ['email'];
-      $loginUrl = isset($_GET['facebook_data']) ? null : $helper->getLoginUrl(get_option("siteurl").'/login-callback/', $permissions);
-    }
-
-    $string = file_get_contents(get_template_directory().'/data/facebook.json');
-    $facebook_json = json_decode($string, true);
   ?>
   <!-- Slider -->
-  <?php if(isset($loginUrl)) : ?>
-    <a class="button" href="<?=$loginUrl?>">ATUALIZAR DADOS DO FACEBOOK!</a>
-  <?php elseif(isset($_GET['facebook_data'])) : ?>
-    <span>Dados do facebook atualizados</span>
-  <?php endif; ?>
   <div class="slider bg-parallax">
 
     <div class="container">
@@ -71,19 +58,8 @@ get_header();
       </div>
     </div>
   </div>
-      <!-- Abstract Ends! -->
+  <!-- Abstract Ends! -->
 
-  <?php
-    $valid_events = array_reverse(
-      array_filter($facebook_json['events'], function($event) {
-        $today = date(c);
-        $has_start = isset($event['start_time']['date']);
-        $has_end = isset($event['end_time']['date']);
-        $is_scheduled = ($has_end & $event['end_time']['date'] >= $today) || ($has_start & $event['start_time']['date'] >= $today);
-        return($is_scheduled);
-      })
-    );
-  ?>
   <div class="agenda">
     <a class="anchor" id="<?= sanitize_title($menu_names[2]) ?>"></a>
     <!-- Title -->
@@ -92,152 +68,75 @@ get_header();
       <h3>Eventos</h3>
     </div>
     <!-- Title Ends! -->
-    <div class="abstract" style="text-align: center;">
-    <!-- <?php if(empty($valid_events)) : ?>
-      <br/>
-      <br/>
-      <h2>Sem items na agenda</h2>
-    <?php else: ?>
-      <?php foreach($valid_events as $event) : ?>
+    <div class="abstract">
+      <?php
+        $team_args = array(
+          'post_type' => 'event', 'orderby' => 'menu_order', 'order' => 'ASC');
+        $the_query = new WP_Query( $team_args );
+      ?>
+
+      <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
         <?php
-          $start_date = new DateTime($event['start_time']['date']);
-          $end_date = new DateTime($event['end_time']['date']);
+          $event_date = get_field( 'event_date' );
+          $fb_link = get_field( 'fb_link' );
         ?>
         <article class="event-item">
           <a href="#" class="event-link">
-            <?php if(isset($event['cover'])) : ?>
-              <div style="background-image: url(<?= $event['cover']['source'] ?>); background-position: 50% <?= $event['cover']['offset_y'] ?>%;" alt="Imagem do evento" class="event-image"></div>
-            <?php endif; ?>
+            <?php the_post_thumbnail('mini_thumb', ['class' => 'event-image']); ?>
             <div class="event-details">
-              <h3 class="event-name"><?= $event['name'] ?></h3>
+              <h3 class="event-name"><?php the_title(); ?></h3>
               <p class="event-date">
-                <?= $start_date->format('d/m/Y') ?>
-                <?php if($end_date > $start_date) { echo ' - '.$end_date->format('d/m/Y'); } ?>
+                <?= $event_date ?>
                 <br />
                 <span class="see-more">Click para ver mais...</span>
               </p>
             </div>
           </a>
           <div class="event-description">
-            <p><?php echo nl2br($event['description']) ;?></p>
-            <p style="text-align: right;">
-              <a href="https://www.facebook.com/events/<?= $event['id'] ?>/" class="facebook-bt" target="blank">Ver no facebook</a>
-            </p>
+            <?php the_content(); ?>
+            <?php if($fb_link) : ?>
+              <p style="text-align: right;">
+                <a href="<?= $fb_link ?>" class="facebook-bt" target="blank">Ver no facebook</a>
+              </p>
+            <?php endif; ?>
           </div>
         </article>
-      <?php endforeach; ?>
-    <?php endif; ?> -->
-    <p>Nossa agenda integrada está temporariamente indisponível devido à mudanças recentes nas políticas do Facebook.</p>
-    <p style="margin-top: 1em;">
-      <a class="button" style="float: none;" href="https://www.facebook.com/pg/povoempepoa/events/?ref=page_internal" target="blank">Confira nossa agenda aqui</a>
-    </p>
+      <?php endwhile; endif; ?>
+      <?php wp_reset_postdata(); ?>
+      <p style="margin-top: 1em; text-align: center;">
+        <a class="button" style="float: none;" href="https://www.facebook.com/povoempepoa/events" target="blank">Confira nossa agenda do Facebook</a>
+      </p>
     </div>
   </div>
 
+  <!-- FOTOS
   <div class="container-page">
     <div class="container">
-      <!-- Projects -->
-      <?php
-        $valid_albums = array_reverse(
-          array_filter($facebook_json['albums'], function($album) {
-            $location = isset($album['place']['id']);
-            return($location == 230299930354986);
-          })
-        );
-      ?>
       <div class="projects">
         <a class="anchor" id="<?= sanitize_title($menu_names[1]) ?>"></a>
-        <!-- Title -->
         <div class="big-title">
-          <h2>Nossos</h2>
+          <h2>Algumas</h2>
           <h3><?= $menu_names[1] ?></h3>
         </div>
-        <!-- Title Ends! -->
-
-        <!-- Projects List -->
         <div class="project">
-          <?php
-            $size_medium = 320;
-            $size_big = 480;
-            $size_thumb = 130;
-
-            function get_image_by_size($photo, $size) {
-              $valid_image = array_filter($photo['images'], function($image) use (&$size) {
-                $regex = '/p'.$size.'x'.$size.'/';
-                return(preg_match($regex, $image['source']));
-              });
-              return(array_values($valid_image)[0]);
-            }
-
-            if ( !empty($valid_albums) ) {
-              foreach($valid_albums as $album) {
-                $cover_id = $album['cover_photo']['id'];
-                $album_name = $album['name'];
-                $index = array_search($cover_id, array_column($album['photos'], 'id'));
-                $cover = get_image_by_size($album['photos'][$index], $size_medium);
-                $album_json = array();
-                foreach ($album['photos'] as $photo) {
-                  $big_image = get_image_by_size($photo, $size_big);
-                  $small_image = get_image_by_size($photo, $size_thumb);
-                  array_push($album_json, $photo['name'].'{;}'.$big_image['source'].'{;}'.$small_image['source']);
-                }
-          ?>
-
           <div class="estabelecimento">
             <a href="#" class="album-cover" data-photos="<?=join('{-}', $album_json)?>" style="background-image: url(<?= $cover['source'] ?>);">
               <span class="album-title"><?= $album_name ?></span>
             </a>
           </div>
-
-          <?php
-              }
-            };
-          ?>
-
         </div>
-        <!-- Projects List Ends! -->
-
-        <!-- Project -->
-        <?php $featured_projects_args = array(
-            'post_type' => 'portfolio',
-            'orderby' => 'menu_order',
-            'order' => 'ASC',
-            'posts_per_page' => $portfolios_to_show
-          );
-
-        $the_query = new WP_Query( $featured_projects_args );
-
-        if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post();?>
-       <?php $image = wp_get_attachment_image_src(get_field('magethemes_zen_image'), 'magethemes_zen_portfolio'); ?>
-
-       <div class="single" data-post-id="<?= get_post_field( 'post_name', get_post() ) ?>" style="display: none;">
-
-          <div class="image">
-            <img src="<?= $image[0]; ?>" alt="<?php the_title() ?>">
-          </div>
-
-          <div class="details">
-            <h2><?php the_title(); ?><a href="#" class="close"><i class="fa fa-times"></i></a></h2>
-            <?= get_field( 'magethemes_zen_portfolio_description' ) ?>
-          </div>
-
-        </div>
-
-        <?php endwhile; endif; ?>
-        <!-- Project Example Ends! -->
       </div>
-      <!-- Projects Ends! -->
 
     </div>
   </div>
-  <!-- Page Content Ends! -->
+   -->
 
   <!-- Page Content -->
   <div class="page">
     <div class="container">
 
       <!-- About -->
-      <a class="anchor" id="<?= sanitize_title($menu_names[4]) ?>"></a>
+      <a class="anchor" id="<?= sanitize_title($menu_names[3]) ?>"></a>
       <div class="abstract">
 
         <!-- Title -->
@@ -290,7 +189,7 @@ get_header();
   <!-- Page Ends! -->
 
   <!-- Map -->
-  <div class="map" id="<?= sanitize_title($menu_names[5]) ?>">
+  <div class="map" id="<?= sanitize_title($menu_names[4]) ?>">
     <div id="map_canvas"></div>
   </div>
   <!-- Map Ends! -->

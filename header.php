@@ -1,8 +1,6 @@
 <?php
-  require_once(get_template_directory().'/facebook-settings.php');
   require_once(get_template_directory().'/globals.php');
   $name_bloginfo = html_entity_decode(get_bloginfo('name'));
-  $url = home_url();
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes() ?>>

@@ -2,16 +2,13 @@
 require(get_template_directory().'/globals.php');
 
 if ( ! isset( $content_width ) ) $content_width = 960;
-/* add_theme_support( 'custom-header' ); //custom header/used for header image
-add_theme_support( 'custom-background' ); //custom backgournd/used for paralax background */
 add_theme_support( 'menus' ); //enable custom menus
 add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'post-thumbnails'); //add support for thumbnails
-add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' )); //add support for post formats / audio, video, ...
-
-//registering navigation menu
 register_nav_menu( 'left-side-menu', 'Left Side Menu' );
 register_nav_menu( 'right-side-menu', 'Right Side Menu' );
+set_post_thumbnail_size( 480, 480, false );
+add_image_size('mini_thumb', 144, 104, true);
 
 //create widgets
 function magethemes_zen_create_widget( $name, $id, $description ) {
@@ -37,9 +34,6 @@ function magethemes_zen_theme_styles() {
   wp_enqueue_style( 'magethemes_zen_main', get_template_directory_uri() . '/style.css' );
   wp_enqueue_style( 'magethemes_zen_color', get_template_directory_uri() . '/green.css' );
   wp_enqueue_style( 'magethemes_zen_font', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css' );
-  wp_enqueue_style( 'magethemes_css_fancybox', get_template_directory_uri() . '/scripts/fancyBox/source/jquery.fancybox.css');
-  wp_enqueue_style( 'magethemes_css_fancybox_thumbs', get_template_directory_uri() . '/scripts/fancyBox/source/helpers/jquery.fancybox-thumbs.css' );
-
 } //load the theme CSS ends!
 
 //load the theme JS
@@ -48,9 +42,7 @@ function magethemes_zen_theme_js() {
   wp_enqueue_script( 'magethemes_zen_myjquery', get_template_directory_uri() . '/scripts/jquery-1.11.0.min.js', array('jquery'), '', true );
 
   wp_enqueue_script( 'magethemes_zen_google_map', 'https://maps.googleapis.com/maps/api/js' );
-  wp_enqueue_script( 'magethemes_zen_fancybox', get_template_directory_uri() . '/scripts/fancyBox/source/jquery.fancybox.pack.js', array('jquery'), '2.1.15', true );
-  wp_enqueue_script( 'magethemes_zen_fancybox_thumbs', get_template_directory_uri() . '/scripts/fancyBox/source/helpers/jquery.fancybox-thumbs.js', array('jquery', 'magethemes_zen_fancybox'), '1.0.7', true );
-  wp_enqueue_script( 'magethemes_zen_theme_js', get_template_directory_uri() . '/scripts/theme.js', array('jquery', 'magethemes_zen_fancybox', 'magethemes_zen_fancybox_thumbs'), '1.0.0', true );
+  wp_enqueue_script( 'magethemes_zen_theme_js', get_template_directory_uri() . '/scripts/theme.js', array('jquery'), '1.0.0', true );
 
 } //load the theme JS ends!
 
@@ -115,69 +107,6 @@ add_action('wp_head', 'magethemes_zen_jScriptUtilities');
 define( 'ACF_LITE', false );
 
 if ( function_exists("register_field_group") ) {
-  register_field_group(array (
-    'id' => 'magethemes_zen_services',
-    'title' => 'Características',
-    'fields' => array (
-      array (
-        'key' => 'field_30dbe9bf26fc',
-        'label' => 'Description',
-        'name' => 'magethemes_zen_services_description',
-        'type' => 'wysiwyg',
-        'instructions' => 'Description of service',
-        'required' => 1,
-        'default_value' => '',
-        'toolbar' => 'basic',
-        'media_upload' => 'no',
-      ),
-      array (
-        'key' => 'field_530dc1b771637',
-        'label' => 'Icon',
-        'name' => 'magethemes_zen_service_icon',
-        'type' => 'text',
-        'instructions' => 'Insert icon shortcode you want to use for this item, complete list is available here <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">Font Awesome Cheatsheet</a>',
-        'default_value' => '',
-        'placeholder' => '',
-        'prepend' => '',
-        'append' => '',
-        'formatting' => 'html',
-        'maxlength' => '',
-      ),
-    ),
-    'location' => array (
-      array (
-        array (
-          'param' => 'post_type',
-          'operator' => '==',
-          'value' => 'service',
-          'order_no' => 0,
-          'group_no' => 0,
-        ),
-      ),
-    ),
-    'options' => array (
-      'position' => 'normal',
-      'layout' => 'no_box',
-      'hide_on_screen' => array (
-        0 => 'permalink',
-        1 => 'the_content',
-        2 => 'excerpt',
-        3 => 'custom_fields',
-        4 => 'discussion',
-        5 => 'comments',
-        6 => 'revisions',
-        7 => 'slug',
-        8 => 'author',
-        9 => 'format',
-        10 => 'featured_image',
-        11 => 'categories',
-        12 => 'tags',
-        13 => 'send-trackbacks',
-      ),
-    ),
-    'menu_order' => 0,
-  ));
-  $slider=get_option('magethemes_zen_slider');
   register_field_group(array (
     'id' => 'magethemes_zen_team-member',
     'title' => 'Guardião',
@@ -255,46 +184,6 @@ if ( function_exists("register_field_group") ) {
 
 // Register custom post types
 
-// Características
-add_action( 'init', 'magethemes_zen_register_cpt_service' );
-
-function magethemes_zen_register_cpt_service() {
-  $labels = array(
-    'name' => 'Características',
-    'singular_name' => 'Característica',
-    'add_new' => 'Adicionar nova',
-    'add_new_item' => 'Adicionar Característica',
-    'edit_item' => 'Editar Característica',
-    'new_item' => 'Nova Característica',
-    'view_item' => 'Ver Característica',
-    'search_items' => 'Buscar Características',
-    'not_found' => 'Nenhuma Característica encontrada',
-    'not_found_in_trash' => 'Nenhuma Característica encontrada na lixeira',
-    'menu_name' => 'Características',
-    );
-
-  $args = array(
-    'labels' => $labels,
-    'hierarchical' => true,
-    'supports' => array( 'title', 'page-attributes' ),
-    'public' => true,
-    'show_ui' => true,
-    'show_in_menu' => true,
-    'menu_position' => 5,
-    'menu_icon' => 'dashicons-palmtree',
-    'show_in_nav_menus' => false,
-    'publicly_queryable' => false,
-    'exclude_from_search' => true,
-    'has_archive' => false,
-    'query_var' => true,
-    'can_export' => true,
-    'rewrite' => true,
-    'capability_type' => 'post'
-    );
-
-  register_post_type( 'service', $args );
-}
-
 // Members
 add_action( 'init', 'magethemes_zen_register_cpt_members' );
 
@@ -335,6 +224,42 @@ function magethemes_zen_register_cpt_members() {
     );
 
   register_post_type( 'member', $args );
+
+
+  $labels = array(
+    'name' => 'Evento',
+    'singular_name' => 'Evento',
+    'add_new' => 'Adicionar',
+    'add_new_item' => 'Adicionar Evento',
+    'edit_item' => 'Editar Evento',
+    'new_item' => 'Novo Evento',
+    'view_item' => 'Ver Evento',
+    'search_items' => 'Buscar Eventos',
+    'not_found' => 'Nenhum Evento encontrado',
+    'not_found_in_trash' => 'Nenhum Evento encontrado na lixeira',
+    'menu_name' => 'Eventos',
+    );
+
+  $args = array(
+    'labels' => $labels,
+    'hierarchical' => true,
+    'supports' => array( 'title', 'editor', 'thumbnail' ),
+    'public' => true,
+    'show_ui' => true,
+    'show_in_menu' => true,
+    'menu_position' => 5,
+    'menu_icon' => 'dashicons-calendar-alt',
+    'show_in_nav_menus' => false,
+    'publicly_queryable' => false,
+    'exclude_from_search' => true,
+    'has_archive' => false,
+    'query_var' => true,
+    'can_export' => true,
+    'rewrite' => true,
+    'capability_type' => 'post'
+    );
+
+  register_post_type( 'event', $args );
 }
 
 // create custom plugin settings menu
@@ -377,20 +302,11 @@ function magethemes_zen_register_mysettings() {
 global $menus;
 add_option('magethemes_zen_theme_first_subtitle', 'Espaço', '', 'no' );
 add_option('magethemes_zen_theme_first_title', 'Povo em Pé', '', 'no' );
-add_option('magethemes_zen_theme_first_content', 'Este espaço honra os irmãos que habitam junto com nós, duas pernas, a Mãe Terra.
-
-Entendemos que a Mãe Terra é aquecida pelo Fogo, fertiliza-se e frutifica com a Água, movimenta-se com o Ar, e manifesta o Espírito do Éter.
-
-O Espaço Povo em Pé definiu sua missão, em um dia de Kin Dragão Cristal Vermelho, uma corte de Kins da Onda Encantada do Cachorro Branco. Kali 25. Quarta semana da Lua Cristal do Coelho, 48º Heptal do ano Lua Harmônica Vermelha.
-
-Aqui, como guardiões, promovemos encontros do Movimento Mundial pela Paz, facilitamos oficinas de alimentação natural, trabalhos corporais e aromas. Praticamos Yoga e buscamos auxiliar como educadores, em diária de vida ancestral - por um Agora Saudável.
-
-Estamos abertos aos irmãos que queiram trazer seus saberes e o frescor da Mãe Terra!', '', 'no' );
-add_option('magethemes_zen_theme_first_blockquote', 'Meu nome é o glorioso nascido do lótus. Eu catalizo luz-calor interior.
-Que todos os seres habitem a Divina Presença comigo.', '', 'no' );
+add_option('magethemes_zen_theme_first_content', '', '', 'no' );
+add_option('magethemes_zen_theme_first_blockquote', '', '', 'no' );
 add_option('magethemes_zen_theme_au_subtitle', 'Guardiões do', '', 'no' );
 add_option('magethemes_zen_theme_au_title', 'Povo em Pé', '', 'no' );
-add_option('magethemes_zen_theme_au_content', "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", '', 'no' );
+add_option('magethemes_zen_theme_au_content', '', '', 'no' );
 add_option('magethemes_zen_theme_footer_title', 'Avenida Beira Rio, 1135 - Belém Novo - Porto Alegre / RS', '', 'no' );
 add_option('magethemes_zen_theme_footer_content', 'Telefone: +55 51 3331-1422', '', 'no' );
 add_option('magethemes_zen_facebook_id', '', '', 'no' );
@@ -487,18 +403,6 @@ function magethemes_zen_theme_settings_page() {
 </div>
 </div>
 
-<h3>Facebook App (Avançado)</h3>
-<div>
-<div>
-  <label>App ID</label>
-  <input type="text" name="magethemes_zen_facebook_id" value="<?php echo get_option('magethemes_zen_facebook_id'); ?>" />
-</div>
-
-<div>
-  <label>App Secret</label>
-  <input type="text" name="magethemes_zen_facebook_secret" value="<?php echo get_option('magethemes_zen_facebook_secret'); ?>" />
-</div>
-</div>
 <?php submit_button(); ?>
 
 </form>

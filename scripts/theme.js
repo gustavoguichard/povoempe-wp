@@ -19,34 +19,4 @@ jQuery(document).ready(function( $ ) {
     event.preventDefault();
   })
 
-  $('.album-cover').click(function(event) {
-    var string = $(event.currentTarget).data('photos');
-    var photos_string = string.split('{-}');
-    var data = photos_string.map(function(photo) {
-      var photo_data = photo.split('{;}');
-      return {
-        title: photo_data[0],
-        href: photo_data[1],
-        thumbnail: photo_data[2],
-      };
-    });
-    $.fancybox.open(data, {
-      padding: 2,
-      helpers: {
-        title: {
-          type: 'outside'
-        },
-        thumbs: {
-          width: 70,
-          height: 70,
-          source: function(image) {
-            return image.thumbnail;
-          },
-          position: 'bottom',
-        }
-      }
-    });
-    return false;
-  });
-
 });
