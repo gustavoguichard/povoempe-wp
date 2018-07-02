@@ -109,7 +109,6 @@ get_header();
     </div>
   </div>
 
-  <!-- FOTOS
   <div class="container-page">
     <div class="container">
       <div class="projects">
@@ -119,17 +118,15 @@ get_header();
           <h3><?= $menu_names[1] ?></h3>
         </div>
         <div class="project">
-          <div class="estabelecimento">
-            <a href="#" class="album-cover" data-photos="<?=join('{-}', $album_json)?>" style="background-image: url(<?= $cover['source'] ?>);">
-              <span class="album-title"><?= $album_name ?></span>
-            </a>
-          </div>
+          <?php
+            echo do_shortcode( '[rl_gallery id="264"]' );
+          ;?>
         </div>
       </div>
 
     </div>
   </div>
-   -->
+
 
   <!-- Page Content -->
   <div class="page">
